@@ -21,8 +21,8 @@
 */
 
 function TopDownSplitMerge(arrayOfNumbers) {     
-    var length = arrayOfNumbers.length
-    var middleIndex = parseInt(length/2);
+    var length = arrayOfNumbers.length;
+    var middleIndex = parseInt(length/2, 10);
 
     if(length <= 1) {
         return arrayOfNumbers;
@@ -41,8 +41,7 @@ function TopDownSplitMerge(arrayOfNumbers) {
 function TopDownMerge(left, right) {
     var results = [], 
         leftLength = left.length, 
-        rightLength = right.length
-        
+        rightLength = right.length;
 
     for(var leftIndex = 0, rightIndex = 0; 
 		leftIndex < leftLength || rightIndex < rightLength; ) {
@@ -63,7 +62,6 @@ function TopDownMerge(left, right) {
            results.push(right[rightIndex]);
            rightIndex++;
         }
-            
     }
 
     return results;
