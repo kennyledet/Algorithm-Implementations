@@ -34,7 +34,7 @@ Conventions
 -----------
 
 + Language doesn't matter. Just make sure you're implementing an algorithm.
-+ **Each algorithm should go in a self-contained folder (named after the algorithm)**
++ **Each algorithm should go in a folder named after the algorithm**
 + Either prepend or append your files with your Github username
 	+ Example: *kennyledet_insertion_sort.c*
 + Have fun!
