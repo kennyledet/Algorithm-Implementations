@@ -8,8 +8,7 @@ But, you see, it wasn't until a couple of years ago in high school when I starte
 
 Of course, this was merely one of the initial revelations that led to the revelation that ultimately led to this repository. 
 
-Purpose
--------
+
 When I decided to become a Computer Science major, I took the initiative to research actual **Computer Science** topics, outside of class, as I've always been more of a self-learner.
 
  Lo and behold, CS and practical software engineering turned out to be two entirely different things. 
@@ -23,11 +22,11 @@ I also have a much greater level of respect towards my profession now, and take 
 
 
 
-Contribute
+Purpose
 ----------
 We see tons of interesting projects that are actively contributed to here on Github. Seriously, it's fucking powerful.
 
-Unfortunately, I haven't really spotted (a popular) one where people used the power of Git to share, discuss and improve algorithm implementations! 
+Unfortunately, I haven't really spotted (a popular and language agnostic) one where people used the power of Git to share, discuss and improve algorithm implementations! 
 
 ***Send me a pull request, and I will add any implementation of any algorithm you have.***
 
@@ -42,9 +41,8 @@ Conventions
 
 Resources
 =========
-We should also keep a curated list of resources dealing with Algorithms. I will start things off:
+We should also keep a curated list of resources dealing with algorithms. I will start things off:
 
-Introductory Books
-------------------
+####Introductory Books
 + Introduction to Algorithms
 
