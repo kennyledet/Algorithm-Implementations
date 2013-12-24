@@ -24,7 +24,7 @@ I also have a much greater level of respect towards my profession now, and take 
 
 Purpose
 ----------
-We see tons of interesting projects that are actively contributed to here on Github. Seriously, it's fucking powerful.
+We see tons of interesting projects that are actively contributed to here on Github. Seriously, it's very powerful.
 
 Unfortunately, I haven't really spotted (a popular and language agnostic) one where people used the power of Git to share, discuss and improve algorithm implementations! 
 
@@ -45,4 +45,4 @@ We should also keep a curated list of resources dealing with algorithms. I will 
 
 ####Introductory Books
 + Introduction to Algorithms
-
++ [Algorithms](http://www.amazon.com/Algorithms-Sanjoy-Dasgupta/dp/0073523402) (Dasgupta, Papadimitriou, and Vazirani)
