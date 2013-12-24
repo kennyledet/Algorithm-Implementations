@@ -1,6 +1,15 @@
 #Algorithm Implementations
 
 (note: there are links to resources on algorithms at the bottom of this README)
+
+(temporary note: it was suggested by IgorPartola in the HN thread that
+we also separate by language in the directory tree. So
+"/Algorithm/Language/your_implementation.extension" This is much smarter. I will get the new structure implemented for all
+current entries in the morning, depending on if the respective committers have seen
+this note by that time, but from now on this is a pull request
+convention! Going to bed now, can't wait to see the potential of this
+repo be unleashed)
+
 Foreword
 --------
 I have been "***coding***" since I was about 12, and have been teaching myself **software engineering** principles through solving problems in various languages through practice, freelance work and my own projects.
@@ -35,9 +44,12 @@ Conventions
 -----------
 
 + Language doesn't matter. Just make sure you're implementing an algorithm.
-+ **Each algorithm should go in a folder named after the algorithm**
-+ Either prepend or append your files with your Github username
-	+ Example: *kennyledet_insertion_sort.c*
++ Submissions should follow this directory structure
+	
+		Algorithm_Name/Language_Name/username_filename.extension
+    
++ It is preferred that you prepend or append your files with your Github username or some identifier to avoid overwriting others' implementations. `git blame` is cool, and has many more appropriate applications, but in this context I'd rather pull a flat list of files and be able to check out everyone's contributions that way than have to look through the revisions.
+
 + Have fun!
 
 Resources
