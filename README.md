@@ -2,14 +2,6 @@
 
 (note: there are links to resources on algorithms at the bottom of this README)
 
-(temporary note: it was suggested by IgorPartola in the HN thread that
-we also separate by language in the directory tree. So
-"/Algorithm/Language/your_implementation.extension" This is much smarter. I will get the new structure implemented for all
-current entries in the morning, depending on if the respective committers have seen
-this note by that time, but from now on this is a pull request
-convention! Going to bed now, can't wait to see the potential of this
-repo be unleashed)
-
 Foreword
 --------
 I have been "***coding***" since I was about 12, and have been teaching myself **software engineering** principles through solving problems in various languages through practice, freelance work and my own projects.
@@ -36,7 +28,7 @@ Purpose
 ----------
 We see tons of interesting projects that are actively contributed to here on Github. Seriously, it's very powerful.
 
-Unfortunately, I haven't really spotted (a popular and language agnostic) one where people used the power of Git to share, discuss and improve algorithm implementations! 
+Unfortunately, I haven't really spotted (a popular and language agnostic) one where people used the power of Git to share, discuss, discover and improve algorithm implementations! 
 
 ***Send me a pull request, and I will add any implementation of any algorithm you have.***
 
