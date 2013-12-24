@@ -1,3 +1,7 @@
+function getRandomInt(numberOfNumbers, type) {   
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function swapElements(array, indexI, indexJ) {
     var temp = array[indexI];
     array[indexI] = array[indexJ];
@@ -27,7 +31,7 @@ function partition(arrayOfNumbers, first, last, pivotIndex) {
 
 function QuickSortRandomPivot(arrayOfNumbers, first, last) {
     if( first < last ) {
-        var pivotIndex = new Numbers(arrayOfNumbers.length).getRandomInt(first, last);
+        var pivotIndex = getRandomInt(first, last);
         var newPivotIndex = partition(arrayOfNumbers, first, last, pivotIndex);
         QuickSortRandomPivot(arrayOfNumbers, first, newPivotIndex-1);
         QuickSortRandomPivot(arrayOfNumbers, newPivotIndex+1, last);
