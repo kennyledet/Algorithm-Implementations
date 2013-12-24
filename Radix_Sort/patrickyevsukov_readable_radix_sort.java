@@ -1,3 +1,8 @@
+// Patrick Yevsukov 2013
+
+// Below is my own implementation of the radix sorting algorithm.
+// I wrote it to be as human readable as possible.
+
 public static void RadixSort(ArrayList<Integer> list) {
         
         final int NUM_BASE = 10;
@@ -5,6 +10,7 @@ public static void RadixSort(ArrayList<Integer> list) {
         int maximum = 0;
         
         ArrayList<ArrayList<Integer>> buckets;
+        
         buckets = new ArrayList<ArrayList<Integer>>(NUM_BASE);
         
         // New buckets are added to the bucket list; one for each digit
