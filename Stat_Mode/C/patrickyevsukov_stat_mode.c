@@ -27,7 +27,6 @@
 
 #define MAX_SAMPLE 25
 
-
 double *
 SampleMode(double *, int *);
 
