@@ -38,6 +38,8 @@ We should also keep a curated list of resources dealing with algorithms.
 + [UVa Online Judge](http://uva.onlinejudge.org) (TONS of problems to solve, automatic judging)
 + [Stony Brook Algorithm Repository](http://www.cs.sunysb.edu/~algorith/)
 + [The Archive of Interesting Code](http://www.keithschwarz.com/interesting/)
++ [ACM Collected Algorithms(CALGO)](http://calgo.acm.org)
+
 
 Thanks to everyone in the HN thread who've been suggesting links. I'm going to try and get some sleep, but I will add a thank you note with everyone's screenname by their recommendation in the morning.
 
