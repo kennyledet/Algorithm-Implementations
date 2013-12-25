@@ -6,7 +6,7 @@
 
 // I devised this algorithm to identify the statistical mode or 
 // modes of a dataset. It requires one pass through the set to 
-// identify the set's mode or mode's.
+// identify the set's mode or modes.
 
 // This algorithm works by keeping track of the number of times a
 // unique value occurs in the set. If a unique value has occurred
