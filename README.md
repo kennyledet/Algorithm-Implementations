@@ -21,6 +21,12 @@ Conventions
     
 + It is preferred that you prepend or append your files with your Github username or some identifier to avoid overwriting others' implementations. `git blame` is cool, and has many more appropriate applications, but in this context I'd rather pull a flat list of files and be able to check out everyone's contributions that way than have to look through the revisions.
 
++ Each algorithm should have its corresppnding unit test cases which covers the corner cases, happy/unhappy path.
+	Advantage of doing so is to asset that every thing is covered and algorithm is not broken between code change.
+	It also helps newbie to have a quick look at the unit test cases and understand the basic usecase of the algorithm.
+
++ Documentation inside the code is recommended. This helps others in understanding the code base.
+
 + Have fun!
 
 Resources

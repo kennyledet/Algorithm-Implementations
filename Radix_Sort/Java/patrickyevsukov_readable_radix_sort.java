@@ -1,7 +1,11 @@
-// Patrick Yevsukov 2013
+// Patrick Yevsukov
 
-// Below is my own implementation of the radix sorting algorithm.
-// I wrote it to be as human readable as possible.
+// 2013 CC BY-NC-SA 4.0
+
+// Excerpt From github.com/PatrickYevsukov/Sorting-Algorithms
+
+// Below is my own implementation of the radix sort. It was 
+// written to be as human readable as possible.
 
 public static void RadixSort(ArrayList<Integer> list) {
         
