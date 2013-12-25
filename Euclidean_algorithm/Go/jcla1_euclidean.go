@@ -8,6 +8,8 @@ func gcd_devision(a, b int) int {
 		b = a % b
 		a = tmp
 	}
+
+	return a
 }
 
 func gcd_subtraction(a, b int) int {
