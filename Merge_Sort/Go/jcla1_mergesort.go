@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package mergesort
 
 func Merge(left, right []int) []int {
 	result := make([]int, 0, len(left)+len(right))
