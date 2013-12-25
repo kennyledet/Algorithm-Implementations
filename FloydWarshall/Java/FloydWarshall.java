@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 /*
  * The Floyd-Warshall algorithm is used to find the shortest path between
- * any pair of nodes in a weighted graph with either positive or negative edge
+ * all pairs of nodes in a weighted graph with either positive or negative edge
  * weights but without negative edge cycles.
  * 
  * The running time of the algorithm is O(n^3), being n the number of nodes in
