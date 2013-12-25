@@ -9,7 +9,7 @@
 
 void print_sequence(int [], int);
 
-void insertSort(int v[], int n)
+void insert_sort(int v[], int n)
 {
     for (i = 1; i < n; i++) {
         int key = v[i];
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     printf("Sorting %d values in sequence ", sequence_length);
     print_sequence(sequence, sequence_length);
 
-    insertSort(sequence, sequence_length);
+    insert_sort(sequence, sequence_length);
 
     printf("Done sorting into result sequence ");
     print_sequence(sequence, sequence_length);
