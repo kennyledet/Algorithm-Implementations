@@ -1,10 +1,32 @@
 # this is a python example of a mergesort generator
 # (list.sort() is much faster)
-from heapq import merge
-
+#
+# Edited by: Jonathan Lebron 2013
 
 def merge_sort(foo):
-    length = len(foo)
-    first_half = merge_sort(foo[:length/2]) if length > 1 else foo
-    second_half = merge_sort(foo[length/2:]) if length > 1 else []
-    return merge(first_half, second_half)
+    if len(foo) < 2: return foo
+
+    mid = len(foo) / 2
+    return merge(merge_sort(foo[:mid]), merge_sort(foo[mid:]))
+
+def merge(left, right):
+    output = []
+    i = j = 0
+
+    while i < len(left) or j < len(right):
+        if i >= len(left):
+            output.append(right[j])
+            j += 1
+        elif j >= len(right):
+            output.append(left[i])
+            i += 1
+        elif right[j] < left[i]:
+            output.append(right[j])
+            j += 1
+        else:
+            output.append(left[i])
+            i += 1
+
+    return output
+
+print merge_sort([3,1,3,12,5,56,23,5,14])
