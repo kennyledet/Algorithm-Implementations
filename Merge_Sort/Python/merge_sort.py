@@ -3,11 +3,14 @@
 #
 # Edited by: Jonathan Lebron 2013
 
+
 def merge_sort(foo):
-    if len(foo) < 2: return foo
+    if len(foo) < 2:
+        return foo
 
     mid = len(foo) / 2
     return merge(merge_sort(foo[:mid]), merge_sort(foo[mid:]))
+
 
 def merge(left, right):
     output = []
@@ -28,5 +31,3 @@ def merge(left, right):
             i += 1
 
     return output
-
-print merge_sort([3,1,3,12,5,56,23,5,14])
