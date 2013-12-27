@@ -17,8 +17,8 @@ Conventions
 + Language doesn't matter. Just make sure you're implementing an algorithm.
 + Submissions should follow this directory structure
 	
-		Algorithm_Name/Language_Name/username_filename.extension
-		Algorithm_Name/Language_Name/username_filename_unittest.extension
+		Algorithm_Name/Language_Name/username/filename.extension
+		Algorithm_Name/Language_Name/username/filename_test.extension
     
 + It is preferred that you prepend or append your files with your Github username or some identifier to avoid overwriting others' implementations. `git blame` is cool, and has many more appropriate applications, but in this context I'd rather pull a flat list of files and be able to check out everyone's contributions that way than have to look through the revisions.
 
