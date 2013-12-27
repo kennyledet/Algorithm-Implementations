@@ -1,4 +1,7 @@
 def horspool(haystack, needle):
+    if len(needle) < 1:
+        return -1
+
     bad_match_table = dict()
     max_offset = len(haystack) - len(needle)
     last_index = len(needle) - 1
