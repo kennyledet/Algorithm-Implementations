@@ -14,7 +14,7 @@ def horspool(haystack, needle):
                 return offset
             scan -= 1
 
-        offset += bad_match_table.get(haystack[offset + last_index], last_index)
+        offset += (bad_match_table.get(haystack[offset + last_index]) or (last_index + 1))
 
     return -1
 
