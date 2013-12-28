@@ -10,13 +10,13 @@
 int
 main(int argc, char **argv)
 {
-    TestSampleMode();
+    TestStatMode();
 
     return EXIT_SUCCESS;
 }
 
 void
-TestSampleMode()
+TestStatMode()
 {
     int ii = 0;
 

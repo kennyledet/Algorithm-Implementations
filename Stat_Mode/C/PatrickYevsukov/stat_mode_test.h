@@ -11,4 +11,4 @@
 #define ELEVEN 11
 
 void
-TestSampleMode(void);
+TestStatMode(void);
