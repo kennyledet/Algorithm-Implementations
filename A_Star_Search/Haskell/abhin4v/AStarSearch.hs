@@ -7,14 +7,14 @@ import Data.List (foldl')
 import Data.Maybe (fromJust)
 
 -- A* search: Finds the shortest path from a start node to a goal node using a heuristic function.
-astarSearch :: (Ord a, Ord b, Num b) => 
+astarSearch :: (Ord a, Ord b, Num b) =>
   a                   -- startNode: the node to start the search from
   -> (a -> Bool)      -- isGoalNode: a function to test if a node is the goal node
-  -> (a -> [(a, b)])  -- nextNodeFn: a function which calculates the next nodes for a current node 
+  -> (a -> [(a, b)])  -- nextNodeFn: a function which calculates the next nodes for a current node
                       -- along with the costs of moving from the current node to the next nodes
-  -> (a -> b)         -- heuristic: a function which calculates the (approximate) cost of moving 
+  -> (a -> b)         -- heuristic: a function which calculates the (approximate) cost of moving
                       -- from a node to the nearest goal node
-  -> Maybe (b, [a])   -- result: Nothing is no path is found else 
+  -> Maybe (b, [a])   -- result: Nothing is no path is found else
                       -- Just (path cost, path as a list of nodes)
 astarSearch startNode isGoalNode nextNodeFn heuristic =
   astar' (PQ.singleton (heuristic startNode) (startNode, 0))

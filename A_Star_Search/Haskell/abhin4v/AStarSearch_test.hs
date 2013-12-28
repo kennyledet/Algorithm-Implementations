@@ -3,11 +3,11 @@ module AStarSearchTest where
 import AStarSearch
 import Data.Maybe (fromJust)
 
--- We use A* search to find the shortest path (path with least number of moves) of a knight 
+-- We use A* search to find the shortest path (path with least number of moves) of a knight
 -- from a start square to a goal square on a chess board.
 
 -- Finds the next squares a knight can move to from a given square
-nextKnightPos (x, y) = 
+nextKnightPos (x, y) =
 	zip (filter isValidMove . map (\(dx, dy) -> (x + dx, y + dy)) $ moves) (repeat 1)
 	where
     moves = [(1,2), (1,-2), (-1,2), (-1,-2), (2,1), (2,-1), (-2,1), (-2,-1)]
