@@ -1,32 +1,28 @@
 <?php
-    function bubble_sort($array)
+    function bubble_sort($array = [])
     {
-        // Setup variable to check if the last run has had any swapps.
-        $swapped = FALSE;
+        // Just ask one time the length of the array
+        $n = count($array);
 
-        // Loop through every key with next key pair in the array to check which one goes first.
-        for ($i = 0; $i < count($array); $i++) {
-            $first_key = $i;
-            $next_key = $i + 1;
-
-            $first_value = $array[$first_key];
-            $next_value = $array[$next_key];
-
-            if ($first_value > $next_value) {
-                $array[$first_key] = $next_value;
-                $array[$next_key] = $first_value;
-
-                $swapped = TRUE;
+        if(!$n){
+            return $array;
+        }
+        // Iterate over all the elments
+        for($i = 0; $i < $n; $i++){
+            $flag = false;
+            // Order the array
+            for($j = 0; $j < $n - $i - 1; $j++){
+                if($array[$j] > $array[$j+1]){
+                    $flag = true; 
+                    // Swap values
+                    $temp = $array[$j+1];
+                    $array[$j+1] = $array[$j];
+                    $array[$j] = $temp;
+                }  
+            }
+            // Already order
+            if(!$flag){
+                return $array;
             }
         }
-
-        // If there was any swaps the algorithm has to run through the array again.
-        if ($swapped) {
-            $sorted_array = bubble_sort($array);
-        } else {
-            $sorted_array = $array;
-        }
-
-        // At the end the sorted array is returned.
-        return $sorted_array;
     }
