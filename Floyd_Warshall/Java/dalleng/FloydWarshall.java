@@ -1,52 +1,56 @@
-import java.util.HashMap;
-
 /*
  * The Floyd-Warshall algorithm is used to find the shortest path between
- * all pairs of nodes in a weighted graph with either positive or negative edge
- * weights but without negative edge cycles.
+ * all pairs of nodes in a weighted graph with either positive or negative
+ * edge weights but without negative edge cycles.
  * 
  * The running time of the algorithm is O(n^3), being n the number of nodes in
  * the graph.
+ *
+ * This implementation is self contained and has no external dependencies. It 
+ * does not try to be a model of good Java OOP, but a simple self contained 
+ * implementation of the algorithm.
  */
+
+import java.util.Arrays;
 
 public class FloydWarshall {
 
-	static HashMap<Integer, HashMap<Integer, Integer>> adjacencyList = new HashMap<Integer, HashMap<Integer, Integer>>();
-	static boolean hasNegativeCycle;
+	// graph represented by an adjacency matrix
+	private double[][] graph;
+
+	private boolean negativeCycle;
+
+    public FloydWarshall(int n) {
+	    this.graph = new double[n][n];
+	    initGraph();
+	}
+
+    private void initGraph() {
+        for (int i = 0; i < graph.length; i++) {
+            for (int j = 0; j < graph.length; j++) {
+                if (i == j) {
+                    graph[i][j] = 0;
+                } else {
+                    graph[i][j] = Double.POSITIVE_INFINITY;
+                }
+            }
+        }
+    }
+
+    public boolean hasNegativeCycle() {
+        return this.negativeCycle;
+    }
 
 	// utility function to add edges to the adjacencyList
-	static void addOrUpdateEdge(int from, int to, int weight) {
-		if (adjacencyList.containsKey(from)) {
-			adjacencyList.get(from).put(to, weight);
-		} else {
-			HashMap<Integer, Integer> edges = new HashMap<Integer, Integer>();
-			edges.put(to, weight);
-			adjacencyList.put(from, edges);
-		}
+	public void addEdge(int from, int to, double weight) {
+	    graph[from][to] = weight;
 	}
 
 	// all-pairs shortest path
-	static double[][] floydWarshall(int n) {
-		double[][] distances = new double[n][n];
-
-		// initialize the distances matrix from the adjacencyList
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if (i == j) {
-					distances[i][j] = 0;
-				} else {
-					if (adjacencyList.containsKey(i)) {
-						if (adjacencyList.get(i).containsKey(j)) {
-							distances[i][j] = adjacencyList.get(i).get(j);
-						} else {
-							distances[i][j] = Double.POSITIVE_INFINITY;
-						}
-					} else {
-						distances[i][j] = Double.POSITIVE_INFINITY;
-					}
-				}
-			}
-		}
+	public double[][] floydWarshall() {
+	    double[][] distances;
+        int n = this.graph.length;
+	    distances = Arrays.copyOf(this.graph, n);
 
 		for (int k = 0; k < n; k++) {
 			for (int i = 0; i < n; i++) {
@@ -56,7 +60,7 @@ public class FloydWarshall {
 			}
 
 			if (distances[k][k] < 0.0) {
-				hasNegativeCycle = true;
+				this.negativeCycle = true;
 			}
 		}
 
