@@ -15,15 +15,15 @@ import java.util.Arrays;
 
 public class FloydWarshall {
 
-	// graph represented by an adjacency matrix
-	private double[][] graph;
+    // graph represented by an adjacency matrix
+    private double[][] graph;
 
-	private boolean negativeCycle;
+    private boolean negativeCycle;
 
     public FloydWarshall(int n) {
-	    this.graph = new double[n][n];
-	    initGraph();
-	}
+        this.graph = new double[n][n];
+        initGraph();
+    }
 
     private void initGraph() {
         for (int i = 0; i < graph.length; i++) {
@@ -41,30 +41,30 @@ public class FloydWarshall {
         return this.negativeCycle;
     }
 
-	// utility function to add edges to the adjacencyList
-	public void addEdge(int from, int to, double weight) {
-	    graph[from][to] = weight;
-	}
+    // utility function to add edges to the adjacencyList
+    public void addEdge(int from, int to, double weight) {
+        graph[from][to] = weight;
+    }
 
-	// all-pairs shortest path
-	public double[][] floydWarshall() {
-	    double[][] distances;
+    // all-pairs shortest path
+    public double[][] floydWarshall() {
+        double[][] distances;
         int n = this.graph.length;
-	    distances = Arrays.copyOf(this.graph, n);
+        distances = Arrays.copyOf(this.graph, n);
 
-		for (int k = 0; k < n; k++) {
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < n; j++) {
-					distances[i][j] = Math.min(distances[i][j], distances[i][k] + distances[k][j]);
-				}
-			}
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    distances[i][j] = Math.min(distances[i][j], distances[i][k] + distances[k][j]);
+                }
+            }
 
-			if (distances[k][k] < 0.0) {
-				this.negativeCycle = true;
-			}
-		}
+            if (distances[k][k] < 0.0) {
+                this.negativeCycle = true;
+            }
+        }
 
-		return distances;
-	}
+        return distances;
+    }
 
 }
