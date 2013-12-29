@@ -3,24 +3,24 @@ public class MergeSort {
 	
 	static public void main(String[] args) {		
 		int[] unsorted = {10, 9, 8, 7, 6, 4, 5, 2, 3, 1};
-		int[] sorted = mergeSort(unsorted);
+		int[] sorted = sort(unsorted);
 		
 		for (int i : sorted) {
 			System.out.println(i);
 		}
 	}
 	
-	static int[] mergeSort(int[] array) {
+	static int[] sort(int[] array) {
 		if (array.length == 1) {
 			return array;
 		} else {
 			int[] firstHalf = new int[array.length / 2];
 			System.arraycopy(array, 0, firstHalf, 0, array.length / 2);
-			firstHalf = mergeSort(firstHalf);
+			firstHalf = sort(firstHalf);
 			
 			int[] secondHalf = new int[array.length - firstHalf.length];
 			System.arraycopy(array, firstHalf.length, secondHalf, 0, array.length - firstHalf.length);
-			secondHalf = mergeSort(secondHalf);
+			secondHalf = sort(secondHalf);
 			
 			return merge(firstHalf, secondHalf);
 		}
