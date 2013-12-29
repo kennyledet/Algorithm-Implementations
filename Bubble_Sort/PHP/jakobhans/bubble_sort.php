@@ -5,7 +5,7 @@
         $swapped = FALSE;
 
         // Loop through every key with next key pair in the array to check which one goes first.
-        for ($i = 0; $i < count($array); $i++) {
+        for ($i = 0; $i < (count($array) - 1); $i++) {
             $first_key = $i;
             $next_key = $i + 1;
 
