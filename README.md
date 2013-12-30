@@ -1,7 +1,14 @@
 #Algorithm Implementations
 
-(note: there is a backstory on my motivation for starting this at the bottom of this README)
+(Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
+Website coming soon!
+
+**Update 12/30/13:** I have given the 3 top committers (jcla1, PatrickYevsukov, dalleng) collaborator access. This was very well earned, as they have managed to contribute much more to this repo than I have had the time to.
+
+Again, thanks so much for the consistency guys, it is extremely appreciated. It made sense to start with giving these guys collab access for obvious reasons, but I also thank every single person who has even submitted a pull request. Without you all, this repository would be nothing.
+
+To do my part more, I am now working on a web application that will tie things up in a much more fluid way, and help exhibit the algorithms to those who either don't know much about git/github, or just can't be vexed clicking through all the folders. This will open the repo up to a much wider audience in general!
 
 Purpose
 ----------
@@ -54,7 +61,6 @@ We should also keep a curated list of resources dealing with algorithms.
 + [Algorithms: Design and Analysis, Part 1 - Coursera](https://www.coursera.org/course/algo)
 + [Algorithms: Design and Analysis, Part 2 - Coursera](https://www.coursera.org/course/algo2)
 
-Thanks to everyone in the HN thread who've been suggesting links. I'm going to try and get some sleep, but I will add a thank you note with everyone's screenname by their recommendation in the morning.
 
 Backstory
 ---------
