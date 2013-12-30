@@ -7,10 +7,10 @@ public class MergeSort {
 	/*
 	 * Inputs:
 	 * 		array - An array containing a sequence of integers.
-	 * 		start / end - Used to describe which sub-array of the main array we want to sort.
+	 * 		start / end - The range that you want to sort.
 	 * 
 	 * Output:
-	 * 		Although the function is void the original array will be sorted from start to end.
+	 * 		Although the function is void the original array will be sorted in the specified range.
 	 */
 	
 	public static void mergeSort(int[] array, int start, int end){
