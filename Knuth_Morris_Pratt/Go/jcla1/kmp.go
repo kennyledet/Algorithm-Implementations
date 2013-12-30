@@ -1,4 +1,4 @@
-package knp
+package kmp
 
 // KMPSearch has overall complexity O(k + n)
 // where k is the length of the word
