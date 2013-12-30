@@ -16,7 +16,7 @@ We see tons of interesting projects that are actively contributed to here on Git
 
 Unfortunately, I haven't really spotted (a popular and language agnostic) one where people used the power of Git to share, discover, discuss and improve algorithm implementations! 
 
-***Send me a pull request, and I will add any implementation of any algorithm you have.***
+***Send us a pull request, and we will add any implementation of any algorithm you have so long as it at least mostly suits the following conventions.***
 
 Conventions
 -----------
@@ -29,9 +29,11 @@ Conventions
     
 + Please package your code in a directory bearing your GitHub username. `git blame` is cool, and has many more appropriate applications, but in this context I'd rather pull a flat list of files and be able to check out everyone's contributions that way than have to look through the revisions.
 
-+ Each algorithm should have its corresppnding unit test cases (as directory structure suggested above) which covers the corner cases, happy/unhappy paths.
-	Advantage of doing so is to assert that every thing is covered and algorithm is not broken between code change.
-	It also helps newbies to have a quick look at the unit test cases and understand the basic usecase of the algorithm.
++ Each algorithm should have its corresponding unit test cases (as directory structure suggested above) which covers the corner cases, happy/unhappy paths.
+
+	The advantage of doing so is to assert that everything is covered, and that the algorithm is not broken between code changes.
+	
+	It also helps newbies to have a quick look at the unit test cases to understand the basic usecase of the algorithm.
 
 + Documentation inside the code is recommended. This helps others in understanding the code base.
 
