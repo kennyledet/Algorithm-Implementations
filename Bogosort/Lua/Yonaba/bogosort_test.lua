@@ -42,7 +42,7 @@ end
 
 math.randomseed(os.time())
 
--- Note: Due to the nature of bogosort, we will use
+-- Note: Due to the nature of Bogosort, we will use
 -- short tables to perform tests. For higher values of
 -- n, we cannot predict the time it will take to perform the
 -- sort.

@@ -21,13 +21,13 @@ local function is_sorted(array, comp)
   return true
 end
 
--- The bogosort implementation:
+-- The Bogosort implementation:
 -- tbl  : a given table to be sorted
 -- comp : (Optional) a comparison function.
 --   defaults to function(a,b) return a < b end
 -- Note: It is advised to use math.randomseed(os.time())
 -- before calling this function. Lua's math.random() is
--- naturally deterministic and ince bogosort is based on
+-- naturally deterministic and since Bogosort is based on
 -- random shuffling, this is necessary to avoid infinite loops
 return function (tbl, comp)
   comp = comp or function(a, b) return a < b end
