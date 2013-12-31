@@ -1,7 +1,14 @@
 #Algorithm Implementations
 
-(note: there is a backstory on my motivation for starting this at the bottom of this README)
+(Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
+Website coming soon!
+
+**Update 12/30/13:** I have given the 3 top committers (jcla1, PatrickYevsukov, dalleng) collaborator access. This was very well earned, as they have managed to contribute much more to this repo than I have had the time to.
+
+Again, thanks so much for the consistency guys, it is extremely appreciated. It made sense to start with giving these guys collab access for obvious reasons, but I also thank every single person who has even submitted a pull request. Without you all, this repository would be nothing.
+
+To do my part more, I am now working on a web application that will tie things up in a much more fluid way, and help exhibit the algorithms to those who either don't know much about git/github, or just can't be vexed clicking through all the folders. This will open the repo up to a much wider audience in general!
 
 Purpose
 ----------
@@ -9,7 +16,7 @@ We see tons of interesting projects that are actively contributed to here on Git
 
 Unfortunately, I haven't really spotted (a popular and language agnostic) one where people used the power of Git to share, discover, discuss and improve algorithm implementations! 
 
-***Send me a pull request, and I will add any implementation of any algorithm you have.***
+***Send us a pull request, and we will add any implementation of any algorithm you have so long as it at least mostly suits the following conventions.***
 
 Conventions
 -----------
@@ -22,9 +29,11 @@ Conventions
     
 + Please package your code in a directory bearing your GitHub username. `git blame` is cool, and has many more appropriate applications, but in this context I'd rather pull a flat list of files and be able to check out everyone's contributions that way than have to look through the revisions.
 
-+ Each algorithm should have its corresppnding unit test cases (as directory structure suggested above) which covers the corner cases, happy/unhappy paths.
-	Advantage of doing so is to assert that every thing is covered and algorithm is not broken between code change.
-	It also helps newbies to have a quick look at the unit test cases and understand the basic usecase of the algorithm.
++ Each algorithm should have its corresponding unit test cases (as directory structure suggested above) which covers the corner cases, happy/unhappy paths.
+
+	The advantage of doing so is to assert that everything is covered, and that the algorithm is not broken between code changes.
+	
+	It also helps newbies to have a quick look at the unit test cases to understand the basic usecase of the algorithm.
 
 + Documentation inside the code is recommended. This helps others in understanding the code base.
 
@@ -54,7 +63,6 @@ We should also keep a curated list of resources dealing with algorithms.
 + [Algorithms: Design and Analysis, Part 1 - Coursera](https://www.coursera.org/course/algo)
 + [Algorithms: Design and Analysis, Part 2 - Coursera](https://www.coursera.org/course/algo2)
 
-Thanks to everyone in the HN thread who've been suggesting links. I'm going to try and get some sleep, but I will add a thank you note with everyone's screenname by their recommendation in the morning.
 
 Backstory
 ---------
