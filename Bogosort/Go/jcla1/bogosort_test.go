@@ -21,10 +21,10 @@ func TestBogosort(t *testing.T) {
 
 	var result []int
 
-	for i, expected := range expectedResults {
-		result = Bogosort(arrs[i])
+	for _, arr := range arrs {
+		result = Bogosort(arr)
 		if !isSorted(result) {
-			t.Errorf("Bogosort(%v) = %v, want %v", arrs[i], result, expected)
+			t.Errorf("Bogosort(%v) = %v", arr, result)
 		}
 	}
 }
