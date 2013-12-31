@@ -1,5 +1,5 @@
--- Tests for bogosort.lua
-local bogosort = require 'bogosort'
+-- Tests for bozosort.lua
+local bozosort = require 'bozosort'
 
 local total, pass = 0, 0
 
@@ -42,36 +42,36 @@ end
 
 math.randomseed(os.time())
 
--- Note: Due to the nature of Bogosort, we will use
+-- Note: Due to the nature of Bozosort, we will use
 -- short tables to perform tests. For higher values of
 -- n, we cannot predict the time it will take to perform the
 -- sort.
 
 run('Empty arrays', function()
 	local t = {}
-	assert(same(sort(clone(t)),bogosort(t)))
+	assert(same(sort(clone(t)),bozosort(t)))
 end)
 
 run('Sorted array', function()
 	local t = {1, 2, 3, 4, 5}
-	assert(same(sort(clone(t)),bogosort(t)))
+	assert(same(sort(clone(t)),bozosort(t)))
 end)
 
 run('Array sorted in reverse', function()
 	local t = {5, 4, 3, 2, 1}
-	assert(same(sort(clone(t)),bogosort(t)))
+	assert(same(sort(clone(t)),bozosort(t)))
 	local t = {5, 4, 3, 2, 1}
 	local comp = function(a,b) return a>b end
-	assert(same(sort(clone(t), comp),bogosort(t, comp)))
+	assert(same(sort(clone(t), comp),bozosort(t, comp)))
 end)
 
 run('Array containing multiple occurences of the same value', function()
 	local t = {4, 4, 8, 2, 2}
 	local comp = function(a,b) return a <= b end
-	assert(same(sort(clone(t)),bogosort(t, comp)))
+	assert(same(sort(clone(t)),bozosort(t, comp)))
 	local t = {0, 0, 0, 0, 0}
 	local comp = function(a,b) return a <= b end
-	assert(same(sort(clone(t)),bogosort(t, comp)))
+	assert(same(sort(clone(t)),bozosort(t, comp)))
 end)
 
 print(('-'):rep(80))

@@ -1,13 +1,5 @@
--- A custom array shuffle implementation
--- This is not part of the Bogosort algorithm
-local function shuffle(list)
-	local n = #list
-  for i = 1, n do
-		local j, k = math.random(1,n), math.random(1,n)
-		list[j], list[k] = list[k], list[j]
-  end
-  return list
-end
+-- Bozosort description
+-- See : http://en.wikipedia.org/wiki/Bogosort#Related_algorithms
 
 -- Checks if an array is sorted
 local function is_sorted(array, comp)
@@ -21,18 +13,20 @@ local function is_sorted(array, comp)
   return true
 end
 
--- The Bogosort implementation:
+-- The Bozosort implementation:
 -- tbl  : a given table to be sorted
 -- comp : (Optional) a comparison function.
 --   defaults to function(a,b) return a < b end
 -- Note: It is advised to use math.randomseed(os.time())
 -- before calling this function. Lua's math.random() is
--- naturally deterministic and since Bogosort is based on
--- random shuffling, this is necessary to avoid infinite loops
+-- naturally deterministic and since Bozosort is based on
+-- random swaps, this is necessary to ensure convergence
 return function (tbl, comp)
   comp = comp or function(a, b) return a < b end
+  local n = #tbl
   while not is_sorted(tbl, comp) do
-    shuffle(tbl)
+    local i, j = math.random(n), math.random(n)
+    tbl[i], tbl[j] = tbl[j], tbl[i]
   end
 	return tbl
 end
