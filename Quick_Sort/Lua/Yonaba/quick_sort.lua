@@ -30,9 +30,10 @@ end
 
 -- Quicksort function wrapper, to shadow access 
 -- to left and right bounds
--- list: a list to be ordered
+-- list: a list to be ordered, in-place
 -- comp: (optional) a comparison function
 --  defaults to function(a, b) return a < b end
+-- returns: the passed-in list, sorted
 return function (list, comp)
 	comp = comp or function(a, b) return a < b end
 	return quicksort(list, comp)
