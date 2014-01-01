@@ -41,7 +41,6 @@ math.randomseed(os.time())
 
 run('Empty arrays', function()
 	local t = {}
-	print(is_sorted(selection_sort({})))
 	assert(is_sorted(selection_sort({})))
 end)
 
