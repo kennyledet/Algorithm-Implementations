@@ -1,5 +1,5 @@
--- Tests for selection_sort.lua
-local selection_sort = require 'selection_sort'
+-- Tests for shell_sort.lua
+local shell_sort = require 'shell_sort'
 
 local total, pass = 0, 0
 
@@ -41,18 +41,18 @@ math.randomseed(os.time())
 
 run('Empty arrays', function()
 	local t = {}
-	assert(is_sorted(selection_sort({})))
+	assert(is_sorted(shell_sort({})))
 end)
 
 run('Already sorted array', function()
 	local t = {1, 2, 3, 4, 5}
-	assert(is_sorted(selection_sort(t)))
+	assert(is_sorted(shell_sort(t)))
 end)
 
 run('Sorting a large array (1e3 values)', function()
 	local t = gen(1e3)
-	assert(is_sorted(selection_sort(t)))
-	assert(is_sorted(selection_sort(t, ge), ge))
+	assert(is_sorted(shell_sort(t)))
+	assert(is_sorted(shell_sort(t, ge), ge))
 end)
 
 print(('-'):rep(80))
