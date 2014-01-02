@@ -1,3 +1,21 @@
+# This is a recursive implementation of the fibonacci series.
+# This is the most natural representaion of the series
+# The recurrence relation is quite simple:
+#   f(0) = 0
+#   f(1) = 1
+#   f(n) = f(n-1) + f(n-2)
+# There is no point in trying to implement
+# the fibonacci series in a tail-call recursive manner
+# since the BDFL has stated multiple times that Python
+# will not support tail-call optimisation (and it would
+# just over complicate things)
+def fib_rec(n):
+    if n < 2:
+        return n
+    else:
+        return fib_rec(n-1) + fib_rec(n-2)
+
+
 # This implementation is a generator
 # You call the function and get the generator back
 # For getting values you can loop through the generator,
