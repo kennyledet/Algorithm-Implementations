@@ -84,3 +84,7 @@ I won't go into my whole journey up til this point in this README, but tl;dr:
 
 I also have a much greater level of respect towards my profession now, and take it very seriously. I have a relatively rigorous base education roadmap that I've laid out for myself. Even being just a core subset of skills from which I will base subsequently developed skills on, it's quite expansive and diverse. I do not plan on stagnating, ever.
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kennyledet/algorithm-implementations/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
