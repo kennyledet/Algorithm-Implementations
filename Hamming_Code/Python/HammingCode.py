@@ -1,3 +1,11 @@
+"""
+AUTHOR : Alex Mathew
+EMAIL : alexmathew003@gmail.com 
+
+"""
+
+"""For a given binary word, print out its corresponding Hamming Coded word"""
+
 import math
 
 def FindKeyBits(n):
@@ -53,14 +61,9 @@ def ComputeHamming(data):
 
 def main():
   print '\n'
-  inputList=[]
-  for i in xrange(int(raw_input())):
-    inputList.append(raw_input())
-  i = 1
-  for data in inputList:
-    print '\nThe Hamming encoded word for',i,'is : ',
-    ComputeHamming(data)
-    i+=1
-
+  data = raw_input("Enter the word to be encoded : ")
+  print '\nThe Hamming encoded word for', data, 'is : ',
+  ComputeHamming(data)
+  
 if __name__ == '__main__':
   main()
