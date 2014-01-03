@@ -1,6 +1,6 @@
 /*
  * Written by: Rafael A. Rivera Soto
- * Last Updated: January 2, 2014
+ * Last Updated: January 2, 2013
  * 
  * This class only contains the necessary methods needed to build a maxHeap and sort
  * our array. It is in no way representative of a real heap implementation.
