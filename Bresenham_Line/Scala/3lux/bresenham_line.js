@@ -2,7 +2,7 @@
 'use strict';
 
 /**
-	* The Bresenham Algorithm, implemented in JavaScript.
+	* The Bresenham Algorithm, implemented in JS.
 	* Learn more here: http://en.wikipedia.org/wiki/Bresenham's_line_algorithm
 	* @author Evan Jacobs <evan@evoked.us>
 
@@ -44,7 +44,7 @@ function bresenham_line( x1, y1, x2, y2, debug ){
 
 		err += derr;
 
-		if(err >= 0.5){
+		if( err >= 0.5 ){
 			y += 1;
 			err -= 1;
 		}
