@@ -2,12 +2,12 @@
 // Optimized quick array compare borrowed from here: http://stackoverflow.com/questions/7837456/comparing-two-arrays-in-javascript
 
 function arraysIdentical(a, b) {
-    var i = a.length;
-    if (i != b.length) return false;
-    while (i--) {
-        if (a[i] !== b[i]) return false;
-    }
-    return true;
+	var i = a.length;
+	if (i != b.length) return false;
+	while (i--) {
+		if (a[i] !== b[i]) return false;
+	}
+	return true;
 };
 
 // Equivalent to fibonacci_sequence(20)
