@@ -6,7 +6,7 @@ import (
 
 // Make sure you seed the PRNG before using this function
 // Fisher-Yates shuffle runs in O(n) and uses O(1) space
-func fisherYates(arr []int) []int {
+func FisherYates(arr []int) []int {
 	m := len(arr)
 	var i int
 

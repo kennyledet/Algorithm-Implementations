@@ -5,15 +5,17 @@ object bubble_sort {
     * @param a the array to be sorted
     * @return the sorted copy of a
     */
-  def bubble_sort_func(a: Array[Int]): Array[Int] = {
+  def bubble_sort_func[T: Ordering](a: Array[T]): Array[T] = {
+    val ord = Ordering[T]
+    import ord._
 
-    def swap(x: Int, y: Int, s: Array[Int]): Unit = {
+    def swap(x: Int, y: Int, s: Array[T]): Unit = {
       val tmp = s(x)
       s(x) = s(y)
       s(y) = tmp
     }
 
-    val s = Array(a: _*)
+    val s = a.clone()
     var sorted = true
 
     for (i ← 0 until s.length) {
@@ -37,9 +39,12 @@ object bubble_sort {
     * Iterative, inplace version of bubble sort.
     * @param a the array to be sorted
     */
-  def bubble_sort_inplace(a: Array[Int]): Unit = {
+  def bubble_sort_inplace[T: Ordering](a: Array[T]): Unit = {
 
-    def swap(x: Int, y: Int, s: Array[Int]): Unit = {
+    val ord = Ordering[T]
+    import ord._
+
+    def swap(x: Int, y: Int, s: Array[T]): Unit = {
       val tmp = s(x)
       s(x) = s(y)
       s(y) = tmp

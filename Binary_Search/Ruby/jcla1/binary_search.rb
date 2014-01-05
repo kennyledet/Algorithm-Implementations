@@ -7,12 +7,11 @@ def binary_search(arr, target)
     middle_value = arr[middle]
 
     if middle_value > target
-        return binary_search(arr.slice(0, middle), target)
+        binary_search(arr[0, middle], target)
     elsif middle_value < target
-        v = binary_search(arr.slice(middle+1, arr.length), target)
-        return v + middle + 1 unless v < 0
-        return v
+        v = binary_search(arr[(middle+1)..-1], target)
+        v < 0 ? v : (v + middle + 1)
+    else
+        middle
     end
-
-    return middle
 end
