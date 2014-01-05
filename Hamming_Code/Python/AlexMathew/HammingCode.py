@@ -2,6 +2,8 @@
 AUTHOR : Alex Mathew
 EMAIL : alexmathew003@gmail.com 
 
+There is a lot I can do to improve this implementation.
+
 """
 
 """For a given binary word, print out its corresponding Hamming Coded word"""
@@ -60,7 +62,15 @@ def ComputeHamming(data):
 
 
 def main():
-  print '\n'
+  print 'The inputs are passed into the HammingCode() function as a string \n'
+  print '\nSample runs - '
+  print '\n\nINPUT : 1101'
+  print 'OUTPUT : '
+  ComputeHamming('1101')
+  print '\n\nINPUT : 11011101'
+  print 'OUTPUT : '
+  ComputeHamming('11011101')
+  print '\n\n'
   data = raw_input("Enter the word to be encoded : ")
   print '\nThe Hamming encoded word for', data, 'is : ',
   ComputeHamming(data)
