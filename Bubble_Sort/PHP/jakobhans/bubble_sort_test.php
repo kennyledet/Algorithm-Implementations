@@ -12,6 +12,6 @@ class BubbleSortTest extends PHPUnit_Framework_TestCase{
     }
 
     public function testNoParameters(){
-        $this->assertEquals(array(), bubble_sort(array()));
+        $this->assertEmpty(bubble_sort([]));
     }
 }
