@@ -1,0 +1,1 @@
+find . -type d -depth 1 -exec touch {}/tags \;

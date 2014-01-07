@@ -1,15 +1,13 @@
 ; markov.scm - Naive balanced Markov Chain implementation for Guile Scheme.
 ; Markov Chain: https://en.wikipedia.org/wiki/Markov_Chain
 ; tl;dr:
-;   A Markov Chain is a system that undergoes random (possibily weighted)
+;   A Markov Chain is a system that undergoes random (possibly weighted)
 ;   changes in state, with the property that the next state only depends
 ;   on the current state, and none before it.
 ;
 ;   In this implementation, we use a directed graph (a set of nodes, some of
 ;   which are connected by links which have a direction. e.g. node A could go
 ;   to node B, but node B doesn't have to go to node A) to represent the chain.
-
-; TODO: Add a payload to the chain to show practical applications.
 
 ; Graphs are of the form:
 ; '((node-0-links)
@@ -23,7 +21,7 @@
 ;
 ; (node-index chance)
 ;
-; where chance is a percentange (0 <= n <= 1).
+; where chance is a percentage (0 <= n <= 1).
 
 ; Note that it is almost _always_
 ; easier to just hand-write the graph.
@@ -81,7 +79,7 @@
                  graph)))
   (chain-itr node '() graph))
 
-; Build a weighted Markov Chain from the directed-graph `graph`.
+; Build a chain of nodes from the weighted Markov Chain `graph`.
 ; This implementation assumes that every node has at
 ; least one link, that all nodes linked to in the graph
 ; exist, and uses the graph format described above.
@@ -95,3 +93,18 @@
 
     ; The chain comes out with the last element in front, so reverse it.
     (reverse (chain-until node graph pick-link end?))))
+
+(define (get-markov-string links)
+  (list-ref links (- (length links) 1)))
+
+; This hacks a string payload onto the end of a node.
+(define (markov-chain-with-str node graph end?)
+  (map (lambda (index)
+         (get-markov-string (list-ref graph index)))
+       (markov-chain node
+                     ; Strip off the string from each node
+                     ; before markov-chain ever sees it.
+                     (map (lambda (links)
+                            (cdr (reverse links)))
+                          graph)
+                     end?)))

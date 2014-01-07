@@ -17,6 +17,6 @@ class InsertionSortTest extends PHPUnit_Framework_TestCase{
     }
 
     public function testNoParameters(){
-        $this->assertEquals(array(), insertion_sort(array()));
+        $this->assertEmpty(insertion_sort([]));
     }
 }
