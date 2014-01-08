@@ -8,6 +8,7 @@
  */
 
 void print_sequence(int [], int);
+void insertion_sort(int*, int);
 
 int main(int argc, char *argv[])
 {
@@ -17,7 +18,16 @@ int main(int argc, char *argv[])
     printf("Sorting %d values in sequence ", sequence_length);
     print_sequence(sequence, sequence_length);
 
-    /* Insertion Sort */
+    insertion_sort(sequence, sequence_length);
+
+    printf("Done sorting. Result ");
+    print_sequence(sequence, sequence_length);
+
+    return 0;
+}
+
+void insertion_sort(int *sequence, int sequence_length)
+{
     int marker, key_index, key;
 
     for (key_index = 1; key_index < sequence_length; key_index++) {  // traverse sequence, start at 2nd index
@@ -30,11 +40,6 @@ int main(int argc, char *argv[])
         }
         sequence[marker+1] = key;  // replace key
     }
-
-    printf("Done sorting into result sequence ");
-    print_sequence(sequence, sequence_length);
-
-    return 0;
 }
 
 void print_sequence(int seq[], int seq_len)
