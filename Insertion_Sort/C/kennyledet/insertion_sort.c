@@ -9,19 +9,6 @@
 
 void print_sequence(int [], int);
 
-void insert_sort(int v[], int n)
-{
-    for (i = 1; i < n; i++) {
-        int key = v[i];
-        int marker = i - 1;
-        while (marker > -1 && v[marker] > key) {
-            v[marker+1] = v[marker];
-            marker -= 1;
-        }
-        v[marker+1] = key;
-    }
-}
-
 int main(int argc, char *argv[])
 {
     int sequence[] = {3, 3242, 21, 55, 653, 19, 139, 459, 138, 45349, 19, 2, 1}; 
@@ -30,7 +17,19 @@ int main(int argc, char *argv[])
     printf("Sorting %d values in sequence ", sequence_length);
     print_sequence(sequence, sequence_length);
 
-    insert_sort(sequence, sequence_length);
+    /* Insertion Sort */
+    int marker, key_index, key;
+
+    for (key_index = 1; key_index < sequence_length; key_index++) {  // traverse sequence, start at 2nd index
+        key = sequence[key_index];
+        marker = key_index - 1;  // set marker at first index left of current key index
+
+        while (marker > -1 && sequence[marker] > key) {
+            sequence[marker+1] = sequence[marker];  // if marker val greater than key, shift right
+            marker = marker - 1;  // count left while current marker val is greater than key
+        }
+        sequence[marker+1] = key;  // replace key
+    }
 
     printf("Done sorting into result sequence ");
     print_sequence(sequence, sequence_length);
