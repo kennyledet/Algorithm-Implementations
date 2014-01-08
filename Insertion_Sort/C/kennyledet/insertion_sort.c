@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 // Kendrick Ledet 2013
 /* Insertion Sort: Efficient algorithm for sorting a small # of elements
 
@@ -7,8 +8,9 @@
  * Output: Permutation {A'1, A'2, ..., A'n} of Input such that A'1 <= A'2 <= ... <= A'n
  */
 
-void print_sequence(int [], int);
+void print_sequence(int*, int);
 void insertion_sort(int*, int);
+bool test_insertion_sort(int*, int);
 
 int main(int argc, char *argv[])
 {
@@ -22,6 +24,13 @@ int main(int argc, char *argv[])
 
     printf("Done sorting. Result ");
     print_sequence(sequence, sequence_length);
+
+    printf("Testing if result sort is valid....");
+    int pass = test_insertion_sort(sequence, sequence_length);
+    if (pass)
+        printf("Yes!\n");
+    else
+        printf("No!\n");
 
     return 0;
 }
@@ -42,11 +51,19 @@ void insertion_sort(int *sequence, int sequence_length)
     }
 }
 
-void print_sequence(int seq[], int seq_len)
+void print_sequence(int *sequence, int sequence_length)
 { 
     printf("{");
-    for (int i = 0; i < seq_len; i++)
-        printf("%d, ", seq[i]);
+    for (int i = 0; i < sequence_length; i++)
+        printf("%d, ", sequence[i]);
     printf("\b\b}\n");
 }
 
+bool test_insertion_sort(int *sequence, int sequence_length)
+{
+    for (int i = 1; i < sequence_length; i++) {
+        if (sequence[i] < sequence[i-1])
+            return false;
+    }
+    return true;
+}
