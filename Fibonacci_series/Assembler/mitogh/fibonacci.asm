@@ -25,7 +25,7 @@ main:
 	li $t1, 1
 	
 fibonacci: 
-	# Sum of the last twi elements
+	# Sum of the last two elements
 	add $t2,  $t0,  $t1
 	# Save the fibo number in $a0
 	move $a0, $t2
