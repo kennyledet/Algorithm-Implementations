@@ -62,7 +62,7 @@ void print_sequence(int *sequence, int sequence_length)
 bool test_insertion_sort(int *sequence, int sequence_length)
 {
     for (int i = 1; i < sequence_length; i++) {
-        if (sequence[i] < sequence[i-1])
+        if (sequence[i] < sequence[i-1])  // each value must be greater than the value before it.
             return false;
     }
     return true;
