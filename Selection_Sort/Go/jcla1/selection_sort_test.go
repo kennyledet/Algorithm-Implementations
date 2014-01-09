@@ -1,16 +1,16 @@
-package mergesort
+package selectionSort
 
 import "testing"
 
-func TestMergeSort(t *testing.T) {
+func TestSelectionSort(t *testing.T) {
 	arrs := [][]int{[]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}, []int{2, 3, 7, -5, -1, 4, -10}}
 
 	var result []int
 
 	for _, arr := range arrs {
-		result = MergeSort(arr)
+		result = SelectionSort(arr)
 		if !isSorted(result) {
-			t.Errorf("MergeSort(%v) = %v", arr, result)
+			t.Errorf("SelectionSort(%v) = %v", arr, result)
 		}
 	}
 }
