@@ -1,4 +1,4 @@
--- Tests for euclidian.lua
+-- Tests for factorial.lua
 local fact = require 'factorial'
 
 local total, pass = 0, 0
