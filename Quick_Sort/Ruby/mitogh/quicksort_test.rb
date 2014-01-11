@@ -27,4 +27,10 @@ describe "#quicksort" do
     let(:copy){ (1..10).to_a.reverse }
     it { expect(quicksort(array)).to eq copy.sort}
   end
+  
+  context "when the array has repeated elements" do
+    let(:array){[0,0,0,0,0,0,00,0,0,0,0]}
+    let(:copy){[0,0,0,0,0,0,00,0,0,0,0]}
+    it { expect(quicksort(array)).to eq copy.sort }
+   end
 end
