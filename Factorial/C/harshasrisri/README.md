@@ -5,6 +5,7 @@ A recursive implementation to find the factorial of a number.
 The output is restricted by the range of unsigned long long in C, which is atleast 64 bits long.
 Here is a sample output.
 
+```
 0! = 1
 1! = 1
 2! = 2
@@ -26,3 +27,4 @@ Here is a sample output.
 18! = 6402373705728000
 19! = 121645100408832000
 20! = 2432902008176640000
+```
