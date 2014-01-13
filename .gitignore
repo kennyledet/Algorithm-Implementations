@@ -1,0 +1,52 @@
+# Put together with help from github.com/github/gitignore
+#
+# Casual compiled files
+*.o
+*.obj
+*.elf
+*.lib
+*.a
+*.dll
+*.so
+*.so.*
+*.dylib
+*.class
+*.jar
+*.war
+*.ear
+*.pyc
+
+
+# Libs
+*.gem
+*.rbc
+
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Linux
+*~
+
+# Mac OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
