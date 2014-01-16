@@ -37,9 +37,9 @@ local function sift_down(bheap,index)
   end
 end
 
-local bheap = {}
+local bheap = class()
 function bheap:__init()
-  self.size = 0,
+  self.size = 0
   self.sort = function(a,b) return a < b end
   self.__heap = {}
 end
