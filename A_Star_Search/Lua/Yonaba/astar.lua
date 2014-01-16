@@ -1,91 +1,77 @@
--- Generic Astar search algorithm implementation
--- See :
+-- Generic A* search algorithm implementation
+-- See : http://en.wikipedia.org/wiki/A*_search_algorithm
 
+-- Note : this is a generic implementation of A star search
+--  algorithm. It is devised to be used on any type of
+--  graph (point-graph, tile graph, or whatever. It
+--  expects to be initialized with a handler, which 
+--  defines the interface between the search algorithm
+--  and the search space representation.
+          
 local class = require 'class'
 local bheap = require 'bheap'
 
--- Node class
-local Node = class()
-function Node:__init()
-	self.f, self.g, self.h = 0, 0, 0
-	self.parent, self.opened, self.closed = false, false, false
-end
-
-function Node.__eq(a, b)
-  -- to be implemented
-end
-
-function Node.__lt(a, b)
-  return a.f < b.f
-end
-
-function Node:__tostring()
-  -- to be implemented, for debug purposes
-end
-function Node:clear()
-	self.f, self.g, self.h = 0, 0, 0
-	self.parent, self.opened, self.closed = false, false, false
-end
-
 local Astar = class()
-local function heuristic(...)
-  -- to be implemented
-end
-
 function Astar:__init(handler)
 	self.handler = handler
 	self.openList = bheap()
-	self.heuristic = handler.distance or heuristic
+	self.heuristic = handler.distance
 	self.visited = {}
 end
 
 function Astar:clearNodes()
-	for _,n in pairs(self.visited) do n:clear() end
+	for node in pairs(self.visited) do
+		node.parent, node.opened, node.closed = nil, nil, nil
+		node.f, node.g, node.h = 0, 0, 0
+	end
 	self.visited = {}
 end
 
-function Astar:backtrack(node)
+local function backtrace(node)
 	local path = {}
 	repeat
-		path[#path + 1] = node
+		table.insert(path, 1, node)
 		node = node.parent
 	until not node
 	return path
 end
 
-function Astar:getPath(start, goal)
-	assert(self.handler:hasNode(start), 'start node from not found in the graph')
-	assert(self.handler:hasNode(goal), 'goal node not found in the graph')
+function Astar:searchPath(start, goal)
+  start = self.handler.makeNode(start)
+  goal = self.handler.makeNode(goal)
+
 	self.openList:clear()
 	self:clearNodes()
 
 	start.g = 0
 	start.h = self.heuristic(start, goal)
-	start.f = start.g + start.g
+	start.f = start.g + start.h
+	self.openList:push(start)
 	self.visited[start] = true
 
 	while not self.openList:empty() do
 		local node = self.openList:pop()
-		if node == goal then return self:backtrack(node) end
+		if node == goal then return backtrace(node) end
 		node.closed = true
-		local neighbors = self.handler:getNeighbors(node)
-		for i = 1, neighbors do
-			local n = neighbors[i]
-			if not n.closed then
-				local tentative_g = n.g + self.heuristic(node, n)
-				if not n.opened or tentative_g < n.g then
-					n.parent = node
-					n.g = tentative_g
-					n.h = self.heuristic(n, goal)
-					n.f = n.g + n.h
-					self.visited[n] = true
-					if not n.opened then
-						n.opened = true
-						self.openList:push(n)
+		local neighbors = self.handler.getNeighbors(node)
+		for _, neighbor in ipairs(neighbors) do
+			if not neighbor.closed then
+				local tentative_g = (neighbor.g or 0) + self.heuristic(node, neighbor)
+				if not neighbor.opened or tentative_g < neighbor.g then
+					neighbor.parent = node
+					neighbor.g = tentative_g
+					neighbor.h = self.heuristic(neighbor, goal)
+					neighbor.f = neighbor.g + neighbor.h
+					self.visited[neighbor] = true
+					if not neighbor.opened then
+						neighbor.opened = true
+						self.openList:push(neighbor)
 					end
 				end
 			end
 		end
 	end
-  
+
 end
+
+return Astar
