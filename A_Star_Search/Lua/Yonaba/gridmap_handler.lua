@@ -1,60 +1,67 @@
 -- A grid map handler
 -- Supports 4-directions and 8-directions moves
 
+-- This handler is devised for 2d bounded grid where nodes are indexed
+-- with a pair of (x, y) coordinates. It features straight (4-directions)
+-- and diagonal (8-directions) moves.
+
+-- Implements Node class (from node.lua)
 local Node = require 'node'
-function Node:__init(x, y) self.x, self.y = x, y end
+function Node:initialize(x, y) self.x, self.y = x, y end
 function Node:toString() return ('Node: x = %d, y = %d'):format(self.x, self.y) end
 function Node:isEqualTo(n) return self.x == n.x and self.y == n.y end
 
+-- Direction vectors for straight moves
 local orthogonal = {
-	{x = 0, y = -1}, {x = -1, y =  0},
-	{x = 1, y = 0}, {x = 0, y = 1},
+  {x =  0, y = -1},
+  {x = -1, y =  0},
+  {x =  1, y =  0},
+  {x =  0, y =  1},
 }
 
+-- Direction vectors for diagonal moves
 local diagonal = {
-	{x = -1, y = -1}, {x = 1, y = -1},
-	{x = -1, y = 1}, {x = 1, y = 1}
+  {x = -1, y = -1},
+  {x =  1, y = -1},
+  {x = -1, y =  1},
+  {x =  1, y =  1}
 }
 
+-- Checks of a given location is walkable on the grid.
+-- Assumes 0 is walkable, any other value is unwalkable.
+local function isWalkable(map, x, y)
+  return map[y] and map[y][x] and map[y][x] == 0
+end
+
+-- Handler implementation
 local handler = {}
 
-function handler.makeNode(location)
-  return Node(location.x, location.y)
-end
+-- Returns a Node
+function handler.makeNode(location) return Node(location.x, location.y) end
 
+-- Returns manhattan distance between node a and node b
 function handler.distance(a, b)
-	local dx, dy = a.x - b.x, a.y - b.y
-  return math.sqrt(dx * dx + dy * dy)
+  local dx, dy = a.x - b.x, a.y - b.y
+  return math.abs(dx) + math.abs(dy)
 end
 
-function handler.isWalkable(x, y)
-	return (handler.map[y][x] == 0)
-end
-
-function handler.inBounds(x, y)
-	return handler.map[y] and handler.map[y][x]
-end
-
-function handler.isValidLocation(x,y)
-	return handler.inBounds(x,y) and handler.isWalkable(x,y)
-end
-
-function handler.getNeighbors(node)
+-- Returns an array of neighbors of node n
+function handler.getNeighbors(n)
   local neighbors = {}
-	for _, axis in ipairs(orthogonal) do
-		local x, y = node.x + axis.x, node.y + axis.y
-		if handler.isValidLocation(x, y) then
-			table.insert(neighbors, Node(x,y))
-		end
-	end
-	if handler.diagonal then
-		for _, axis in ipairs(diagonal) do
-			local x, y = node.x + axis.x, node.y + axis.y
-			if handler.isValidLocation(x, y) then
-				table.insert(neighbors, Node(x,y))
-			end
-		end
-	end
+  for _, axis in ipairs(orthogonal) do
+    local x, y = n.x + axis.x, n.y + axis.y
+    if isWalkable(handler.map, x, y) then
+      table.insert(neighbors, Node(x,y))
+    end
+  end
+  if handler.diagonal then
+    for _, axis in ipairs(diagonal) do
+      local x, y = n.x + axis.x, n.y + axis.y
+      if isWalkable(handler.map, x, y) then
+        table.insert(neighbors, Node(x,y))
+      end
+    end
+  end
   return neighbors
 end
 
