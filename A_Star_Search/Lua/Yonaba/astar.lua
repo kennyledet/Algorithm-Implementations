@@ -46,7 +46,7 @@ local function clearNodes(astar)
   astar.visited = {}
 end
 
--- Build an returns the path to the goal node
+-- Builds an returns the path to the goal node
 local function backtrace(node)
   local path = {}
   repeat
