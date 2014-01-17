@@ -10,9 +10,9 @@
 -- of the lowest-F-cost node.
 -- See: http://www.policyalmanac.org/games/binaryHeaps.htm for more details.
 
--- The A* class expects a handler to be initialized. Roughly said, the handler 
+-- The A* class expects a handler to be initialized. Roughly said, the handler
 -- is an interface between your search space and the generic search algorithm.
--- This ensures flexibility, so that the generic algorithm can be adapted to 
+-- This ensures flexibility, so that the generic algorithm can be adapted to
 -- search on any kind of space.
 -- The passed-in handler should implement those functions.
 -- handler.makeNode(...)   -> creates a Node with custom attributes
@@ -26,12 +26,12 @@
 -- through the handler. Basically, it should describe how nodes are labelled
 -- and tested for equality for a custom search space.
 -- The following functions should be implemented:
--- function Node:initialize(...) -> creates a Node with custom attributes 
+-- function Node:initialize(...) -> creates a Node with custom attributes
 -- function Node:isEqualTo(n)    -> returns if self is equal to node n
--- function Node:toString()      -> returns a unique string representation of 
+-- function Node:toString()      -> returns a unique string representation of
 --                                  the node, for debug purposes
 
--- See the custom handlers for example (*_hander.lua)
+-- See custom handlers for reference (*_hander.lua).
 
 -- Dependencies
 local class = require 'class'
@@ -69,9 +69,8 @@ end
 function Astar:findPath(start, goal)
   start = self.handler.makeNode(start)
   goal = self.handler.makeNode(goal)
-
   self.openList:clear()
-  self:clearNodes()
+  clearNodes(self)
 
   start.g = 0
   start.h = self.heuristic(start, goal)
