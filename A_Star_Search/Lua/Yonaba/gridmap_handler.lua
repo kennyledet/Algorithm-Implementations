@@ -1,15 +1,10 @@
 -- A grid map handler
 -- Supports 4-directions and 8-directions moves
 
-local Node_mt = {
-    __eq = function(a, b) return (a.x == b.x and a.y == b.y) end,
-    __lt = function(a, b) return a.f < b.f end,
-		__tostring = function(a) return ('Node: x:%d y:%d'):format(a.x, a.y) end
-  }
-
-local function Node(x, y)
-	return setmetatable({x = x, y = y, g = 0, h = 0, f = 0},Node_mt)
-end
+local Node = require 'node'
+function Node:__init(x, y) self.x, self.y = x, y end
+function Node:toString() return ('Node: x = %d, y = %d'):format(self.x, self.y) end
+function Node:isEqualTo(n) return self.x == n.x and self.y == n.y end
 
 local orthogonal = {
 	{x = 0, y = -1}, {x = -1, y =  0},

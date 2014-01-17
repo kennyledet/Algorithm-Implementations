@@ -1,14 +1,9 @@
 -- A point graph with symmetric edges handler
 
-local Node_mt = {
-	__eq = function(a, b) return (a.name == b.name) end,
-  __lt = function(a, b) return a.f < b.f end,
-	__tostring = function(a) return a.name end
-}
-
-local function Node(name)
-	return setmetatable({name = name, g = 0, h = 0, f = 0},Node_mt)
-end
+local Node = require 'node'
+function Node:__init(name) self.name = name end
+function Node:toString() return ('Node: %s'):format(self.name) end
+function Node:isEqualTo(n) return self.name == n.name end
 
 local graph = {nodes = {}, edges = {}}
 

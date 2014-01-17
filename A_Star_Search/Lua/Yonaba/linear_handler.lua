@@ -1,14 +1,9 @@
 -- A linear 1D space map handler
 
-local Node_mt = {
-    __eq = function(a, b) return a.value == b.value end,
-    __lt = function(a, b) return a.f < b.f end,
-		__tostring = function(a) return ('Node: %02d'):format(a.value) end
-  }
-
-local function Node(value)
-	return setmetatable({value = value, g = 0, h = 0, f = 0},Node_mt)
-end
+local Node = require 'node'
+function Node:__init(value) self.value = value end
+function Node:toString() return ('Node: %d'):format(self.value) end
+function Node:isEqualTo(n) return self.value == n.value end
 
 local handler = {}
 
