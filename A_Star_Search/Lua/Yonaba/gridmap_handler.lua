@@ -37,7 +37,7 @@ end
 local handler = {}
 
 -- Returns a Node
-function handler.makeNode(location) return Node(location.x, location.y) end
+function handler.makeNode(location) return Node(location[1], location[2]) end
 
 -- Returns manhattan distance between node a and node b
 function handler.distance(a, b)
