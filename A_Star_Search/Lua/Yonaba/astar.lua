@@ -79,7 +79,7 @@ function Astar:findPath(start, goal)
   self.openList:push(start)
   self.visited[start] = true
 
-  while not self.openList:empty() do
+  while not self.openList:isEmpty() do
     local node = self.openList:pop()
     if node == goal then return backtrace(node) end
     node.closed = true

@@ -1,7 +1,10 @@
 -- Binary Heap data structure implementation
+-- See: http://www.policyalmanac.org/games/binaryHeaps.htm
+-- Adapted from: https://github.com/Yonaba/Binary-Heaps
 
 local class = require 'class'
 
+-- Percolates up to restore heap property
 local function sift_up(bheap, index)
   if index == 1 then return end
   local pIndex
@@ -17,6 +20,7 @@ local function sift_up(bheap, index)
   end
 end
 
+-- Percolates down to restore heap property
 local function sift_down(bheap,index)
   local lfIndex,rtIndex,minIndex
   lfIndex = 2*index
@@ -37,6 +41,8 @@ local function sift_down(bheap,index)
   end
 end
 
+-- Binary heap class
+-- Instantiates minHeaps by default
 local bheap = class()
 function bheap:__init()
   self.size = 0
@@ -44,21 +50,25 @@ function bheap:__init()
   self.__heap = {}
 end
 
+-- Clears the heap
 function bheap:clear()
   self.__heap = {}
   self.size = 0
 end
 
-function bheap:empty()
+-- Checks if the heap is empty
+function bheap:isEmpty()
   return (self.size==0)
 end
 
+-- Pushes a new item into the heap
 function bheap:push(item)
   self.size = self.size + 1
   self.__heap[self.size] = item
   sift_up(self, self.size)
 end
 
+-- Pops the lowest (or highest) best item out of the heap
 function bheap:pop()
   local root
   if self.size > 0 then
