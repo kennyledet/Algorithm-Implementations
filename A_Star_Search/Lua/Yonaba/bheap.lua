@@ -44,7 +44,7 @@ end
 -- Binary heap class
 -- Instantiates minHeaps by default
 local bheap = class()
-function bheap:__init()
+function bheap:initialize()
   self.size = 0
   self.sort = function(a,b) return a < b end
   self.__heap = {}
