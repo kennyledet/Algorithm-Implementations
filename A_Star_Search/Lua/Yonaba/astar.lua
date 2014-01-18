@@ -95,6 +95,8 @@ function Astar:findPath(start, goal)
           if not neighbor.opened then
             neighbor.opened = true
             self.openList:push(neighbor)
+          else
+            self.openList:sort(neighbor)
           end
         end
       end
