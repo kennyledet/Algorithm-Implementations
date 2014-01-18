@@ -4,6 +4,14 @@
 
 local class = require 'class'
 
+-- Looks for item in an array
+local function findIndex(array, item)
+	print('finding index')
+  for k,v in ipairs(array) do
+    if v == item then return k end
+  end
+end
+
 -- Percolates up to restore heap property
 local function sift_up(bheap, index)
   if index == 1 then return end
@@ -13,9 +21,9 @@ local function sift_up(bheap, index)
     pIndex =  index/2
   else pIndex = (index-1)/2
   end
-  if not bheap.sort(bheap.__heap[pIndex], bheap.__heap[index]) then
-    bheap.__heap[pIndex], bheap.__heap[index] =
-      bheap.__heap[index], bheap.__heap[pIndex]
+  if not bheap._sort(bheap._heap[pIndex], bheap._heap[index]) then
+    bheap._heap[pIndex], bheap._heap[index] =
+      bheap._heap[index], bheap._heap[pIndex]
     sift_up(bheap, pIndex)
   end
 end
@@ -29,14 +37,14 @@ local function sift_down(bheap,index)
     if lfIndex > bheap.size then return
     else minIndex = lfIndex  end
   else
-    if bheap.sort(bheap.__heap[lfIndex],bheap.__heap[rtIndex]) then
+    if bheap._sort(bheap._heap[lfIndex],bheap._heap[rtIndex]) then
       minIndex = lfIndex
     else
       minIndex = rtIndex
     end
   end
-  if not bheap.sort(bheap.__heap[index],bheap.__heap[minIndex]) then
-    bheap.__heap[index],bheap.__heap[minIndex] = bheap.__heap[minIndex],bheap.__heap[index]
+  if not bheap._sort(bheap._heap[index],bheap._heap[minIndex]) then
+    bheap._heap[index],bheap._heap[minIndex] = bheap._heap[minIndex],bheap._heap[index]
     sift_down(bheap,minIndex)
   end
 end
@@ -46,13 +54,13 @@ end
 local bheap = class()
 function bheap:initialize()
   self.size = 0
-  self.sort = function(a,b) return a < b end
-  self.__heap = {}
+  self._sort = function(a,b) return a < b end
+  self._heap = {}
 end
 
 -- Clears the heap
 function bheap:clear()
-  self.__heap = {}
+  self._heap = {}
   self.size = 0
 end
 
@@ -64,7 +72,7 @@ end
 -- Pushes a new item into the heap
 function bheap:push(item)
   self.size = self.size + 1
-  self.__heap[self.size] = item
+  self._heap[self.size] = item
   sift_up(self, self.size)
 end
 
@@ -72,15 +80,22 @@ end
 function bheap:pop()
   local root
   if self.size > 0 then
-    root = self.__heap[1]
-    self.__heap[1] = self.__heap[self.size]
-    self.__heap[self.size] = nil
+    root = self._heap[1]
+    self._heap[1] = self._heap[self.size]
+    self._heap[self.size] = nil
     self.size = self.size-1
     if self.size > 1 then
       sift_down(self, 1)
     end
   end
   return root
+end
+
+-- Sorts a specific item in the heap
+function bheap:sort(item)
+  if self.size <= 1 then return end
+  local i = findIndex(self._heap, item)
+  if i then sift_up(self, i) end
 end
 
 return bheap
