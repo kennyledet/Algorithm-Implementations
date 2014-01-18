@@ -85,7 +85,7 @@ function Astar:findPath(start, goal)
     local neighbors = self.handler.getNeighbors(node)
     for _, neighbor in ipairs(neighbors) do
       if not neighbor.closed then
-        local tentative_g = neighbor.g + self.heuristic(node, neighbor)
+        local tentative_g = node.g + self.heuristic(node, neighbor)
         if not neighbor.opened or tentative_g < neighbor.g then
           neighbor.parent = node
           neighbor.g = tentative_g
@@ -95,6 +95,8 @@ function Astar:findPath(start, goal)
           if not neighbor.opened then
             neighbor.opened = true
             self.openList:push(neighbor)
+          else
+            self.openList:sort(neighbor)
           end
         end
       end
