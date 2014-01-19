@@ -15,8 +15,7 @@
 -- This ensures flexibility, so that the generic algorithm can be adapted to
 -- search on any kind of space.
 -- The passed-in handler should implement those functions.
--- handler.makeNode(...)   -> creates a Node with custom attributes
---                           (instance of node.lua)
+-- handler.getNode(...)   ->  returns a Node (instance of node.lua)
 -- handler.distance(a, b)  -> heuristic function which returns the distance
 --                            between node a and node b
 -- handler.getNeighbors(n) -> returns an array of all nodes that can be reached
@@ -46,7 +45,7 @@ local function clearNodes(astar)
   astar.visited = {}
 end
 
--- Builds an returns the path to the goal node
+-- Builds and returns the path to the goal node
 local function backtrace(node)
   local path = {}
   repeat
@@ -66,9 +65,9 @@ function Astar:initialize(handler)
 end
 
 -- Returns the path between start and goal locations
+-- start : a Node representing the start location
+-- goal  : a Node representing the target location
 function Astar:findPath(start, goal)
-  start = self.handler.makeNode(start)
-  goal = self.handler.makeNode(goal)
   self.openList:clear()
   clearNodes(self)
 

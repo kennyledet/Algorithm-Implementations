@@ -5,6 +5,7 @@
 local class = require 'class'
 
 -- Looks for item in an array
+local function findIndex(array, item)
   for k,v in ipairs(array) do
     if v == item then return k end
   end

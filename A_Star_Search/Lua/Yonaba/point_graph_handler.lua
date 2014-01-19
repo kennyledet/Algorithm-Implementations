@@ -1,7 +1,7 @@
 -- A point graph handler
 
 -- This handler is devised for waypoints graphs.
--- waypoints are locations represented via labelled nodes
+-- Waypoints are locations represented via labelled nodes
 -- and are connected with edges having a positive weight.
 -- It assumes edges are symmetric, that is if an edge exists
 -- between a and b, weight(a -> b) ==  weight(b -> a)
@@ -30,9 +30,7 @@ end
 local handler = {}
 
 -- Returns a Node
-function handler.makeNode(name)
-  return Node(name)
-end
+function handler.getNode(name) return Node(name) end
 
 -- Returns the distance between node a and node b.
 -- The distance should be the weight of the edge between the nodes

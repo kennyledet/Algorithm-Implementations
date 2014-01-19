@@ -29,15 +29,13 @@ local diagonal = {
 
 -- Checks of a given location is walkable on the grid.
 -- Assumes 0 is walkable, any other value is unwalkable.
-local function isWalkable(map, x, y)
-  return map[y] and map[y][x] and map[y][x] == 0
-end
+local function isWalkable(map, x, y) return map[y] and map[y][x] and map[y][x] == 0 end
 
 -- Handler implementation
 local handler = {}
 
 -- Returns a Node
-function handler.makeNode(location) return Node(location[1], location[2]) end
+function handler.getNode(x, y) return Node(x, y) end
 
 -- Returns manhattan distance between node a and node b
 function handler.distance(a, b)

@@ -14,8 +14,8 @@ function Node:isEqualTo(n) return self.value == n.value end
 -- Handler implementation
 local handler = {}
 
--- Returns a Node
-function handler.makeNode(value) return Node(value) end
+-- Creates and returns a Node
+function handler.getNode(value) return Node(value) end
 
 -- Returns the distance between node a and node b
 function handler.distance(a, b) return math.abs(a.value - b.value) end
@@ -23,8 +23,8 @@ function handler.distance(a, b) return math.abs(a.value - b.value) end
 -- Returns an array of neighbors of node n
 function handler.getNeighbors(n)
   local neighbors = {}
-  table.insert(neighbors, Node(n.value - 1))
-  table.insert(neighbors, Node(n.value + 1))
+  table.insert(neighbors, handler.getNode(n.value - 1))
+  table.insert(neighbors, handler.getNode(n.value + 1))
   return neighbors
 end
 
