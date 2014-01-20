@@ -1,36 +1,32 @@
 public class Factorial {
-
-	private long recursiveFact(long n) {
-		assert n > -1;
-		if (n < 1) {
-			return 1;
-		}
-		return n * recursiveFact(n - 1);
+    
+	public static void main(String[] args) {
+		findFactorial();
 	}
-
-	private long loopFact(long n) {
-		assert n > -1;
-		long i = n;
-		while (--i > 0) {
-			n *= i;
+    
+	public static void findFactorial() {
+        
+		long a = 5; // The number whose factorial has to be calculated.
+		long result = a;
+		long c = 1;
+        
+		if (a > 0) {
+			while (c <= a - 1) {
+				long b = (a - c);
+				result *= b;
+				c++;
+                
+			}
+			System.out.println("The factorial of " + a + " is " + result);
+		} else {
+			if (a == 0) {
+				System.out.println("The factorial of 0 is 1");
+			} else {
+				System.out.println("The number is less than 0");
+			}
+            
 		}
-		return n;
+        
 	}
-
-	public void printRecursive(int n) {
-		for (int i = 0; i < n; i++) {
-			System.out.print(i + "! = ");
-			System.out.println(recursiveFact(i));
-		}
-
-	}
-
-	public void printLoop(int n) {
-		for (int i = 0; i < n; i++) {
-			System.out.print(i + "! = ");
-			System.out.println(loopFact(i));
-		}
-
-	}
-
+    
 }
