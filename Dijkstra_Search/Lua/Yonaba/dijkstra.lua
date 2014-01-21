@@ -83,7 +83,7 @@ function Dijkstra:process(source, target)
 
   while not self.Q:isEmpty() do
     local u = self.Q:pop()
-		if u == target then return backtrace(u) end
+    if u == target then return backtrace(u) end
     if u.distance == math.huge then break end
     local neighbors = self.handler.getNeighbors(u)
     for _, v in ipairs(neighbors) do
