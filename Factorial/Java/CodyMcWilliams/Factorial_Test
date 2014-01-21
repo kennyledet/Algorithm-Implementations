@@ -1,0 +1,17 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class Factorial_Test {
+	Factorial mFactorial;
+
+	@Test
+	public void test() {
+
+		mFactorial = new Factorial();
+		Factorial.findFactorial();
+		long facto = Factorial.result;
+		assertEquals(120, facto);
+	}
+
+}

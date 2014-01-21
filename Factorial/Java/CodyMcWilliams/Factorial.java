@@ -1,4 +1,5 @@
 public class Factorial {
+	public static long result;
     
 	public static void main(String[] args) {
 		findFactorial();
@@ -6,8 +7,9 @@ public class Factorial {
     
 	public static void findFactorial() {
         
-		long a = 5; // The number whose factorial has to be calculated.
-		long result = a;
+		long a; // Pass the number whose factorial has to be calculated.
+		// long a = 5;
+		result = a;
 		long c = 1;
         
 		if (a > 0) {
