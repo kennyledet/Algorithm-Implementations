@@ -1,4 +1,4 @@
--- Tests for astar.lua
+-- Tests for dijkstra.lua
 local Dijkstra = require 'dijkstra'
 
 local total, pass = 0, 0
