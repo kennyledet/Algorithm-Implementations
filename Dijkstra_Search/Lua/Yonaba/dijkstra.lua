@@ -31,8 +31,8 @@
 --                                  the node, for debug purposes
 
 -- See custom handlers for reference (*_hander.lua).
--- Dependencies
 
+-- Dependencies
 local class = require 'class'
 local bheap = require 'bheap'
 
