@@ -67,7 +67,7 @@ end
 -- start  : a Node representing the start location
 -- goal   : a Node representing the target location
 -- greedy : if true, switches to Greedy Best-First Search
-function BFS:findPath(start, goal)
+function BFS:findPath(start, goal, greedy)
   self.Q:clear()
   clearNodes(self)
 
