@@ -29,7 +29,6 @@ run('Testing linear graph', function()
   local ln_handler = require 'linear_handler'
   local bfs = BFS(ln_handler)
   local start, goal = ln_handler.getNode(0), ln_handler.getNode(5)
-  local p = bfs:findPath(start, goal)
   assert(same(bfs:findPath(start, goal),  {0,1,2,3,4,5}, comp))
 
   start, goal = ln_handler.getNode(-2), ln_handler.getNode(2)
