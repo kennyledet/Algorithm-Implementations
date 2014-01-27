@@ -38,6 +38,7 @@ local function resetForNextSearch(dfs)
   for node in pairs(dfs.visited) do
     node.parent, node.visited = nil, nil
   end
+  dfs.stack:clear()
   dfs.visited = {}
 end
 
