@@ -44,7 +44,7 @@ run('Testing grid graph', function()
   gm_handler.diagonal = false
   local start, goal = gm_handler.getNode(1,1), gm_handler.getNode(5,3)
   assert(same(dfs:findPath(start, goal), {{1,1},{1,2},{1,3},{2,3},{3,3},{4,3},{5,3}}, comp))
-  gm_handler.init(map)
+
   gm_handler.diagonal = true
   assert(same(dfs:findPath(start, goal), {{1,1},{1,2},{2,3},{3,3},{4,3},{5,3}},       comp))
 end)
