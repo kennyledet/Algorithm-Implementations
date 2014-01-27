@@ -1,5 +1,5 @@
--- Tests for bfs.lua
-local BFS = require 'bfs'
+-- Tests for dfs.lua
+local DFS = require 'dfs'
 
 local total, pass = 0, 0
 
@@ -27,32 +27,32 @@ end
 run('Testing linear graph', function()
   local comp = function(a, b) return a.value == b end
   local ln_handler = require 'linear_handler'
-  local bfs = BFS(ln_handler)
+  ln_handler.init(-2,5)
+  local dfs = DFS(ln_handler)
   local start, goal = ln_handler.getNode(0), ln_handler.getNode(5)
-  assert(same(bfs:findPath(start, goal),  {0,1,2,3,4,5}, comp))
-
-  start, goal = ln_handler.getNode(-2), ln_handler.getNode(2)
-  assert(same(bfs:findPath(start, goal),  {-2,-1,0,1,2}, comp))
+  assert(same(dfs:findPath(start, goal),  {0,1,2,3,4,5}, comp))
+  start, goal = ln_handler.getNode(-2), ln_handler.getNode(5)
+  assert(same(dfs:findPath(start, goal),  {-2,-1,0,1,2,3,4,5}, comp))
 end)
 
 run('Testing grid graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
   local gm_handler = require 'gridmap_handler'
-  local bfs = BFS(gm_handler)
-  gm_handler.map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
-
+  local dfs = DFS(gm_handler)
+  local map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
+  gm_handler.init(map)
   gm_handler.diagonal = false
   local start, goal = gm_handler.getNode(1,1), gm_handler.getNode(5,3)
-  assert(same(bfs:findPath(start, goal), {{1,1},{1,2},{1,3},{2,3},{3,3},{4,3},{5,3}}, comp))
-
+  assert(same(dfs:findPath(start, goal), {{1,1},{1,2},{1,3},{2,3},{3,3},{4,3},{5,3}}, comp))
+  gm_handler.init(map)
   gm_handler.diagonal = true
-  assert(same(bfs:findPath(start, goal), {{1,1},{1,2},{2,3},{3,3},{4,3},{5,3}},       comp))
+  assert(same(dfs:findPath(start, goal), {{1,1},{1,2},{2,3},{3,3},{4,3},{5,3}},       comp))
 end)
 
 run('Testing point graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
   local pg_handler = require 'point_graph_handler'
-  local bfs = BFS(pg_handler)
+  local dfs = DFS(pg_handler)
 
   pg_handler.addNode('a')
   pg_handler.addNode('b')
@@ -64,7 +64,7 @@ run('Testing point graph', function()
 
   local comp = function(a, b) return a.name == b end
   local start, goal = pg_handler.getNode('a'), pg_handler.getNode('d')
-  assert(same(bfs:findPath(start, goal), {'a','b','d'}, comp))
+  assert(same(dfs:findPath(start, goal), {'a','b','d'}, comp))
 end)
 
 print(('-'):rep(80))
