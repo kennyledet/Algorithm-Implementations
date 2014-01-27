@@ -25,7 +25,7 @@ local limits = {}
 -- Handler implementation
 local handler = {}
 
--- Inits the search space
+-- Inits the search space with bounds
 function handler.init(from, to)
   limits.low, limits.high = from, to
   for i = from, to do
@@ -35,6 +35,12 @@ end
 
 -- Creates and returns a Node
 function handler.getNode(value) return array_find(nodes, value) end
+
+-- Returns an array of all nodes in the graph
+function handler.getAllNodes() return nodes end
+
+-- Returns the distance between node a and node b
+function handler.distance(a, b) return math.abs(a.value - b.value) end
 
 -- Returns an array of neighbors of node n
 function handler.getNeighbors(n)
