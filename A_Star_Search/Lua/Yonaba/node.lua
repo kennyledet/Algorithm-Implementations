@@ -1,6 +1,6 @@
--- A* Node class abstraction
+-- Node class abstraction
 
--- This class represents an abstraction of the A* Node.
+-- This class represents an abstraction of a graph Node.
 -- It should implemented with additional functions when
 -- writing a custom handler.
 
@@ -9,7 +9,7 @@
 
 local class = require 'class'
 
-local Node = class {g = 0, h = 0, f = 0}
+local Node = class {f = 0, g = 0, h = 0}
 Node.__eq = function(a, b) return a:isEqualTo(b) end
 Node.__lt = function(a, b) return a.f < b.f end
 Node.__tostring = function(n) return n:toString() end
