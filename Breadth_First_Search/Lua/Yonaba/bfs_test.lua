@@ -27,7 +27,8 @@ end
 run('Testing linear graph', function()
   local comp = function(a, b) return a.value == b end
   local ln_handler = require 'linear_handler'
-  local bfs = BFS(ln_handler)
+  ln_handler.init(-2,5)
+	local bfs = BFS(ln_handler)
   local start, goal = ln_handler.getNode(0), ln_handler.getNode(5)
   assert(same(bfs:findPath(start, goal),  {0,1,2,3,4,5}, comp))
 
@@ -39,7 +40,8 @@ run('Testing grid graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
   local gm_handler = require 'gridmap_handler'
   local bfs = BFS(gm_handler)
-  gm_handler.map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
+  local map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
+	gm_handler.init(map)
 
   gm_handler.diagonal = false
   local start, goal = gm_handler.getNode(1,1), gm_handler.getNode(5,3)
