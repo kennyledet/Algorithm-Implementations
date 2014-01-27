@@ -37,20 +37,20 @@ local bheap = require 'bheap'
 
 -- Returns the first element in a list matching a predicate
 local function find(list, f)
-	print('list to find')
-	table.foreach(list, function(_,n) print(' >>',n, n.closed) end)
-	for _, v in ipairs(list) do
-		if f(v) then return v end
-	end
+  print('list to find')
+  table.foreach(list, function(_,n) print(' >>',n, n.closed) end)
+  for _, v in ipairs(list) do
+    if f(v) then return v end
+  end
 end
 
 -- Reverses an array
 local function reverse(list)
-	local l = {}
-	for i = #list,1,-1 do print('move') table.insert(l, list[i]) end
-	print('list reversed')
-	table.foreach(l, function(_,n) print(' >>',n, n.closed) end)
-	return l
+  local l = {}
+  for i = #list,1,-1 do print('move') table.insert(l, list[i]) end
+  print('list reversed')
+  table.foreach(l, function(_,n) print(' >>',n, n.closed) end)
+  return l
 end
 
 -- Clears data between consecutive path requests.
@@ -98,22 +98,22 @@ function BFS:findPath(start, goal)
     if node == goal then return backtrace(node) end
     node.closed = true
     local neighbors = self.handler.getNeighbors(node)
-		for _, neighbor in ipairs(neighbors) do
-			if not neighbor.closed then
-				local tentative_cost = self.heuristic(neighbor, goal)
-				if not neighbor.opened or tentative_cost < neighbor.cost then
-					neighbor.parent = node
-					neighbor.cost = tentative_cost
-					self.visited[neighbor] = true
-					if not neighbor.opened then
-						neighbor.opened = true
-						self.Q:push(neighbor)
-					else
-						self.openList:sort(neighbor)
-					end
-				end
-			end
-		end
+    for _, neighbor in ipairs(neighbors) do
+      if not neighbor.closed then
+        local tentative_cost = self.heuristic(neighbor, goal)
+        if not neighbor.opened or tentative_cost < neighbor.cost then
+          neighbor.parent = node
+          neighbor.cost = tentative_cost
+          self.visited[neighbor] = true
+          if not neighbor.opened then
+            neighbor.opened = true
+            self.Q:push(neighbor)
+          else
+            self.openList:sort(neighbor)
+          end
+        end
+      end
+    end
   end
 end
 
