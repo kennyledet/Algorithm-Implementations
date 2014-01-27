@@ -34,7 +34,13 @@ local class = require 'class'
 local fifo  = require 'fifo'
 
 -- Clears nodes data between consecutive path requests.
-local function clearNode(node) node.parent, node.visited = nil, nil end
+local function resetForNextSearch(bfs)
+  for node in pairs(bfs.visited) do
+    node.parent, node.visited = nil, nil
+  end
+  bfs.queue:clear()
+  bfs.visited = {}
+end
 
 -- Builds and returns the path to the goal node
 local function backtrace(node)
@@ -51,16 +57,19 @@ local BFS = class()
 function BFS:initialize(handler)
   self.handler = handler
   self.queue = fifo()
+  self.visited = {}
 end
 
 -- Returns the path between start and goal locations
--- start : a Node representing the start location
--- goal  : a Node representing the target location
+-- start   : a Node representing the start location
+-- goal    : a Node representing the target location
+-- returns : an array of nodes
 function BFS:findPath(start, goal)
-  self.queue:clear(clearNode)
+  resetForNextSearch(self)
+
   start.visited = true
   self.queue:push(start)
-
+  self.visited[start] = true
   while not self.queue:isEmpty() do
     local node = self.queue:pop()
     if node == goal then return backtrace(node) end
@@ -70,6 +79,7 @@ function BFS:findPath(start, goal)
         neighbor.visited = true
         neighbor.parent = node
         self.queue:push(neighbor)
+        self.visited[neighbor] = true
       end
     end
   end
