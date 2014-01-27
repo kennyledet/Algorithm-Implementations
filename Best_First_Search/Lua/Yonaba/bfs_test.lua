@@ -27,6 +27,7 @@ end
 run('Testing BFS search on linear graph', function()
   local comp = function(a, b) return a.value == b end
   local ln_handler = require 'linear_handler'
+  ln_handler.init(-2,5)
   local bfs = BFS(ln_handler)
   local start, goal = ln_handler.getNode(0), ln_handler.getNode(5)
   assert(same(bfs:findPath(start, goal),  {0,1,2,3,4,5}, comp))
@@ -35,22 +36,12 @@ run('Testing BFS search on linear graph', function()
   assert(same(bfs:findPath(start, goal),  {-2,-1,0,1,2}, comp))
 end)
 
-run('Testing Greedy BFS search on linear graph', function()
-  local comp = function(a, b) return a.value == b end
-  local ln_handler = require 'linear_handler'
-  local bfs = BFS(ln_handler)
-  local start, goal = ln_handler.getNode(0), ln_handler.getNode(5)
-  assert(same(bfs:findPath(start, goal, true),  {0,1,2,3,4,5}, comp))
-
-  start, goal = ln_handler.getNode(-2), ln_handler.getNode(2)
-  assert(same(bfs:findPath(start, goal, true),  {-2,-1,0,1,2}, comp))
-end)
-
 run('Testing BFS search on grid graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
   local gm_handler = require 'gridmap_handler'
   local bfs = BFS(gm_handler)
-  gm_handler.map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
+  local map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
+  gm_handler.init(map)
 
   gm_handler.diagonal = false
   local start, goal = gm_handler.getNode(1,1), gm_handler.getNode(5,3)
@@ -58,20 +49,6 @@ run('Testing BFS search on grid graph', function()
 
   gm_handler.diagonal = true
   assert(same(bfs:findPath(start, goal), {{1,1},{1,2},{2,3},{3,3},{4,3},{5,3}},       comp))
-end)
-
-run('Testing Greedy BFS search on grid graph', function()
-  local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
-  local gm_handler = require 'gridmap_handler'
-  local bfs = BFS(gm_handler)
-  gm_handler.map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
-
-  gm_handler.diagonal = false
-  local start, goal = gm_handler.getNode(1,1), gm_handler.getNode(5,3)
-  assert(same(bfs:findPath(start, goal,true), {{1,1},{1,2},{1,3},{2,3},{3,3},{4,3},{5,3}}, comp))
-
-  gm_handler.diagonal = true
-  assert(same(bfs:findPath(start, goal,true), {{1,1},{1,2},{2,3},{3,3},{4,3},{5,3}},       comp))
 end)
 
 run('Testing BFS search on point graph', function()
@@ -98,32 +75,6 @@ run('Testing BFS search on point graph', function()
   pg_handler.setEdgeWeight('b', 'e', 1)
 
   assert(same(bfs:findPath(start, goal), {'a','b','e'},     comp))
-end)
-
-run('Testing Greedy BFS search on point graph', function()
-  local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
-  local pg_handler = require 'point_graph_handler'
-  local bfs = BFS(pg_handler)
-
-  pg_handler.addNode('a')
-  pg_handler.addNode('b')
-  pg_handler.addNode('c')
-  pg_handler.addNode('d')
-  pg_handler.addNode('e')
-  pg_handler.addEdge('a', 'b', 10)
-  pg_handler.addEdge('b', 'e', 10)
-  pg_handler.addEdge('a', 'c', 5)
-  pg_handler.addEdge('c', 'd', 5)
-  pg_handler.addEdge('d', 'e', 5)
-
-  local comp = function(a, b) return a.name == b end
-  local start, goal = pg_handler.getNode('a'), pg_handler.getNode('e')
-  assert(same(bfs:findPath(start, goal,true), {'a','c','d','e'}, comp))
-
-  pg_handler.setEdgeWeight('a', 'b', 1)
-  pg_handler.setEdgeWeight('b', 'e', 1)
-
-  assert(same(bfs:findPath(start, goal,true), {'a','b','e'},     comp))
 end)
 
 print(('-'):rep(80))

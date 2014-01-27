@@ -1,5 +1,12 @@
 -- Node class abstraction
 
+-- This class represents an abstraction of a Node in the graph.
+-- It should implemented with additional functions when
+-- writing a custom handler.
+
+-- See dijkstra.lua comment header
+-- See custom handlers for reference (*_hander.lua).
+
 local class = require 'class'
 
 local Node = class {distance = math.huge}

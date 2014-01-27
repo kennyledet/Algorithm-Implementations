@@ -47,11 +47,20 @@ function handler.init(map)
   end
 end
 
+-- Returns an array of all nodes in the graph
+function handler.getAllNodes() return nodes end
+
 -- Returns a Node
 function handler.getNode(x, y)
   local h, w = #handler.map, #handler.map[1]
   local k = (y - 1) * w + (x%w == 0 and w or x)
   return nodes[k]
+end
+
+-- Returns manhattan distance between node a and node b
+function handler.distance(a, b)
+  local dx, dy = a.x - b.x, a.y - b.y
+  return math.abs(dx) + math.abs(dy)
 end
 
 -- Returns an array of neighbors of node n

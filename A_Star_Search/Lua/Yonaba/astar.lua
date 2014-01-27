@@ -36,12 +36,13 @@
 local class = require 'class'
 local bheap = require 'bheap'
 
--- Clears nodes data between consecutive path requests.
-local function clearNodes(astar)
+-- Clears data between consecutive path requests.
+local function resetForNextSearch(astar)
   for node in pairs(astar.visited) do
     node.parent, node.opened, node.closed = nil, nil, nil
     node.f, node.g, node.h = 0, 0, 0
   end
+  astar.openList:clear()  
   astar.visited = {}
 end
 
@@ -65,11 +66,11 @@ function Astar:initialize(handler)
 end
 
 -- Returns the path between start and goal locations
--- start : a Node representing the start location
--- goal  : a Node representing the target location
+-- start  : a Node representing the start location
+-- goal   : a Node representing the target location
+-- returns: an array of nodes
 function Astar:findPath(start, goal)
-  self.openList:clear()
-  clearNodes(self)
+  resetForNextSearch(self)
 
   start.g = 0
   start.h = self.heuristic(start, goal)
@@ -101,7 +102,6 @@ function Astar:findPath(start, goal)
       end
     end
   end
-
 end
 
 return Astar

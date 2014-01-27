@@ -37,11 +37,12 @@ local class = require 'class'
 local bheap = require 'bheap'
 
 -- Clears nodes data between consecutive path requests.
-local function clearNodes(dijkstra)
+local function resetForNextSearch(dijkstra)
   for node in pairs(dijkstra.visited) do
     node.previous = nil
     node.distance = math.huge
   end
+  dijkstra.Q:clear()
   dijkstra.visited = {}
 end
 
@@ -64,22 +65,20 @@ function Dijkstra:initialize(handler)
 end
 
 -- Processes the graph for shortest paths
--- source : the starting node from which the search will spread
--- target : the goal location. If passed, returns the shortest path from
+-- source  : the starting node from which the search will spread
+-- target  : the goal location. If passed, returns the shortest path from
 --  source to this target. If not given, will evaluate all the shortest 
 --  paths length from to source to all nodes in the graph. This length can 
 --  be retrieved by indexing in each node after the search (node.distance)
+-- Returns : an array of nodes (if target supplied) 
 function Dijkstra:process(source, target)
-  self.Q:clear()
-  clearNodes(self)
+  resetForNextSearch(self)
 
   source.distance = 0
   self.visited[source] = true
 
   local nodes = self.handler.getAllNodes()
-  for _, node in ipairs(nodes) do
-    self.Q:push(node)
-  end
+  for _, node in ipairs(nodes) do self.Q:push(node) end
 
   while not self.Q:isEmpty() do
     local u = self.Q:pop()

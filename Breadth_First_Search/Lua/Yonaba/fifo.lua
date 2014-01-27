@@ -15,14 +15,8 @@ function fifo:pop()
   return head
 end
 
--- Clears the heap. If passed a callback f
--- calls f on each value before the heap is cleared.
-function fifo:clear(f)
-  if f then
-    for _, node in ipairs(self._queue) do f(node) end
-  end
-  self._queue = {}
-end
+-- Clears the heap
+function fifo:clear(f) self._queue = {} end
 
 -- Checks if the heap is empty
 function fifo:isEmpty() return #self._queue == 0 end

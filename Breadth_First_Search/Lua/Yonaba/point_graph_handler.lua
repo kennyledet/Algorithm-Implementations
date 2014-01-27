@@ -2,9 +2,9 @@
 
 -- This handler is devised for waypoints graphs.
 -- Waypoints are locations represented via labelled nodes
--- and are connected with edges.
+-- and are connected with edges having a positive weight.
 -- It assumes edges are symmetric, that is if an edge exists
--- between a and b, (a -> b) ==  (b -> a)
+-- between a and b, weight(a -> b) ==  weight(b -> a)
 
 -- Implements Node class (from node.lua)
 local Node = require 'node'
@@ -26,19 +26,43 @@ local function find_edge(edges_list, a, b)
   end
 end
 
+-- Collects values from a map-table to an array
+local function collect(map)
+  local array = {}
+  for _, element in pairs(map) do table.insert(array, element) end
+  return array
+end
+
 -- Handler implementation
 local handler = {}
 
+-- Returns an array of all nodes in the graph
+function handler.getAllNodes() return collect(graph.nodes) end
+
 -- Returns a Node
-function handler.getNode(name) return Node(name) end
+function handler.getNode(name) return graph.nodes[name] end
+
+-- Returns the distance between node a and node b.
+-- The distance should be the weight of the edge between the nodes
+-- if existing, otherwise 0 (I could not figure anything better here).
+function handler.distance(a, b)
+  local e = find_edge(graph.edges, a, b)
+  return e and e.weight or 0
+end
 
 -- Adds a new node labelled with name
 function handler.addNode(name) graph.nodes[name] = Node(name) end
 
 -- Adds a new edge between nodes labelled from and to
-function handler.addEdge(from, to)
+function handler.addEdge(from, to, weight)
   table.insert(graph.edges,
-    {from = graph.nodes[from], to = graph.nodes[to]})
+    {from = graph.nodes[from], to = graph.nodes[to], weight = weight or 0})
+end
+
+-- Sets the weight of edge from -> to
+function handler.setEdgeWeight(from, to, weight)
+  local e = find_edge(graph.edges, graph.nodes[from], graph.nodes[to])
+  if e then e.weight = weight end
 end
 
 -- Returns an array of neighbors of node n

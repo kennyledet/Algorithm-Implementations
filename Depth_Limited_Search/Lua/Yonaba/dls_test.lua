@@ -1,5 +1,5 @@
--- Tests for dfs.lua
-local DFS = require 'dfs'
+-- Tests for dls.lua
+local DLS = require 'dls'
 
 local total, pass = 0, 0
 
@@ -28,31 +28,40 @@ run('Testing linear graph', function()
   local comp = function(a, b) return a.value == b end
   local ln_handler = require 'linear_handler'
   ln_handler.init(-2,5)
-  local dfs = DFS(ln_handler)
+  local dls = DLS(ln_handler)
+
   local start, goal = ln_handler.getNode(0), ln_handler.getNode(5)
-  assert(same(dfs:findPath(start, goal),  {0,1,2,3,4,5}, comp))
+  assert(same(dls:findPath(start, goal, 8),  {0,1,2,3,4,5}, comp))
+  dls:resetForNextSearch()
+
+  assert(not dls:findPath(start, goal, 4))
+  dls:resetForNextSearch()
+
   start, goal = ln_handler.getNode(-2), ln_handler.getNode(5)
-  assert(same(dfs:findPath(start, goal),  {-2,-1,0,1,2,3,4,5}, comp))
+  assert(same(dls:findPath(start, goal, 8),  {-2,-1,0,1,2,3,4,5}, comp))
+
+  dls:resetForNextSearch()
+  assert(not dls:findPath(start, goal, 6))
 end)
 
 run('Testing grid graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
   local gm_handler = require 'gridmap_handler'
-  local dfs = DFS(gm_handler)
+  local dls = DLS(gm_handler)
   local map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
   gm_handler.init(map)
-  gm_handler.diagonal = false
-  local start, goal = gm_handler.getNode(1,1), gm_handler.getNode(5,3)
-  assert(same(dfs:findPath(start, goal), {{1,1},{1,2},{1,3},{2,3},{3,3},{4,3},{5,3}}, comp))
 
-  gm_handler.diagonal = true
-  assert(same(dfs:findPath(start, goal), {{1,1},{1,2},{2,3},{3,3},{4,3},{5,3}},       comp))
+  local start, goal = gm_handler.getNode(1,1), gm_handler.getNode(5,3)
+  assert(same(dls:findPath(start, goal, 15), {{1,1},{1,2},{1,3},{2,3},{3,3},{4,3},{5,3}}, comp))
+
+  dls:resetForNextSearch()
+  assert(not dls:findPath(start, goal, 5))
 end)
 
 run('Testing point graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
   local pg_handler = require 'point_graph_handler'
-  local dfs = DFS(pg_handler)
+  local dls = DLS(pg_handler)
 
   pg_handler.addNode('a')
   pg_handler.addNode('b')
@@ -64,7 +73,10 @@ run('Testing point graph', function()
 
   local comp = function(a, b) return a.name == b end
   local start, goal = pg_handler.getNode('a'), pg_handler.getNode('d')
-  assert(same(dfs:findPath(start, goal), {'a','b','d'}, comp))
+  assert(same(dls:findPath(start, goal, 3), {'a','b','d'}, comp))
+
+  dls:resetForNextSearch()
+  assert(not dls:findPath(start, goal, 1))
 end)
 
 print(('-'):rep(80))

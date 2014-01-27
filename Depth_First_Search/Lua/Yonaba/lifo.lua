@@ -15,6 +15,9 @@ function lifo:pop()
   return head
 end
 
+-- Clears the heap
+function lifo:clear() self._stack = {} end
+
 -- Checks if the heap is empty
 function lifo:isEmpty() return #self._stack == 0 end
 

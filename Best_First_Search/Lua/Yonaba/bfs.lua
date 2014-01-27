@@ -35,12 +35,31 @@
 local class = require 'class'
 local bheap = require 'bheap'
 
--- Clears nodes data between consecutive path requests.
-local function clearNodes(bfs)
+-- Returns the first element in a list matching a predicate
+local function find(list, f)
+  print('list to find')
+  table.foreach(list, function(_,n) print(' >>',n, n.closed) end)
+  for _, v in ipairs(list) do
+    if f(v) then return v end
+  end
+end
+
+-- Reverses an array
+local function reverse(list)
+  local l = {}
+  for i = #list,1,-1 do print('move') table.insert(l, list[i]) end
+  print('list reversed')
+  table.foreach(l, function(_,n) print(' >>',n, n.closed) end)
+  return l
+end
+
+-- Clears data between consecutive path requests.
+local function resetForNextSearch(bfs)
   for node in pairs(bfs.visited) do
     node.parent, node.opened, node.closed = nil, nil, nil
     node.cost = 0
   end
+  bfs.Q:clear()
   bfs.visited = {}
 end
 
@@ -66,10 +85,9 @@ end
 -- Returns the path between start and goal locations
 -- start  : a Node representing the start location
 -- goal   : a Node representing the target location
--- greedy : if true, switches to Greedy Best-First Search
-function BFS:findPath(start, goal, greedy)
-  self.Q:clear()
-  clearNodes(self)
+-- returns: an array of nodes
+function BFS:findPath(start, goal)
+  resetForNextSearch(self)
 
   start.cost = self.heuristic(start, goal)
   self.Q:push(start)
@@ -80,40 +98,23 @@ function BFS:findPath(start, goal, greedy)
     if node == goal then return backtrace(node) end
     node.closed = true
     local neighbors = self.handler.getNeighbors(node)
-    if greedy then
-      -- Greedy Best-First Search
-      local first_neighbor = neighbors[1]
-      if first_neighbor then
-        local cost_from_first_neighbor = self.heuristic(first_neighbor, goal)
-        if cost_from_first_neighbor < node.cost then
-          first_neighbor.parent = node
-          first_neighbor.cost = cost_from_first_neighbor
-          self.Q:push(first_neighbor)
-          self.Q:push(node)
-          self.visited[first_neighbor] = true
-        end
-      end
-    else
-      -- STandard Best-First Search
-      for _, neighbor in ipairs(neighbors) do
-        if not neighbor.closed then
-          local tentative_cost = self.heuristic(neighbor, goal)
-          if not neighbor.opened or tentative_cost < neighbor.cost then
-            neighbor.parent = node
-            neighbor.cost = tentative_cost
-            self.visited[neighbor] = true
-            if not neighbor.opened then
-              neighbor.opened = true
-              self.Q:push(neighbor)
-            else
-              self.openList:sort(neighbor)
-            end
+    for _, neighbor in ipairs(neighbors) do
+      if not neighbor.closed then
+        local tentative_cost = self.heuristic(neighbor, goal)
+        if not neighbor.opened or tentative_cost < neighbor.cost then
+          neighbor.parent = node
+          neighbor.cost = tentative_cost
+          self.visited[neighbor] = true
+          if not neighbor.opened then
+            neighbor.opened = true
+            self.Q:push(neighbor)
+          else
+            self.openList:sort(neighbor)
           end
         end
       end
     end
   end
-
 end
 
 return BFS

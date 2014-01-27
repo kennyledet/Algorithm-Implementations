@@ -34,10 +34,12 @@ local class = require 'class'
 local lifo  = require 'lifo'
 
 -- Clears nodes data between consecutive path requests.
-local function clearVisitedNodes(list)
-  for node in pairs(list) do
+local function resetForNextSearch(dfs)
+  for node in pairs(dfs.visited) do
     node.parent, node.visited = nil, nil
   end
+  dfs.stack:clear()
+  dfs.visited = {}
 end
 
 -- Builds and returns the path to the goal node
@@ -60,14 +62,14 @@ end
 
 -- Returns the path between start and goal locations
 --  using a stack-based search
--- start : a Node representing the start location
--- goal  : a Node representing the target location
+-- start   : a Node representing the start location
+-- goal    : a Node representing the target location
+-- returns : an array of nodes
 function DFS:findPath(start, goal)
+  resetForNextSearch(self)
+  
   start.visited = true
   self.stack:push(start)
-
-  clearVisitedNodes(self.visited)
-  self.visited = {}
   self.visited[start] = true
   while not self.stack:isEmpty() do
     local node = self.stack:pop()
