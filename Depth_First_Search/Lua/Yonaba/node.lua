@@ -4,7 +4,7 @@
 -- It should implemented with additional functions when
 -- writing a custom handler.
 
--- See bfs.lua comment header.
+-- See dfs.lua comment header.
 -- See custom handlers for reference (*_hander.lua).
 
 local class = require 'class'
