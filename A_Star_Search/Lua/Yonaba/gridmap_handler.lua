@@ -31,11 +31,31 @@ local diagonal = {
 -- Assumes 0 is walkable, any other value is unwalkable.
 local function isWalkable(map, x, y) return map[y] and map[y][x] and map[y][x] == 0 end
 
+local nodes = {}
+
 -- Handler implementation
 local handler = {}
 
+-- Inits the search space
+function handler.init(map)
+  handler.map = map
+  nodes = {}
+  for y, line in ipairs(map) do
+    for x in ipairs(line) do
+      table.insert(nodes, Node(x, y))
+    end
+  end
+end
+
+-- Returns an array of all nodes in the graph
+function handler.getAllNodes() return nodes end
+
 -- Returns a Node
-function handler.getNode(x, y) return Node(x, y) end
+function handler.getNode(x, y)
+  local h, w = #handler.map, #handler.map[1]
+  local k = (y - 1) * w + (x%w == 0 and w or x)
+  return nodes[k]
+end
 
 -- Returns manhattan distance between node a and node b
 function handler.distance(a, b)
@@ -49,14 +69,14 @@ function handler.getNeighbors(n)
   for _, axis in ipairs(orthogonal) do
     local x, y = n.x + axis.x, n.y + axis.y
     if isWalkable(handler.map, x, y) then
-      table.insert(neighbors, Node(x,y))
+      table.insert(neighbors, handler.getNode(x, y))
     end
   end
   if handler.diagonal then
     for _, axis in ipairs(diagonal) do
       local x, y = n.x + axis.x, n.y + axis.y
       if isWalkable(handler.map, x, y) then
-        table.insert(neighbors, Node(x,y))
+        table.insert(neighbors, handler.getNode(x,y))
       end
     end
   end
