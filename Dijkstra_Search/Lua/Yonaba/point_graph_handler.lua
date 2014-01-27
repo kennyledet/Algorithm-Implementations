@@ -56,7 +56,7 @@ function handler.addNode(name) graph.nodes[name] = Node(name) end
 -- Adds a new edge between nodes labelled from and to
 function handler.addEdge(from, to, weight)
   table.insert(graph.edges,
-    {from = graph.nodes[from], to = graph.nodes[to], weight = weight})
+    {from = graph.nodes[from], to = graph.nodes[to], weight = weight or 0})
 end
 
 -- Sets the weight of edge from -> to

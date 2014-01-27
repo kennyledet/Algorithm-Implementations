@@ -25,7 +25,7 @@ local limits = {}
 -- Handler implementation
 local handler = {}
 
--- Inits the search space
+-- Inits the search space with bounds
 function handler.init(from, to)
   limits.low, limits.high = from, to
   for i = from, to do
