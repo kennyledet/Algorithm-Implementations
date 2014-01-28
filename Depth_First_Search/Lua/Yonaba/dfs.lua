@@ -52,7 +52,7 @@ local function backtrace(node)
   return path
 end
 
--- Initializes Breadth-Fist search with a custom handler
+-- Initializes Depth-Fist search with a custom handler
 local DFS = class()
 function DFS:initialize(handler)
   self.handler = handler

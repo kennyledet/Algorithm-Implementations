@@ -43,14 +43,14 @@ local function backtrace(node)
   return path
 end
 
--- Initializes Breadth-First search with a custom handler
+-- Initializes Depth-Limited search with a custom handler
 local DLS = class()
 function DLS:initialize(handler)
   self.handler = handler
 end
 
 -- Clears all nodes for a next search
--- Must be called inbetween consecutive searchs
+-- Must be called in-between consecutive searches
 function DLS:resetForNextSearch()
   local nodes = self.handler.getAllNodes()
   for _, node in ipairs(nodes) do
