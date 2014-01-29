@@ -1,12 +1,12 @@
--- Generic Depth-Limited search algorithm implementation
--- See : http://en.wikipedia.org/wiki/Depth-limited_search
+-- Generic Iterative Deepening Depth-First search algorithm implementation
+-- See : http://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search
 
--- Notes : this is a generic implementation of Depth-Limited search algorithm.
+-- Notes : this is a generic implementation of IDDFS algorithm.
 -- It is devised to be used on any type of graph (point-graph, tile-graph,
 -- or whatever. It expects to be initialized with a handler, which acts as
 -- an interface between the search algorithm and the search space.
 
--- The DLS class expects a handler to be initialized. Roughly said, the handler
+-- The IDDFS class expects a handler to be initialized. Roughly said, the handler
 -- is an interface between your search space and the generic search algorithm.
 -- This ensures flexibility, so that the generic algorithm can be adapted to
 -- search on any kind of space.
@@ -18,7 +18,7 @@
 -- The actual implementation uses recursion to look up for the path.
 -- Between consecutive path requests, the user must call the :resetForNextSearch()
 --  method to clear all nodes data created during a previous search.
- 
+
 -- The generic Node class provided (see node.lua) should also be implemented
 -- through the handler. Basically, it should describe how nodes are labelled
 -- and tested for equality for a custom search space.
@@ -43,15 +43,32 @@ local function backtrace(node)
   return path
 end
 
--- Initializes Depth-Limited search with a custom handler
-local DLS = class()
-function DLS:initialize(handler)
+-- Runs a depth limited search
+local function depthLimitedSearch(finder, start, goal, depth)
+  if start == goal then  return backtrace(start) end
+  if depth == 0 then return end
+  start.visited = true
+  local neighbors = finder.handler.getNeighbors(start)
+  for _, neighbor in ipairs(neighbors) do
+    if not neighbor.visited then
+      neighbor.parent = start
+      local foundGoal = depthLimitedSearch(finder, neighbor, goal, depth - 1)
+      if foundGoal then return foundGoal end
+    end
+  end
+end
+
+-- Initializes IDDFS with a custom handler, and an maximum
+-- depth search, which arbitrarily defaults to 10.
+local IDDFS = class()
+function IDDFS:initialize(handler, maxDepth)
   self.handler = handler
+  self.maxDepth = maxDepth or 10 -- arbitrary constant
 end
 
 -- Clears all nodes for a next search
 -- Must be called in-between consecutive searches
-function DLS:resetForNextSearch()
+function IDDFS:resetForNextSearch()
   local nodes = self.handler.getAllNodes()
   for _, node in ipairs(nodes) do
     node.visited, node.parent = nil, nil
@@ -61,20 +78,13 @@ end
 -- Returns the path between start and goal locations
 -- start   : a Node representing the start location
 -- goal    : a Node representing the target location
--- depth   : the maximum depth of search
 -- returns : an array of nodes
-function DLS:findPath(start, goal, depth)
-  if start == goal then  return backtrace(start) end
-  if depth == 0 then return end
-  start.visited = true
-  local neighbors = self.handler.getNeighbors(start)
-  for _, neighbor in ipairs(neighbors) do
-    if not neighbor.visited then
-      neighbor.parent = start
-      local foundGoal = self:findPath(neighbor, goal, depth - 1)
-      if foundGoal then return foundGoal end
-    end
+function IDDFS:findPath(start, goal)
+  for depth = 1, self.maxDepth do
+    self:resetForNextSearch()
+    local p = depthLimitedSearch(self, start, goal, depth)
+    if p then return p end
   end
 end
 
-return DLS
+return IDDFS
