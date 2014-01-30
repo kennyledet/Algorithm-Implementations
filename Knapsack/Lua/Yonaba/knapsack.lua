@@ -48,48 +48,48 @@ end
 -- capacity: the maximum capacity of the knapsack
 -- returns : 1. an array of items
 --           2. the maximum profit
-local function integerKnapsack(items, capacity
-	-- Get the count of items
+local function integerKnapsack(items, capacity)
+  -- Get the count of items
   local numOfItems = #items
-  
+
   -- Auxiliary tables for dynamic search and selected items tracking
-	local V, K = {}, {}
+  local V, K = {}, {}
 
   -- Inits auxiliary tables with 0's. Note that although
   -- Lua's arrays start at 1, we start looping at 0
-	for i = 0, numOfItems do
-		V[i], K[i] = {}, {}
-		for w = 0, capacity do
-			V[i][w], K[i][w] = 0, 0
-		end
-	end
+  for i = 0, numOfItems do
+    V[i], K[i] = {}, {}
+    for w = 0, capacity do
+      V[i][w], K[i][w] = 0, 0
+    end
+  end
 
   -- Dynamic search
-	for i = 1, numOfItems do
-		local item = items[i]
-		for w = 0, capacity do
-			if item.w < w
+  for i = 1, numOfItems do
+    local item = items[i]
+    for w = 0, capacity do
+      if item.w < w
         and (item.b + V[i - 1][w - item.w] > V[i - 1][w]) then
           V[i][w] = item.b + V[i-1][w - item.w]
           K[i][w] = 1
-			else
-				V[i][w] = V[i - 1][w]
-				K[i][w] = 0
-			end
-		end
-	end
+      else
+        V[i][w] = V[i - 1][w]
+        K[i][w] = 0
+      end
+    end
+  end
 
   -- Process auxiliary tables to identify
   -- selected items and evaluate the profit
   local inKnapsack, profit = {}, 0
-	for i = numOfItems, 1, -1 do
+  for i = numOfItems, 1, -1 do
     local item = items[i]
-		if K[i][capacity] == 1 then
-			table.insert(inKnapsack, item)
-			capacity = capacity - item.w
+    if K[i][capacity] == 1 then
+      table.insert(inKnapsack, item)
+      capacity = capacity - item.w
       profit = profit + item.b
-		end
-	end
+    end
+  end
 
   return inKnapsack, profit
 end
@@ -98,5 +98,4 @@ return {
   fractional = fractionalKnapsack,
   integer    = integerKnapsack
 }
-
 
