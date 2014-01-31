@@ -3,7 +3,7 @@
 
 -- Note : this implementation (and tests) were roughly translated to
 --  Lua from Diego Allen's implementation of the same problem.
---  See : 
+--  See : https://github.com/kennyledet/Algorithm-Implementations/tree/master/Floyd_Warshall/Java/dalleng
 
 -- Creates a adjacency matrix for a graph of n nodes
 -- n       : the number of nodes in the graph
