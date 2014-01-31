@@ -29,15 +29,31 @@ run('Testing fractional knapsack', function()
     {name = 'Rice', w = 5, b = 6},
   }
   local capacity = 10
-  local sack = knapsack.fractional(items, capacity)
+  local sack, profit = knapsack.fractional(items, capacity)
   assert(#sack == 3)
   local s1, s2, s3 = sack[1], sack[2], sack[3]
-  print('s3', s3.w-1)
   assert(s1.name == 'Rice' and s1.p == 1 and s1.w == 5 and s1.b == 6)
   assert(s2.name == 'Orange' and s2.p == 1 and s2.w == 4 and s2.b == 5)
   assert(s3.name == 'Apple' and fuzzyEq(s3.p,0.33)  and s3.w == 1 and fuzzyEq(s3.b,1.67))
+  print(profit)
+  assert(fuzzyEq(profit, 12.67))
 end)
 
+run('Testing integer knapsack', function()
+  local items = {
+    {name = 'Apple', w = 5, b = 10},
+    {name = 'Orange', w = 4, b = 40},
+    {name = 'Salt', w = 6, b = 30},
+    {name = 'Pepper', w = 3, b = 50},
+  }
+  local capacity= 10
+  local sack, profit = knapsack.integer(items, capacity)
+  assert(#sack == 2)
+  local s1, s2 = sack[1], sack[2]
+  assert(s1.name == 'Pepper' and s1.w == 3 and s1.b == 50)
+  assert(s2.name == 'Orange' and s2.w == 4 and s2.b == 40)
+  assert(profit == 90)
+end)
 
 print(('-'):rep(80))
 print(('Total : %02d: Pass: %02d - Failed : %02d - Success: %.2f %%')
