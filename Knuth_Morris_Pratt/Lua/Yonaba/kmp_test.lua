@@ -17,13 +17,10 @@ local function run(message, f)
   print(('%02d. %68s: %s'):format(total, dec(message,68), status))
 end
 
--- Fuzzy equality test
-local function fuzzyEq(a,b) return math.abs(a-b) < 1e-2 end
-
 run('Testing Knuth_Morris_Pratt', function()
   assert(kmp('ABCDABD', 'ABC ABCDAB ABCDABCDABDE'),           15)
   assert(kmp('0101', '0011001011'),                            5)
-  assert(kmp('py py py python py', 'apyapy py py python pys'), 4)
+  assert(kmp('lu lu lu lua lu', 'alualu lu lu lua lus'), 4)
 end)
 
 print(('-'):rep(80))
