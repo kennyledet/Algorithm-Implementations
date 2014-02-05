@@ -8,7 +8,7 @@ def merge_sort(foo):
     if len(foo) < 2:
         return foo
 
-    mid = len(foo) / 2
+    mid = len(foo) // 2
     return merge(merge_sort(foo[:mid]), merge_sort(foo[mid:]))
 
 
