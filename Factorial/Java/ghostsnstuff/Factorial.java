@@ -1,12 +1,16 @@
-public class Factorial {
+/*
+ * @author Jared Halpert (ghostsnstuff)
+ * @date 2/8/14
+ * @complexity O(n)
+ * @logic
+ *  execution happens once every time the value of n is decremented
+ *  the value of n is decremented until it reaches 1
+ *  therefore the function is called recursively n times.
+ */
 
-  public static void main(String args[]) {
-    System.out.print("computeFactorial(5) = ");
-    System.out.println(computeFactorial(5));
-  }
+public class Factorial {
   
-  // recurisve implementation
-  public static int computeFactorial(int n) {
+  public int computeFactorial(int n) {
     if(n <= 1) {
       return 1;
     } else {
