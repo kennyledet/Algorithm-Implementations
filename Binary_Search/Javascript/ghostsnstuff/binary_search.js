@@ -8,6 +8,7 @@
  * return middle index if value found
  * recursive BinarySearch call, value < list[middle], reduce content to lower half of the list (adjust stopIndex)
  * recursive BinarySearch call, value > list[middle], reduce content to upper half of the list (adjust startIndex)
+ * @description: http://en.wikipedia.org/wiki/Binary_search_algorithm
  */
 function BinarySearch(list, startIndex, stopIndex, value) {
 
