@@ -24,7 +24,7 @@ end
 
 run('Returns nil when given less than three points', function()
   local points = {{x = 0, y = 3}, {x = 2, y = 2}}
-  assert(hull.jarvi(points) == nil)
+  assert(hull.jarvis(points) == nil)
 end)
 
 run('Returns the convex hull', function()
@@ -37,7 +37,7 @@ run('Returns the convex hull', function()
     {x = 0, y = 0},
     {x = 3, y = 3}
   }
-  local chull = hull.jarvi(points)
+  local chull = hull.jarvis(points)
   assert(#chull == 4)
   assert(same(chull[1], {x = 0, y = 0}))
   assert(same(chull[2], {x = 3, y = 0}))
