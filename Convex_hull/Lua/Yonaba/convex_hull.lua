@@ -1,20 +1,23 @@
 -- Convex hull algorithms implementation
 -- See : http://en.wikipedia.org/wiki/Convex_hull
 
--- Checks if points p, q, r are oriented counter-clockwise
-local function isCCW(p, q, r)
+-- Calculates the signed area
+local function signedArea(p, q, r)
   local cross = (q.y - p.y) * (r.x - q.x)
               - (q.x - p.x) * (r.y - q.y)
-  return cross < 0
+  return cross
 end
 
--- Returns the convex hull using Jarvi's Gift wrapping algorithm).
+-- Checks if points p, q, r are oriented counter-clockwise
+local function isCCW(p, q, r) return signedArea(p, q, r) < 0 end
+
+-- Returns the convex hull using Jarvis' Gift wrapping algorithm).
 -- It expects an array of points as input. Each point is defined
 -- as : {x = <value>, y = <value>}.
 -- See : http://en.wikipedia.org/wiki/Gift_wrapping_algorithm
 -- points  : an array of points
 -- returns : the convex hull as an array of points
-local function jarvi_convex_hull(points)
+local function jarvis_march(points)
   -- We need at least 3 points
   local numPoints = #points
   if numPoints < 3 then return end
@@ -46,5 +49,5 @@ local function jarvi_convex_hull(points)
 end
 
 return {
-  jarvi = jarvi_convex_hull
+  jarvis = jarvis_march
 }
