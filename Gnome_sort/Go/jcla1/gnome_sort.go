@@ -9,11 +9,11 @@ func GnomeSort(arr []int) []int {
             continue
         } else {
             arr[pos], arr[pos-1] = arr[pos-1], arr[pos]
-
             if pos > 1 {
                 pos -= 1
             }
         }
+        pos -= 1
     }
 
     return arr
