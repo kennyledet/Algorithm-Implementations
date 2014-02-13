@@ -8,7 +8,7 @@
  * the second for loop is for iterating down the list
  * for each iteration the current node is compared to the next node 
  * if the current node is bigger the next node -> the elements are swapped
- * this proccess occurs until the list is sorted (i.e. swapped == false after first loop)
+ * this proccess continues until the list is sorted (i.e. swapped == false after first loop)
  */
 public class CocktailSort {
 
