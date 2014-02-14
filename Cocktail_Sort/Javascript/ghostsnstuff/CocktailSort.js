@@ -10,33 +10,28 @@
  * if the current node is bigger the next node -> the elements are swapped
  * this proccess continues until the list is sorted (i.e. swapped == false after first loop)
  */
-public class CocktailSort {
-
-	void Sort(int[] a){
-		boolean swapped;
-		do {
-			swapped = false;
-			for (int i = 0; i <= a.length - 2; i++) {
-				if (a[i] > a[i+1]) {
-					int temp = a[i];
-					a[i] = a[i+1];
-					a[i+1]=temp;
-					swapped = true;
-				}
+module.exports = function(array) {
+	var swapped;
+	do {
+		for(var i = 0; i < array.length - 2; i++) {
+			if(array[i] > array[i+1]) {
+				var temp = array[i];
+				array[i] = array[i+1];
+				array[i+1] = temp;
+				swapped = true;
 			}
-			if (!swapped) {
-				break;
+		}	
+		if(!swapped) {
+			break;
+		}
+		swapped = false;
+		for(var i = array.length - 2; i > 0; i--) {
+			if(array[i] > array[i+1]) {
+				var temp = array[i];
+				array[i] = array[i+1];
+				array[i+1] = temp;
+				swapped = true;
 			}
-			swapped = false;
-			for (int i = a.length - 2; i >= 0; i--) {
-				if (a[i] > a[i+1]) {
-					int temp = a[i];
-					a[i] = a[i+1];
-					a[i+1]=temp;
-					swapped = true;
-				}
-			}
-		} while (swapped);
-	}
-
+		}
+	} while(swapped);
 }
