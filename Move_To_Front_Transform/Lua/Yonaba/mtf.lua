@@ -1,56 +1,59 @@
---MTF Algorithm
+-- Move-To-Front Transform implementation
+-- See : http://en.wikipedia.org/wiki/Move-to-front_transform
 
---Creates Dictionnary
-local mtf = {}
-for i=1,255 do
-	mtf[i]=string.char(i)
-end
-print(mtf)
-
-local function MTF(index)
-	local value = mtf[index]
-	local tmpMTF = {value}
-	for k in ipairs(mtf) do
-		if mtf[k]~=mtf[index] then table.insert(tmpMTF,mtf[k]) end
-	end
+-- Finds and returns the index of a value in a table
+local function table_find(t, v)
+  for k,_v in ipairs(t) do
+    if _v == v then return k end
+  end
 end
 
-local function getCharMTFIndex(char)
-	local i = 1
-	for k in ipairs(mtf) do
-		if mtf[k]==char then return k end
-	end
-	return nil
+-- Moves the value at index to a new index
+local function table_move(t, i, newi)
+  local v = t[i]
+  table.remove(t, i)
+  table.insert(t, newi, v)
 end
 
-
-local function getMTFSeq(seq)
-	local i = string.len(seq)
-	local tseq = {}
-	local it,current_char,curIndex = 1
-	repeat
-		current_char = string.sub(seq,it,it)
-		curIndex = getCharMTFIndex(current_char)
-		mtf = MTF(curIndex)
-		table.insert(tseq,curIndex)
-		it=it+1
-	until not current_char or not curIndex
-	return tseq
+-- Creates a ASCII based dictionnary
+local function createDict()
+  local mtf = {}
+  for i=1,255 do mtf[i]=string.char(i) end
+  return mtf
 end
 
---[[
-print(string.byte("k"))
-print(string.byte("l"))
-print(string.byte("m"))
-print(unpack(getMTFSeq('l')))
-print(1,mtf[1])
---]]
-
-local table_move = function(cur,to,t)
-	local item = t[cur]
-	table.remove(t,cur)
-	table.insert(t,to,item)
+-- Encodes an string
+-- @str    : a string to be encoded
+-- @return : the mtf transform as a string of numbers
+--           separated with dots.
+local function mtf_encode(str)
+  local dict = createDict()
+  local encoded_str = ''
+  for char in str:gmatch('.') do
+    local index = table_find(dict, char)
+    assert(index, ('Unknown char %s'):format(char))
+    encoded_str = encoded_str .. index ..'.'
+    table_move(dict, index, 1)
+  end
+  return (encoded_str:gsub('%.$',''))
 end
-t = {1,2,3}
-table_move(1,3,t)
-for i in ipairs(t) do print(i,t[i]) end
+
+-- Decodes an mtf transform
+-- @str    : an mtf transform string to be decoded
+-- @return : the decoded string
+local function mtf_decode(str)
+  local dict = createDict()
+  local decoded_str = ''
+  for value in str:gmatch('%.*(%d+)%.*') do
+    local index = tonumber(value)
+    assert(index and dict[index], 'Error decoding string')
+    decoded_str = decoded_str .. dict[index]
+    table_move(dict, index, 1)
+  end
+  return decoded_str
+end
+
+return {
+  encode = mtf_encode,
+  decode = mtf_decode,
+}
