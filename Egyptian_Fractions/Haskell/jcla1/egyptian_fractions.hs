@@ -1,6 +1,6 @@
 import Data.Ratio
 
--- Conversion between "vulgar" and egyption fractions
+-- Conversion between "vulgar" and egyptian fractions
 -- Taken from: "Good Math" by Mark C. Chu-Carroll PragProg
 egypt :: Rational -> [Rational]
 egypt 0 = []
