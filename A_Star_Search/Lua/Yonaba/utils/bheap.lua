@@ -2,7 +2,8 @@
 -- See: http://www.policyalmanac.org/games/binaryHeaps.htm
 -- Adapted from: https://github.com/Yonaba/Binary-Heaps
 
-local class = require 'class'
+local PATH = (...):gsub('%.bheap$','')
+local class = require (PATH .. '.class')
 
 -- Looks for item in an array
 local function findIndex(array, item)
