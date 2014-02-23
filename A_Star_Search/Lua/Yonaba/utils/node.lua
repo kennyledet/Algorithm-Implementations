@@ -7,7 +7,8 @@
 -- See astar.lua comment header.
 -- See custom handlers for reference (*_hander.lua).
 
-local class = require 'class'
+local PATH = (...):gsub('%.node$','')
+local class = require (PATH .. '.class')
 
 local Node = class {f = 0, g = 0, h = 0}
 Node.__eq = function(a, b) return a:isEqualTo(b) end
