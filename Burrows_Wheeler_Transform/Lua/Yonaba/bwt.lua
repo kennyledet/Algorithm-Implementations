@@ -1,58 +1,55 @@
---Burrows-Wheeler Transform
+-- Burrows-Wheeler Transform algorithm implementation
+-- See: http://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform#Sample_implementation
 
---Burrows-Wheeler Transform
+-- Returns the Burrows-Wheeler transform of an input string
+-- @str    : the original string to be encoded
+-- returns : the transform
+-- returns : an index to be used for decoding
+local function burrows_wheeler_transform(str)
+  -- Builds a table of all possible rotations
+  local t = {str}
+  local len = #str
 
-
-function encode(word)
-  local t={word}
-  local pos = 1
-  local cat = string.len(word)
-  
-	for i=cat-1,1,-1 do
-    local tmp = string.sub(word,1,i)
-    local comp = string.sub(word,i+1,cat)
-    local str = comp..tmp
-    table.insert(t,str)
+  for i = len-1, 1, -1 do
+    table.insert(t, str:sub(i + 1, len) .. str:sub(1, i))
   end
-  
+
+  -- Sorts all rotations in alphabetical order
   table.sort(t)
 
-  local retStr = ""
-	for k in ipairs(t) do
-		if t[k]==word then pos = k end
-		retStr = retStr..string.sub(t[k],string.len(t[k]),string.len(t[k]))
-	end
+  -- Retrieves the last column and the word index
+  local encoded_str, pos = ''
+  for k, rotation in ipairs(t) do
+    if rotation == str then pos = k end
+    encoded_str = encoded_str .. rotation:sub(#rotation, #rotation)
+  end
 
-  return retStr
+  return encoded_str, pos
 end
 
 
-function decode(encword)
-  --print('decode',encword)
-  local size = string.len(encword)
-  local offset = tonumber(string.sub(encword,1,1))
-  local encword = string.sub(encword,2,size)
+-- Decodes a Burrows-Wheeler transform
+-- @transform : the transform to be decoded
+-- @pos       : an index to identify the original string
+-- returns    : the decoded transform
+local function burrows_wheeler_decode(transform, pos)
+  local len = #transform
+  
+  -- Builds the table of permutations
+  local t = {}
+  for k = 1, len do
+    for i = 1, len do
+      local char = transform:sub(i, i)
+      t[i] = not t[i] and char or char .. t[i]
+    end
+    table.sort(t)
+  end
 
-  local t={}
-	for n=0,string.len(encword),1 do
-		for i=1,string.len(encword),1 do
-      t[i] = not t[i] and '' or string.sub(encword,i,i)..t[i]
-		end
-		table.sort(t)
-	end
-	
-  return (t[offset])
+  -- Return the line ending with the EOL marker
+  return t[pos]
 end
 
---Sample Test
-local str = "SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES"
-local out = ''
-	--for w in string.gfind(str, "%w+") do
-	local enc = encode(str)
-	local dec = decode(enc)
-	out = out .. '.'..enc
-	print("\nChaine originale: "..str)
-	print("Transformée B-W: "..enc)
-	print("Transformée Décodée: "..dec)
-	--end
-print(out)
+return {
+  encode = burrows_wheeler_transform,
+  decode = burrows_wheeler_decode,
+}
