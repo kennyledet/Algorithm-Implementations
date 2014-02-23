@@ -17,17 +17,6 @@ local function run(message, f)
   print(('%02d. %68s: %s'):format(total, dec(message,68), status))
 end
 
--- Checks if t1 and t2 arrays are the same
-local function same(t1, t2)
-  if #t1 ~= #t2 then return false end
-  for r, row in ipairs(t1) do
-    for v, value in ipairs(row) do
-      if t2[r][v] ~= value then return false end
-    end
-  end
-  return true
-end
-
 run('Encoding string tests', function()
   assert(bwt.encode('Banana') == 'annBaa')
   assert(bwt.encode('burrows-wheeler'),'srhelwereruwb-o')
