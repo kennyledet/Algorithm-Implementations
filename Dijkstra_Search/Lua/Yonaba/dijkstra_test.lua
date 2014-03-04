@@ -26,7 +26,7 @@ end
 
 run('Testing linear graph', function()
   local comp = function(a, b) return a.value == b end
-  local ln_handler = require 'linear_handler'
+  local ln_handler = require 'handlers.linear_handler'
   ln_handler.init(1,5)
   local dijkstra = Dijkstra(ln_handler)
 
@@ -44,7 +44,7 @@ end)
 
 run('Testing grid graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
-  local gm_handler = require 'gridmap_handler'
+  local gm_handler = require 'handlers.gridmap_handler'
   local dijkstra = Dijkstra(gm_handler)
   local map = {{0,0,0,0,0},{0,1,1,1,1},{0,0,0,0,0}}
   gm_handler.init(map)
@@ -58,7 +58,7 @@ end)
 
 run('Testing point graph', function()
   local comp = function(a, b) return a.x == b[1] and a.y == b[2] end
-  local pg_handler = require 'point_graph_handler'
+  local pg_handler = require 'handlers.point_graph_handler'
 
   local dijkstra = Dijkstra(pg_handler)
 

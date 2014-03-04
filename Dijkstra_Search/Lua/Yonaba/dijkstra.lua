@@ -33,8 +33,8 @@
 -- See custom handlers for reference (*_hander.lua).
 
 -- Dependencies
-local class = require 'class'
-local bheap = require 'bheap'
+local class = require 'utils.class'
+local bheap = require 'utils.bheap'
 
 -- Clears nodes data between consecutive path requests.
 local function resetForNextSearch(dijkstra)

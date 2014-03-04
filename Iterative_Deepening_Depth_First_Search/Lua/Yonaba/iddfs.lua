@@ -31,7 +31,7 @@
 -- See custom handlers for reference (*_hander.lua).
 
 -- Dependencies
-local class = require 'class'
+local class = require 'utils.class'
 
 -- Builds and returns the path to the goal node
 local function backtrace(node)

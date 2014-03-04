@@ -6,7 +6,7 @@
 -- or whatever. It expects to be initialized with a handler, which acts as
 -- an interface between the search algorithm and the search space.
 
--- This implementation uses a FIFO (First In First Out) queue, which can be 
+-- This implementation uses a FIFO (First In First Out) queue, which can be
 -- easily represented via a simple Lua array (see fifo.lua).
 
 -- The BFS class expects a handler to be initialized. Roughly said, the handler
@@ -30,8 +30,8 @@
 -- See custom handlers for reference (*_hander.lua).
 
 -- Dependencies
-local class = require 'class'
-local fifo  = require 'fifo'
+local class = require 'utils.class'
+local fifo  = require 'utils.fifo'
 
 -- Clears nodes data between consecutive path requests.
 local function resetForNextSearch(bfs)
