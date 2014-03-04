@@ -6,8 +6,10 @@
 -- It assumes edges are symmetric, that is if an edge exists
 -- between a and b, weight(a -> b) ==  weight(b -> a)
 
+local PATH = (...):gsub('handlers.point_graph_handler$','')
+local Node = require (PATH .. '.utils.node')
+
 -- Implements Node class (from node.lua)
-local Node = require 'node'
 function Node:initialize(name) self.name = name end
 function Node:toString() return ('Node: %s'):format(self.name) end
 function Node:isEqualTo(n) return self.name == n.name end

@@ -1,6 +1,7 @@
 -- Mimics a LIFO stack, OOP style
 
-local class = require 'class'
+local PATH = (...):gsub('%.lifo$','')
+local class = require (PATH .. '.class')
 
 local lifo = class()
 lifo._stack = {}

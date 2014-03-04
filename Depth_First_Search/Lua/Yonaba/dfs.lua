@@ -30,8 +30,8 @@
 -- See custom handlers for reference (*_hander.lua).
 
 -- Dependencies
-local class = require 'class'
-local lifo  = require 'lifo'
+local class = require 'utils.class'
+local lifo  = require 'utils.lifo'
 
 -- Clears nodes data between consecutive path requests.
 local function resetForNextSearch(dfs)
