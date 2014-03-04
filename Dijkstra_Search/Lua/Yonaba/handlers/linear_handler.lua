@@ -5,8 +5,10 @@
 -- Similar to a range (interval) with no bounds.
 -- i.e., the path from 5 to 0 would be 5, 4, 3, 2, 1, 0.
 
+local PATH = (...):gsub('handlers.linear_handler$','')
+local Node = require (PATH .. '.utils.node')
+
 -- Implements Node class (from node.lua)
-local Node = require 'node'
 function Node:initialize(value) self.value = value end
 function Node:toString() return ('Node: %d'):format(self.value) end
 function Node:isEqualTo(n) return self.value == n.value end
