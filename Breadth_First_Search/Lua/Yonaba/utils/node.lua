@@ -7,7 +7,8 @@
 -- See bfs.lua comment header.
 -- See custom handlers for reference (*_hander.lua).
 
-local class = require 'class'
+local PATH = (...):gsub('%.node$','')
+local class = require (PATH .. '.class')
 
 local Node = class ()
 Node.__eq = function(a, b) return a:isEqualTo(b) end

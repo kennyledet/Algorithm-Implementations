@@ -1,6 +1,7 @@
 -- Mimics a FIFO queue, OOP style
 
-local class = require 'class'
+local PATH = (...):gsub('%.fifo$','')
+local class = require (PATH .. '.class')
 
 local fifo = class()
 fifo._queue = {}
