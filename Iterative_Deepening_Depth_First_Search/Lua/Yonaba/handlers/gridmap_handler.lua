@@ -5,8 +5,10 @@
 -- with a pair of (x, y) coordinates. It features straight (4-directions)
 -- and diagonal (8-directions) moves.
 
+local PATH = (...):gsub('handlers.gridmap_handler$','')
+local Node = require (PATH .. '.utils.node')
+
 -- Implements Node class (from node.lua)
-local Node = require 'node'
 function Node:initialize(x, y) self.x, self.y = x, y end
 function Node:toString() return ('Node: x = %d, y = %d'):format(self.x, self.y) end
 function Node:isEqualTo(n) return self.x == n.x and self.y == n.y end
