@@ -32,13 +32,11 @@
 -- See custom handlers for reference (*_hander.lua).
 
 -- Dependencies
-local class = require 'class'
-local bheap = require 'bheap'
+local class = require 'utils.class'
+local bheap = require 'utils.bheap'
 
 -- Returns the first element in a list matching a predicate
 local function find(list, f)
-  print('list to find')
-  table.foreach(list, function(_,n) print(' >>',n, n.closed) end)
   for _, v in ipairs(list) do
     if f(v) then return v end
   end
@@ -47,9 +45,7 @@ end
 -- Reverses an array
 local function reverse(list)
   local l = {}
-  for i = #list,1,-1 do print('move') table.insert(l, list[i]) end
-  print('list reversed')
-  table.foreach(l, function(_,n) print(' >>',n, n.closed) end)
+  for i = #list,1,-1 do table.insert(l, list[i]) end
   return l
 end
 
