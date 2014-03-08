@@ -1,3 +1,7 @@
+-- N_Queens problem solving algorithm implementation
+-- See: http://en.wikipedia.org/wiki/Eight_queens_puzzle
+
+-- Creates a NxN matrix
 local function makeBoard(size)
   local board = {}
   for i = 1, size do board[i] = {}
@@ -6,6 +10,7 @@ local function makeBoard(size)
   return board
 end
 
+-- Checks if a queen position is legit
 local function isAllowed(board, x, y, N)
   for i = 1, x - 1 do
     local notAllowed = board[i][y]
@@ -16,6 +21,7 @@ local function isAllowed(board, x, y, N)
   return true
 end
 
+-- Solves recursively the N_Queens puzzle
 local function solve(board, x, N)
   for y = 1, N do
     if isAllowed(board, x, y, N) then
@@ -27,23 +33,15 @@ local function solve(board, x, N)
   return false
 end
 
+-- N-Queens puzzle solving function
+-- N      : the problem size
+-- return : a NxN matrix of booleans,
+--    true matches a queen position 
 local function queens(N)
-  N = N or 8
-  board = board or makeBoard(N)
+  board = makeBoard(N)
   local solved = solve(board, 1, N)
   assert(solved, 'Solution not found')
   return board
 end
 
--- pretty printing
-local b = queens(5)
-if b then
-	table.foreach(b, function(k,row)
-		for _, v in ipairs(row) do
-			io.write(v and '|Q' or '| ')
-		end
-		io.write('\n')
-	end)
-else
-	print('nothing found')
-end
+return queens
