@@ -1,16 +1,18 @@
 -- A point graph handler
 
--- This handler is devised for waypoints graphs.
--- Waypoints are locations represented via labelled nodes
--- and are connected with edges having a positive weight.
--- It assumes edges are symmetric, that is if an edge exists
--- between a and b, weight(a -> b) ==  weight(b -> a)
+-- This handler is devised for way-points graphs.
+-- Way-points are locations represented via labelled nodes
+-- and are connected with edges having a positive or negative weight.
+-- It assumes edges are non-symmetric, that is if an edge exists from
+-- a to b, it does not mean there is also an edge from b to a, unless it is
+-- explicitly defined.
 
--- Implements Node class (from node.lua)
-local Node = require 'node'
+local PATH = (...):gsub('%.graph$','')
+local Node = require (PATH .. '.node')
+
+-- Implements Node class (from utils/node.lua)
 function Node:initialize(name) self.name = name end
 function Node:toString() return ('Node: %s - %.2f'):format(self.name, self.distance) end
-function Node:isEqualTo(n) return self.name == n.name end
 
 -- Internal graph data
 local graph = {nodes = {}, edges = {}}
@@ -43,14 +45,6 @@ function handler.getAllEdges() return collect(graph.edges) end
 -- Returns a Node
 function handler.getNode(name) return graph.nodes[name] end
 
--- Returns the distance between node a and node b.
--- The distance should be the weight of the edge between the nodes
--- if existing, otherwise 0 (I could not figure anything better here).
-function handler.distance(a, b)
-  local e = find_edge(graph.edges, a, b)
-  return e and e.weight or 0
-end
-
 -- Adds a new node labelled with name
 function handler.addNode(name) graph.nodes[name] = Node(name) end
 
@@ -64,19 +58,6 @@ end
 function handler.setEdgeWeight(from, to, weight)
   local e = find_edge(graph.edges, graph.nodes[from], graph.nodes[to])
   if e then e.weight = weight end
-end
-
--- Returns an array of neighbors of node n
-function handler.getNeighbors(n)
-  local neighbors = {}
-  for _, edge in ipairs(graph.edges) do
-    if edge.from == n then
-      table.insert(neighbors, edge.to)
-    elseif edge.to == n then
-      table.insert(neighbors, edge.from)
-    end
-  end
-  return neighbors
 end
 
 return handler
