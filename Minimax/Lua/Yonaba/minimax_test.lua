@@ -1,4 +1,4 @@
--- Tests for alpha_beta_pruning.lua
+-- Tests for minimax.lua
 local minimax = require 'minimax'
 
 local total, pass = 0, 0
