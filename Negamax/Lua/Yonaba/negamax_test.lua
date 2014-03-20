@@ -1,5 +1,5 @@
--- Tests for minimax.lua
-local minimax = require 'minimax'
+-- Tests for alpha_beta_pruning.lua
+local negamax = require 'negamax'
 
 local total, pass = 0, 0
 
@@ -17,7 +17,7 @@ local function run(message, f)
   print(('%02d. %68s: %s'):format(total, dec(message,68), status))
 end
 
-run('Testing Minimax', function()
+run('Testing Negamax', function()
   local tree = require 'handlers.tree_handler'
 
   local t = tree()
@@ -39,7 +39,8 @@ run('Testing Minimax', function()
   t:addNode('C9','B3',3)
 
   local head = t:getNode('A')
-  assert(minimax(head, t, 3) == 5)
+  assert(negamax(head, t, 3,  1) ==  5)
+  assert(negamax(head, t, 3, -1) == -3)
 end)
 
 print(('-'):rep(80))
