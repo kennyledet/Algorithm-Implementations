@@ -9,6 +9,14 @@ local function dec(str, len)
       or str:sub(1,len)
 end
 
+local function run(message, f)
+  total = total + 1
+  local ok, err = pcall(f)
+  if ok then pass = pass + 1 end
+  local status = ok and 'PASSED' or 'FAILED'
+  print(('%02d. %68s: %s'):format(total, dec(message,68), status))
+end
+
 -- Seeding
 math.randomseed(os.time())
 
@@ -20,19 +28,33 @@ local function simulate(f, trials, switch)
     won = won + (test and 1 or 0)
   end
   print(('Won : %3d/%03d - Success rate: %.2f%%'):format(won, trials, (won * 100 / trials)))
+  return (won * 100 / trials)
 end
 
-print('Simulate Monty-Hall with 100 doors without switching')
-simulate(monty_hall, 100)
-simulate(monty_hall, 250)
-simulate(monty_hall, 500)
+run('Monty-Hall test', function()
 
+  print('Simulates n times with a random number of doors without switching')
+  local min_success_rate = 0
+  for i = 100, 500, 100 do
+    local success_rate = simulate(monty_hall, i)
+    if success_rate > min_success_rate then
+      min_success_rate = success_rate
+    end
+  end
 
-print('\nSimulate Monty-Hall with 100 doors with switching')
-simulate(monty_hall, 100, true)
-simulate(monty_hall, 250, true)
-simulate(monty_hall, 500, true)
+  print('\nSimulates n times with a random number of doors with switching')
+  local max_success_rate = 100
+  for i = 100, 500, 100 do
+    local success_rate = simulate(monty_hall, i, true)
+    if success_rate < max_success_rate then
+      max_success_rate = success_rate
+    end
+  end
 
+  assert(min_success_rate < max_success_rate)
+  print()
+
+end)
 
 print(('-'):rep(80))
 print(('Total : %02d: Pass: %02d - Failed : %02d - Success: %.2f %%')

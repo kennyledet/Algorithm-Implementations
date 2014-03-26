@@ -15,7 +15,6 @@ end
 local function simulate(ndoors, switch)
   local winning_door = math.random(1,ndoors)
   local choice       = math.random(1,ndoors)
-  if choice == winning_door then return true end
   local doors = range(ndoors)
   while #doors>2 do
     local door_to_open_index = math.random(1,#doors)
@@ -25,10 +24,15 @@ local function simulate(ndoors, switch)
         table.remove(doors, door_to_open_index)
     end
   end
+
   if switch then
-    choice = (doors[1] == choice and 2 or 1)
+    choice = (doors[1] == choice and doors[2] or doors[1])
   end
-  return (doors[choice] == winning_door)
+  return (choice == winning_door)
 end
+
+math.randomseed(os.time())
+local r = simulate(5,true)
+print('won',r)
 
 return simulate
