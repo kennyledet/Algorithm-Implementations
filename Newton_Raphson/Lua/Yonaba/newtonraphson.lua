@@ -23,13 +23,14 @@ end
 -- Find a zero for a given function f
 -- f        : the equation, to be solved (f(x) = 0)
 -- initStep : (optional) initial value for iterations
+-- eps      : (optional) accuracy parameter for convergence
 -- returns  : a zero for the function f
-return function(f, initStep)
+return function(f, initStep, eps)
   local next_x = initStep or 0
   local prev_x
   repeat
     prev_x = next_x
     next_x = next_x - (f(next_x) / drvMid(f, next_x))
-  until fuzzyEqual(next_x, prev_x)
+  until fuzzyEqual(next_x, prev_x, eps)
   return next_x
 end
