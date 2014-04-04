@@ -51,8 +51,20 @@ local function gold_number_babylonian_iteration(seed, acc)
   return phi
 end
 
+-- Computes an approximate value of the Golden Ratio
+-- Using a Newton-Raphson solver (implemented as an external dependency)
+-- See: http://en.wikipedia.org/wiki/Golden_ratio#Calculation
+-- seed    : (optional) seed to start the computation (defaults to 1)
+-- acc     : (optional) approximation accuracy (defaults to 1E-8)
+-- returns : an approximation of the Golden Ratio
+local solve = require 'lib.newtonraphson'
+local function gold_number_equation(seed, acc)
+  return solve(function(x) return x * x - x - 1 end, seed, acc)
+end
+
 return {
   root       = gold_number_root_iteration,
   fractional = gold_number_fractional_iteration,
-  babylonian = gold_number_babylonian_iteration
+  babylonian = gold_number_babylonian_iteration,
+  equation   = gold_number_equation,
 }
