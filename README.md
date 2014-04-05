@@ -27,6 +27,8 @@ Conventions
 		Algorithm_Name/Language_Name/username/filename.extension
 		Algorithm_Name/Language_Name/username/filename_test.extension
 
++ Please include a description of the algorithm you are implementing; it doesn't really matter if it's copied from Wikipedia or not (citations please), but this really does help people who are trying to find new algorithms to implement and contribute by browsing this repository. 
+
 + When implementing a new algorithm, create a "tags" file in the algorithm's root directory and add some appropriate tags
 + Please package your code in a directory bearing your GitHub username. `git blame` is cool, and has many more appropriate applications, but in this context I'd rather pull a flat list of files and be able to check out everyone's contributions that way than have to look through the revisions.
 
