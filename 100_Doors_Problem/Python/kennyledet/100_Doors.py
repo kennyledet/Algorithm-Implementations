@@ -36,7 +36,7 @@ def pass_doors(doors):
             current_door += pass_num  # Increment current door number by current pass number
     return doors
 
-pass_doors_optimized = lambda doors: [0 if math.sqrt(door_num+1) % 1 > 0 else 1 for door_num, door in enumerate(doors)]
+pass_doors_optimized = lambda doors: (0 if math.sqrt(door_num+1) % 1 > 0 else 1 for door_num, door in enumerate(doors))
 
 
 def main():
@@ -60,7 +60,6 @@ def main():
     # Test optimized algorithm
     result = test_doors(doors)
     print "Optimized algorithm has {0}".format("passed" if result else "failed")
-
 
 
 if __name__ == "__main__":
