@@ -14,54 +14,54 @@ See: http://rosettacode.org/wiki/100_doors
 import math
 
 def test_doors(doors):
-	'''Check that all open door numbers are perfect squares'''
-	for i, door in enumerate(doors):
-		door_num = i + 1
-		if door and math.sqrt(door_num) % 1 > 0:  # if door open and door number is not a perfect square
-			return False
+    '''Check that all open door numbers are perfect squares'''
+    for i, door in enumerate(doors):
+        door_num = i + 1
+        if door and math.sqrt(door_num) % 1 > 0:  # if door open and door number is not a perfect square
+            return False
 
-	return True
+    return True
 
 
 def print_doors(doors):
-	for door_num, door in enumerate(doors):
-		print "Door #{0}: {1}".format(door_num+1, "Open" if door else "Closed")
+    for door_num, door in enumerate(doors):
+        print "Door #{0}: {1}".format(door_num+1, "Open" if door else "Closed")
 
 
 def pass_doors(doors):
-	for pass_num in xrange(1, 101):  # Make 100 passes
-		current_door = pass_num-1  # Start current door offset at the current pass number ('-1' to account for lists/arrays starting count at 0)
-		while current_door <= 99:
-			doors[current_door] = not doors[current_door]  # Open door if close, close if open (negate old value using 'not')
-			current_door += pass_num  # Increment current door number by current pass number
-	return doors
+    for pass_num in xrange(1, 101):  # Make 100 passes
+        current_door = pass_num-1  # Start current door offset at the current pass number ('-1' to account for lists/arrays starting count at 0)
+        while current_door <= 99:
+            doors[current_door] = not doors[current_door]  # Open door if close, close if open (negate old value using 'not')
+            current_door += pass_num  # Increment current door number by current pass number
+    return doors
 
 pass_doors_optimized = lambda doors: [0 if math.sqrt(door_num+1) % 1 > 0 else 1 for door_num, door in enumerate(doors)]
 
 
 def main():
-	# Create list of 100 elements initialized to 0 to represent all doors being closed.
-	doors = [0 for x in xrange(0, 100)]
+    # Create list of 100 elements initialized to 0 to represent all doors being closed.
+    doors = [0 for x in xrange(0, 100)]
 
-	# Run algorithm
-	doors = pass_doors(doors)
+    # Run algorithm
+    doors = pass_doors(doors)
 
-	# Print final door states
-	print_doors(doors)
+    # Print final door states
+    print_doors(doors)
 
-	# Test algorithm
-	result = test_doors(doors)
-	print "Algorithm has {0}".format("passed" if result else "failed")
+    # Test algorithm
+    result = test_doors(doors)
+    print "Algorithm has {0}".format("passed" if result else "failed")
 
-	# Run optimized algorithm
-	doors = pass_doors_optimized(doors)
-	print_doors(doors)
+    # Run optimized algorithm
+    doors = pass_doors_optimized(doors)
+    print_doors(doors)
 
-	# Test optimized algorithm
-	result = test_doors(doors)
-	print "Optimized algorithm has {0}".format("passed" if result else "failed")
+    # Test optimized algorithm
+    result = test_doors(doors)
+    print "Optimized algorithm has {0}".format("passed" if result else "failed")
 
 
 
 if __name__ == "__main__":
-	main()
+    main()
