@@ -1,0 +1,115 @@
+TopCoder Security Agency (TSA, established today) is going to search for dangerous content in the internet.
+
+
+
+There are N candidate websites numbered 0 through N-1. Each website has an address given as address[i]. It also has one or more keywords associated with it. The i-th element of keyword is a String describing all keywords associated with the i-th website. It is formatted as a single space separated list of keywords without leading or trailing spaces, where each keyword consists only of lowercase letters.
+
+
+
+It is known to TSA that some keywords are dangerous. These keywords are given in String[] dangerous, where each element is a single dangerous keyword. For all other keywords it is not initially known whether they are dangerous or not.
+
+
+
+TSA uses the following algorithm to identify all dangerous websites:
+
+  Initially, all websites are considered to be safe.
+
+  While there exists a website W such that it's considered safe and
+        at least threshold of its keywords are known to be dangerous
+
+    Website W becomes dangerous
+    All keywords associated with W become dangerous   
+
+  End While
+
+
+
+Return a String[] containing the addresses of all dangerous websites found by the algorithm described above sorted in increasing order of website numbers. Return an empty String[] if no dangerous website is found.
+ 
+Definition
+    	
+Class:	InternetSecurity
+Method:	determineWebsite
+Parameters:	String[], String[], String[], int
+Returns:	String[]
+Method signature:	String[] determineWebsite(String[] address, String[] keyword, String[] dangerous, int threshold)
+(be sure your method is public)
+    
+ 
+Notes
+-	The address of a website is just a String used to uniquely identify it. It doesn't necessarily adhere to any common format of naming websites.
+ 
+Constraints
+-	address will contain between 1 and 50 elements, inclusive.
+-	Each element of address will contain between 1 and 50 characters, inclusive.
+-	Each character in address will be a '.', '_' or a lowercase letter ('a'-'z').
+-	All elements of address will be distinct.
+-	keyword will contain the same number of elements as address.
+-	Each element of keyword will contain between 1 and 50 characters, inclusive.
+-	Each character in keyword will be a ' ' or a lowercase letter ('a'-'z').
+-	Each element in keyword will be formatted as described in the statement above.
+-	For each website, the keywords associated with it will be distinct.
+-	dangerous will contain between 1 and 50 elements, inclusive.
+-	Each element of dangerous will contain between 1 and 50 characters, inclusive.
+-	Each character in dangerous will be a lowercase letter ('a'-'z').
+-	All elements of dangerous will be distinct.
+-	threshold will be between 1 and 25, inclusive.
+ 
+Examples
+0)	
+    	
+
+{"www.topcoder.com",
+"www.sindicate_of_evil.com",
+"www.happy_citizens.com"}
+
+{"hack encryption decryption internet algorithm",
+"signal interference evil snake poison algorithm",
+"flower baloon topcoder blue sky sea"}
+
+{"hack","encryption","decryption","interference","signal","internet"}
+
+3
+
+Returns: {"www.topcoder.com", "www.sindicate_of_evil.com" }
+
+"www.topcoder.com" is detected as dangerous since it contains four dangerous keywords: "hack", "encryption", "decryption", and "internet". Hence, "algorithm" becomes a dangerous keyword. As a result, "www.sindicate_of_evil.com" is detected as dangerous since it contains three dangerous keywords: "interference", "signal", and "algorithm". Hence, the correct return value is {"www.topcoder.com","www.sindicate_of_evil.com"} since the answer must be sorted in increasing order of website numbers.
+1)	
+    	
+
+{"brokenlink","flowerpower.net","purchasedomain.com"}
+
+{"broken","rose tulips","cheap free domain biggest greatest"}
+
+{"biggest","enemy","hideout"}
+
+2
+
+Returns: { }
+
+No website is dangerous and an empty String[] should be returned.
+2)	
+    	
+
+{"a..a.ab.","...aa.b"}
+
+{"a bc def","def ghij klmno"}
+
+{"a","b","c","d","e"}
+
+1
+
+Returns: {"a..a.ab.", "...aa.b" }
+
+3)	
+    	
+
+{"www.tsa.gov"}
+
+{"information assurance signal intelligence research"}
+
+{"signal","assurance","penguin"}
+
+2
+
+Returns: {"www.tsa.gov" }
