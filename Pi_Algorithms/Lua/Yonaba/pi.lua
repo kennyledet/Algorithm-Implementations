@@ -52,3 +52,32 @@ local function ramanujan_series(n)
   return 1/(((2*math.sqrt(2))/9801)*sum)
 end
 
+-- Evaluates Pi using Chudnovsky rapidly converging infinite series
+-- See: http://en.wikipedia.org/wiki/Pi#Infinite_series
+-- n      : (optional) the order of the infinite sequence to reach (defaults to 25)
+-- returns: an approximation of pi
+local function chudnovsky_series(n)
+  local sum = 0
+  n = n or 25
+  for k = 0, n do
+    local num = ((-1)^k)*factorial(6*k)*(13591409+545140134*k)
+    local denum = factorial(3*k)*(factorial(k)^3)*(640320^(3*k+3/2))
+    sum = sum+(num/denum) 
+  end
+  return 1/(12*sum)
+end
+
+-- Evaluates Pi using Viète infinite root sum
+-- See: http://en.wikipedia.org/wiki/Pi#Infinite_series
+-- n      : (optional) the order of the infinite sequence to reach (defaults to 100)
+-- returns: an approximation of pi
+local function viete_series(n)
+  local a = math.sqrt(2)
+  local prod = a/2
+  n = n or 100
+  for k = 2, n do
+    a = math.sqrt(a+2)
+    prod = prod*(a/2)
+  end
+  return 2/prod
+end
