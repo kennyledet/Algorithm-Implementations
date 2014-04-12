@@ -81,3 +81,27 @@ local function viete_series(n)
   end
   return 2/prod
 end
+
+-- Evaluates Pi using the mathematical definition (summing a circle's area)
+-- See: http://en.wikipedia.org/wiki/Approximations_of_%CF%80#Summing_a_circle.27s_area
+-- r      : the radius of the circle
+-- returns: an approximation of pi
+local function circle_area_sum(r)
+  local p, s = 0
+  for x = -r,r do
+    for y = -r,r do
+      s = x^2+y^2 <= r^2 and 1 or 0
+      p = p+s
+    end
+  end
+  return (p /(r*r))
+end
+
+return {
+  statistical     = statistical_pi,
+  madhava_leibniz = madhava_leibniz_series,
+  ramanujan       = ramanujan_series,
+  chudnovsky      = chudnovsky_series,
+  viete           = viete_series,
+  cirle_area      = circle_area_sum
+}
