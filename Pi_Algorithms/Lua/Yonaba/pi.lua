@@ -60,8 +60,8 @@ local function chudnovsky_series(n)
   local sum = 0
   n = n or 25
   for k = 0, n do
-    local num = ((-1)^k)*factorial(6*k)*(13591409+545140134*k)
-    local denum = factorial(3*k)*(factorial(k)^3)*(640320^(3*k+3/2))
+    local num = ((-1)^k)*fact(6*k)*(13591409+545140134*k)
+    local denum = fact(3*k)*(fact(k)^3)*(640320^(3*k+3/2))
     sum = sum+(num/denum) 
   end
   return 1/(12*sum)
@@ -98,10 +98,10 @@ local function circle_area_sum(r)
 end
 
 return {
-  statistical     = statistical_pi,
+  statistical                = statistical_pi,
   madhava_leibniz = madhava_leibniz_series,
-  ramanujan       = ramanujan_series,
-  chudnovsky      = chudnovsky_series,
-  viete           = viete_series,
-  cirle_area      = circle_area_sum
+  ramanujan              = ramanujan_series,
+  chudnovsky            = chudnovsky_series,
+  viete                           = viete_series,
+  circle_area                = circle_area_sum,
 }
