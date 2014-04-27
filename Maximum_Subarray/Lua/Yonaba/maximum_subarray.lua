@@ -48,7 +48,29 @@ local function gss_brute_force(s)
   return max, st, ed==nil and st or ed
 end
 
+-- Computes the largest sub-sequential sum by computing sub-sums
+-- s       : a given sequence
+-- returns : the sum of the largest subsequence found
+-- returns : the starting index of the largest subsequence found
+-- returns : the final index of the largest subsequence found
+local function gss_subsums(s)
+  local st, ed = 1
+  local sum , max = s[st], s[st]
+  for i = 1, #s do
+    sum = 0
+    for j = i, #s do
+      sum = sum + s[j]
+      if sum > max then
+        st, ed = i, j
+        max = sum
+      end
+    end
+  end
+  return max, st, ed==nil and st or ed
+end
+
 return {
   kadanes = kadanes,
   brute_force = gss_brute_force,
+  subsums = gss_subsums,
 }
