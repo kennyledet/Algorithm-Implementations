@@ -21,10 +21,43 @@ run('Kadanes algorithm', function()
   local max, i, j = gss.kadanes {1, 2, 3, 4, 5}
   assert( max == 15 and i == 1 and j == 5)
 
-  local max, i, j = gss.kadanes {-1, -2, -3, -4, -5}
+  max, i, j = gss.kadanes {-1, -2, -3, -4, -5}
   assert( max == -1 and i == 1 and j == 1)
 
-  local max, i, j = gss.kadanes {-2, 1, -3, 4, -1, 2, 1, -5, 4}
+  max, i, j = gss.kadanes {-2, 1, -3, 4, -1, 2, 1, -5, 4}
+  assert( max == 6 and i == 4 and j == 7)
+end)
+
+run('Brute-force algorithm', function()
+  local max, i, j = gss.brute_force {1, 2, 3, 4, 5}
+  assert( max == 15 and i == 1 and j == 5)
+
+  max, i, j = gss.brute_force {-1, -2, -3, -4, -5}
+  assert( max == -1 and i == 1 and j == 1)
+
+  max, i, j = gss.brute_force {-2, 1, -3, 4, -1, 2, 1, -5, 4}
+  assert( max == 6 and i == 4 and j == 7)
+end)
+
+run('Subsums', function()
+  local max, i, j = gss.subsums {1, 2, 3, 4, 5}
+  assert( max == 15 and i == 1 and j == 5)
+
+  max, i, j = gss.subsums {-1, -2, -3, -4, -5}
+  assert( max == -1 and i == 1 and j == 1)
+
+  max, i, j = gss.subsums {-2, 1, -3, 4, -1, 2, 1, -5, 4}
+  assert( max == 6 and i == 4 and j == 7)
+end)
+
+run('Dynamic programming', function()
+  local max, i, j = gss.dynamic {1, 2, 3, 4, 5}
+  assert( max == 15 and i == 1 and j == 5)
+
+  max, i, j = gss.dynamic {-1, -2, -3, -4, -5}
+  assert( max == -1 and i == 1 and j == 1)
+
+  max, i, j = gss.dynamic {-2, 1, -3, 4, -1, 2, 1, -5, 4}
   assert( max == 6 and i == 4 and j == 7)
 end)
 
