@@ -1,4 +1,4 @@
--- Tests for monty_hall.lua
+-- Tests for 99bottles.lua
 local nbottles = require '99bottles'
 
 local total, pass = 1, 1
