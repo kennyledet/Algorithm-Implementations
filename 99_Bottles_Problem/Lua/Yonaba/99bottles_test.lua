@@ -9,7 +9,9 @@ local function dec(str, len)
       or str:sub(1,len)
 end
 
-nbottles(99)
+print('99 bottles of beer lyrics:\n')
+local lyrics = nbottles(99)
+print(lyrics)
 
 print('\n'..('-'):rep(80))
 print(('Total : %02d: Pass: %02d - Failed : %02d - Success: %.2f %%')
