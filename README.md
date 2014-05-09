@@ -2,13 +2,17 @@
 
 (Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
-Website coming soon!
+**Update 05/09/14:** 
+I am working on a web application that will tie things up in a much more fluid way, and help exhibit the algorithms to those who either don't know much about git/github, or just can't be vexed clicking through all the folders. This will open the repo up to a much wider audience in general!
+
+You can see a preview here!
+[Algorithms Implementations Website](http://dry-sea-7022.herokuapp.com/algorithms)
+
+Please offer up your suggestions in the Issues section of the Github repository
 
 **Update 12/30/13:** I have given the 3 top committers (jcla1, PatrickYevsukov, dalleng) collaborator access. This was very well earned, as they have managed to contribute much more to this repo than I have had the time to.
 
 Again, thanks so much for the consistency guys, it is extremely appreciated. It made sense to start with giving these guys collab access for obvious reasons, but I also thank every single person who has even submitted a pull request. Without you all, this repository would be nothing.
-
-To do my part more, I am now working on a web application that will tie things up in a much more fluid way, and help exhibit the algorithms to those who either don't know much about git/github, or just can't be vexed clicking through all the folders. This will open the repo up to a much wider audience in general!
 
 Purpose
 ----------
