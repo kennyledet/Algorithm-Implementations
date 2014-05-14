@@ -25,6 +25,14 @@ run('Roman encoding', function()
   assert(roman.encode(2014) == 'MMXIV')
 end)
 
+run('Roman decoding', function()
+  assert(roman.decode('II')       == 2)
+  assert(roman.decode('XII')      == 12)
+  assert(roman.decode('CCCXXVII') == 327)
+  assert(roman.decode('MCMLXX')   == 1970)
+  assert(roman.decode('MMXIV')    == 2014)
+end)
+
 
 print(('-'):rep(80))
 print(('Total : %02d: Pass: %02d - Failed : %02d - Success: %.2f %%')
