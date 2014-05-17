@@ -25,7 +25,24 @@ local function josephus_loop(n, k)
 	return r + 1
 end
 
+-- Private wrapper
+local function j(n, k, s)
+	if n == 1 then return 1 end
+	local new_s = ((s or 1) + k - 2) % n + 1
+	local survivor = j(n - 1, k, new_s)
+	return survivor < new_s and survivor or survivor + 1
+end
+
+-- Returns the survivor
+-- n       : the initial number of people
+-- k       : the count for each step
+-- returns : the survivor's number
+local function josephus_elaborated(n, k)
+	return j(n, k, 1)
+end
+
 return {
   recursive = josephus_recursive,
   loop = josephus_loop,
+  elaborated = josephus_elaborated,  
 }
