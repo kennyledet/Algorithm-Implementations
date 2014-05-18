@@ -41,6 +41,13 @@ local function josephus_elaborated(n, k)
 	return j(n, k, 1)
 end
 
+-- Returns the survivor (assumes the count is k = 2)
+-- n       : the initial number of people
+-- returns : the survivor's number
+local function josephus_2(n)
+  return josephus_iterative(n, 2)
+end
+
 return {
   recursive = josephus_recursive,
   loop = josephus_loop,
