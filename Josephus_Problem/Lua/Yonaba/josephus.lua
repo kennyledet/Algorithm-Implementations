@@ -48,8 +48,18 @@ local function josephus_2(n)
   return josephus_iterative(n, 2)
 end
 
+-- Returns the survivor (assumes the count is k = 2)
+-- Alternate implementation using logarithm.
+-- n       : the initial number of people
+-- returns : the survivor's number
+local function josephus_log_2(n)
+  return 2*(n - 2 ^ math.floor(math.log(n, 2)))+1
+end
+
 return {
   recursive = josephus_recursive,
   loop = josephus_loop,
-  elaborated = josephus_elaborated,  
+  elaborated = josephus_elaborated, 
+  standard = josephus_2,
+  standard_log = josephus_log_2,
 }
