@@ -1,3 +1,6 @@
+// Encode & Decode treat characters outside of the
+// range: A-Za-z just as normal. They won't be ciphered!
+// See: http://en.wikipedia.org/wiki/Caesar_cipher
 package caesarCipher
 
 import (
