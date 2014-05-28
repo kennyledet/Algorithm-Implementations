@@ -1,5 +1,5 @@
--- Tests for 99bottles.lua
-local nbottles = require '99bottles'
+-- Tests for the12daysofxmas.lua
+local the12daysofxmas = require 'the12daysofxmas'
 
 local total, pass = 1, 1
 
@@ -9,8 +9,13 @@ local function dec(str, len)
       or str:sub(1,len)
 end
 
-print('99 bottles of beer lyrics:\n')
-local lyrics = nbottles(99)
+print('Lyrics from the start:\n')
+local lyrics = the12daysofxmas()
+print(lyrics)
+print(('-'):rep(80))
+
+print('Lyrics from the nineth verse:\n ')
+lyrics = the12daysofxmas(9)
 print(lyrics)
 
 print('\n'..('-'):rep(80))
