@@ -12,6 +12,14 @@ func Binomial(n int) int {
 	return binomialCoeff(2*n, n) - binomialCoeff(2*n, n-1)
 }
 
+func Sum(n int) (sum int) {
+	for i := 0; i <= n; i++ {
+		v := binomialCoeff(n, i)
+		sum += v * v
+	}
+	return
+}
+
 func binomialCoeff(n, k int) int {
 	return fact(n) / (fact(n-k) * fact(k))
 }
