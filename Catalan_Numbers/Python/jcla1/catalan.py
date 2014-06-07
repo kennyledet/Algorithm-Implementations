@@ -5,9 +5,6 @@ def catalan_binomial(n):
     if n == 0: return 1
     return binomial_coefficient(2 * n, n) - binomial_coefficient(2 * n, n - 1)
 
-def catalan_fact(n):
-    return factorial(2 * n) / (factorial(n + 1) * factorial(n))
-
 def catalan_sum(n):
     return sum([binomial_coefficient(n, i) ** 2 for i in xrange(n + 1)]) / (n + 1)
 
@@ -20,6 +17,5 @@ def factorial(n):
 if __name__ == '__main__':
     # Make sure all implementations give the same results
     print(all([catalan_direct(n)
-            == catalan_binomial(n)
             == catalan_binomial(n)
             == catalan_sum(n) for n in xrange(100)]))
