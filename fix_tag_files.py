@@ -1,3 +1,7 @@
+# Note
+# Please continue to use jcla1's add_tag_files script
+# This is meant purely for the web app to use to make parsing the tags easier
+
 import pathlib
 
 def fix_tag_file(tagfile):
