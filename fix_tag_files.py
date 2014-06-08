@@ -3,10 +3,11 @@ import pathlib
 def fix_tag_file(tagfile):
     print("Fixing", tagfile)
     with tagfile.open() as f:
-        by_comma = list(map(lambda tag: tag.strip('\n')+'\n', f.read().split(',')))
+        by_comma = list(map(lambda tag: tag.capitalize().strip('\n')+'\n', f.read().split(',')))
         if len(by_comma) == 1:
             return
 
+    with tagfile.open('w') as f:
         print (by_comma)
         f.writelines(by_comma)
 
