@@ -2,6 +2,10 @@
 
 (Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
+**Update 06/09/14**
+I have released a native Android app for viewing the algorithms! It's a wrapper around the web app with some native functionality. Check it out on Google Play here
+[Algorithm Implementations Android App](https://play.google.com/store/apps/details?id=com.kennyledet.algorithms.app.grmeb)
+
 **Update 05/09/14:** 
 I am working on a web application that will tie things up in a much more fluid way, and help exhibit the algorithms to those who either don't know much about git/github, or just can't be vexed clicking through all the folders. This will open the repo up to a much wider audience in general!
 
