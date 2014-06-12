@@ -29,6 +29,25 @@ function weighted_mean(arr, weights) {
     return weighted / sum(weights);
 }
 
+function midrange_mean(arr) {
+    return 0.5 * (max(arr) + min(arr))
+}
+
+function max(arr) {
+    return arr.reduce(function(acc, n) {
+        if (n > acc) return n;
+        return acc;
+    })
+}
+
+function min(arr) {
+    return arr.reduce(function(acc, n) {
+        if (n < acc) return n;
+        return acc;
+    })
+}
+
+
 function sum(arr) {
     return arr.reduce(function(acc, n) {
         return acc + n;
