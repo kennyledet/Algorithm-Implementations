@@ -12,6 +12,12 @@ function harmonic_mean(arr) {
     }));
 }
 
+function generalized_mean(arr, power) {
+    return Math.pow((1 / arr.length) * sum(arr.map(function(n) {
+        return Math.pow(n, power);
+    })), 1 / power);
+}
+
 function sum(arr) {
     return arr.reduce(function(acc, n) {
         return acc + n;
