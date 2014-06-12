@@ -33,6 +33,16 @@ function midrange_mean(arr) {
     return 0.5 * (max(arr) + min(arr))
 }
 
+function energatic_mean(arr) {
+    return 10 * log(sum(arr.map(function(n) {
+        return Math.pow(10, n / 10)
+    })) / arr.length, 10);
+}
+
+function log(a, b) {
+    return Math.log(b) / Math.log(a);
+}
+
 function max(arr) {
     return arr.reduce(function(acc, n) {
         if (n > acc) return n;
