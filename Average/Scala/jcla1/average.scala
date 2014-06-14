@@ -10,4 +10,7 @@ object Average {
     def generalizedMean(xs: List[Double], power: Double): Double =
         math.pow(1.0 / xs.size * xs.map(n => math.pow(n, power)).sum,
             1.0 / power)
+
+    def weightedMean(xs: List[Double], weights: List[Double]): Double =
+        xs.zip(weights).map(t => t._1 * t._2).sum / weights.sum
 }
