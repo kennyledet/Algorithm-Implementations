@@ -13,4 +13,7 @@ object Average {
 
     def weightedMean(xs: List[Double], weights: List[Double]): Double =
         xs.zip(weights).map(t => t._1 * t._2).sum / weights.sum
+
+    def midrangeMean(xs: List[Double]): Double =
+        0.5 * (xs.max + xs.min)
 }
