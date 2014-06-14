@@ -6,4 +6,8 @@ object Average {
 
     def harmonicMean(xs: List[Double]): Double =
         xs.size  / xs.map(n => 1.0 / n).sum
+
+    def generalizedMean(xs: List[Double], power: Double): Double =
+        math.pow(1.0 / xs.size * xs.map(n => math.pow(n, power)).sum,
+            1.0 / power)
 }
