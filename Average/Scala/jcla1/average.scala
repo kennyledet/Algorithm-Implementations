@@ -16,4 +16,7 @@ object Average {
 
     def midrangeMean(xs: List[Double]): Double =
         0.5 * (xs.max + xs.min)
+
+    def energaticMean(xs: List[Double]): Double =
+        10 * math.log10(xs.map(n => math.pow(n, n / 10)).sum / xs.size)
 }
