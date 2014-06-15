@@ -1,5 +1,13 @@
 object CatalanNumbers {
-    def direct(n: Int): BigInt = fact(2*n) / (fact(n+1) * fact(n))
+    def direct(n: Int): BigInt =
+        fact(2*n) / (fact(n+1) * fact(n))
 
-    private def fact(i: Int): BigInt = (2 to i).foldLeft(BigInt(1))(_ * _)
+    def binomial(n: Int): BigInt =
+        if (n == 0) 1 else binom(2*n, n) - binom(2*n, n-1)
+
+    private def binom(n: Int, k: Int): BigInt =
+        fact(n) / (fact(n - k) * fact(k))
+
+    private def fact(i: Int): BigInt =
+        (2 to i).foldLeft(BigInt(1))(_ * _)
 }
