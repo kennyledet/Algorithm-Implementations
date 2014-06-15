@@ -5,6 +5,9 @@ object CatalanNumbers {
     def binomial(n: Int): BigInt =
         if (n == 0) 1 else binom(2*n, n) - binom(2*n, n-1)
 
+    def sum(n: Int): BigInt =
+        (0 to n).map(i => binom(n, i).pow(2)).sum / (n + 1)
+
     private def binom(n: Int, k: Int): BigInt =
         fact(n) / (fact(n - k) * fact(k))
 
