@@ -1,6 +1,6 @@
 package horspool
 
-func horspool(haystack, needle string) int {
+func Horspool(haystack, needle string) int {
 	if len(needle) < 1 {
 		return -1
 	}

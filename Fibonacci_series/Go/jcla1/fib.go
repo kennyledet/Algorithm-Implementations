@@ -5,7 +5,7 @@ package fib
 // To get the terms you call "fib_closure()" and
 // get back a function, which (at each call) returns
 // the next Fibonacci term
-func fib_closure() func() int {
+func FibClosure() func() int {
 	a, b := 0, 1
 	return func() int {
 		a, b = b, a+b
@@ -19,7 +19,7 @@ func fib_closure() func() int {
 //   fib(0) = 0
 //   fib(1) = 1
 //   fib(n) = fib(n-1) + fib(n-1)
-func fib_rec(n int) int {
+func FibRec(n int) int {
 	if n < 2 {
 		return n
 	} else {
@@ -30,7 +30,7 @@ func fib_rec(n int) int {
 // This is the iterative implementation of the
 // Fibonacci series. It does not use recursion,
 // which gets rid of the possibility of a stack-overflow.
-func fib_loop(n int) int {
+func FibLoop(n int) int {
 	a, b := 0, 1
 	for ; n >= 0; n-- {
 		a, b = b, a+b

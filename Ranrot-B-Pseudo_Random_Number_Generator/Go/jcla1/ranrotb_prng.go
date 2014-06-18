@@ -4,7 +4,7 @@ package ranrotb
 // which will return pseudo-random numbers on
 // consecutive calls
 // Note: seed could be uint32(time.Now().Unix())
-func rrbRand(seed uint32) func() uint32 {
+func RRBRand(seed uint32) func() uint32 {
 	var lo, hi uint32
 
 	// In Go ^ is the bitwise complement operator
