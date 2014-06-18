@@ -1,6 +1,6 @@
 package euclidean
 
-func gcd_devision(a, b int) int {
+func GCDDevision(a, b int) int {
 	var tmp int
 
 	for b != 0 {
@@ -12,7 +12,7 @@ func gcd_devision(a, b int) int {
 	return a
 }
 
-func gcd_subtraction(a, b int) int {
+func GCDSubtraction(a, b int) int {
 	for a != b {
 		if a > b {
 			a -= b
@@ -24,7 +24,7 @@ func gcd_subtraction(a, b int) int {
 	return a
 }
 
-func gcd_recursive(a, b int) int {
+func GCDRecursive(a, b int) int {
 	if b == 0 {
 		return a
 	} else {
