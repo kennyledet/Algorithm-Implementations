@@ -1,3 +1,4 @@
+levenshtein :: Eq a => [a] -> [a] -> Int
 levenshtein [] t = length t
 levenshtein s [] = length s
 levenshtein (a:as) (b:bs) = minimum distances
@@ -8,7 +9,8 @@ levenshtein (a:as) (b:bs) = minimum distances
         deleteFromT = 1 + levenshtein (a:as) bs
         deleteFromBoth = cost + levenshtein as bs
 
-        cost = tr $ a == b
+        cost = bool2Int $ a == b
 
-tr True = 0
-tr False = 1
+bool2Int :: Bool -> Int
+bool2Int True = 0
+bool2Int False = 1
