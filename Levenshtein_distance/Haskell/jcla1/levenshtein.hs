@@ -14,3 +14,8 @@ levenshtein (a:as) (b:bs) = minimum distances
 bool2Int :: Bool -> Int
 bool2Int True = 0
 bool2Int False = 1
+
+levenshteinTest = and $ map (\ (a, b, d) -> d == (levenshtein a b)) cases
+    where cases = [("soylent green is people", "people soiled our green", 19)] ++
+                  [("horse", "ros", 3)] ++
+                  [("hello world", "how are you", 10)]
