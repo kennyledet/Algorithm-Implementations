@@ -1,5 +1,6 @@
 package levenshtein
 
+// Warning: Very slow!
 func RecursiveLevenshtein(as, bs string) int {
 	if min(len(as), len(bs)) == 0 {
 		return len(as) | len(bs)
@@ -11,6 +12,35 @@ func RecursiveLevenshtein(as, bs string) int {
 	return min(1+RecursiveLevenshtein(as[1:], bs),
 		1+RecursiveLevenshtein(as, bs[1:]),
 		cost+RecursiveLevenshtein(as[1:], bs[1:]))
+}
+
+func WagnerFisherLevenshtein(as, bs string) int {
+	m, n := len(as), len(bs)
+
+	d := make([][]int, m+1)
+	for i := range d {
+		d[i] = make([]int, n+1)
+	}
+
+	for i := 0; i <= m; i++ {
+		d[i][0] = i
+	}
+
+	for i := 0; i <= n; i++ {
+		d[0][i] = i
+	}
+
+	for j := 1; j <= n; j++ {
+		for i := 1; i <= m; i++ {
+			if as[i-1] == bs[j-1] {
+				d[i][j] = d[i-1][j-1]
+			} else {
+				d[i][j] = min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+1)
+			}
+		}
+	}
+
+	return d[m][n]
 }
 
 func bool2Int(a bool) int {
@@ -36,7 +66,7 @@ func min(as ...int) int {
 
 	m := as[0]
 	for i := 1; i < len(as); i++ {
-		m := minSingle(m, as[i])
+		m = minSingle(m, as[i])
 	}
 
 	return m
