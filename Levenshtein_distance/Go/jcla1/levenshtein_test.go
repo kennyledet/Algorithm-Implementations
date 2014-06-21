@@ -22,4 +22,5 @@ func runTest(f func(string, string) int, t *testing.T) {
 	}
 }
 
-func TestRecursive(t *testing.T) { runTest(RecursiveLevenshtein, t) }
+func TestRecursive(t *testing.T)    { runTest(RecursiveLevenshtein, t) }
+func TestWagnerFisher(t *testing.T) { runTest(WagnerFisherLevenshtein, t) }
