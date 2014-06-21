@@ -43,6 +43,36 @@ func WagnerFisherLevenshtein(as, bs string) int {
 	return d[m][n]
 }
 
+func ReducedMatrixLevenshtein(as, bs string) int {
+	if min(len(as), len(bs)) == 0 {
+		return len(as) | len(bs)
+	} else if as == bs {
+		return 0
+	}
+
+	v0 := make([]int, len(bs)+1)
+	for i := range v0 {
+		v0[i] = i
+	}
+
+	v1 := make([]int, len(bs)+1)
+
+	for i := range as {
+		v1[0] = i + 1
+
+		for j := range bs {
+			cost := bool2Int(as[i] == bs[j])
+			v1[j+1] = min(v1[j]+1, v0[j+1]+1, v0[j]+cost)
+		}
+
+		for i := range v0 {
+			v0[i] = v1[i]
+		}
+	}
+
+	return v1[len(bs)]
+}
+
 func bool2Int(a bool) int {
 	if a {
 		return 0
