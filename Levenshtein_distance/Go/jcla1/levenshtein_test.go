@@ -14,14 +14,14 @@ var expectedResults = []int{
 	10,
 }
 
-func runTest(f func(string, string) int, t *testing.T) {
+func runTest(f func(string, string) int, t *testing.T, name string) {
 	for i, v := range testCases {
 		if f(v[0], v[1]) != expectedResults[i] {
-			t.Error(f)
+			t.Errorf("%s failed on: (%d != %d) %s -> %s", name, f(v[0], v[1]), expectedResults[i], v[0], v[1])
 		}
 	}
 }
 
-func TestRecursive(t *testing.T)     { runTest(RecursiveLevenshtein, t) }
-func TestWagnerFisher(t *testing.T)  { runTest(WagnerFisherLevenshtein, t) }
-func TestReducedMatrix(t *testing.T) { runTest(ReducedMatrixLevenshtein, t) }
+func TestRecursive(t *testing.T)     { runTest(RecursiveLevenshtein, t, "Recursive") }
+func TestWagnerFisher(t *testing.T)  { runTest(WagnerFisherLevenshtein, t, "WagnerFisher") }
+func TestReducedMatrix(t *testing.T) { runTest(ReducedMatrixLevenshtein, t, "ReducedMatrix") }
