@@ -1,7 +1,7 @@
 function recursiveLevenshtein(a, b) {
     if (min(a.length, b.length) == 0) return a.length | b.length;
 
-    var cost = (a[0] != b[0])*1;
+    var cost = (a[0] != b[0]) * 1;
 
     return min(
         1 + recursiveLevenshtein(a.slice(1), b),
@@ -30,6 +30,32 @@ function wagnerFisherLevenshtein(a, b) {
     }
 
     return d[m][n];
+}
+
+function reducedMatrixLevenshtein(a, b) {
+    if (min(a.length, b.length) == 0) {
+        return a.length | b.length;
+    } else if (a === b) {
+        return 0;
+    }
+
+    var v0 = range(b.length + 1),
+        v1 = range(b.length + 1, 0);
+
+    for (var i = 0; i < a.length; i++) {
+        v1[0] = i + 1;
+
+        for (var j = 0; j < b.length; j++) {
+            var cost = (a[i] != b[j]) * 1;
+            v1[j+1] = min(v1[j]+1, v0[j+1]+1, v0[j]+cost);
+        }
+
+        for (var k = 0; k < v0.length; k++) {
+            v0[k] = v1[k];
+        }
+    }
+
+    return v1[b.length];
 }
 
 function range(n, elem) {
