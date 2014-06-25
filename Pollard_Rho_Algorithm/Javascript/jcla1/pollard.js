@@ -1,3 +1,9 @@
+function defaultPollard(n) {
+    return pollard(n, function(x) {
+        return (x*x - 1) % n;
+    });
+}
+
 // Takes f(x, n) where n is the integer to factorize
 function pollard(n, f) {
     var x = 2,
