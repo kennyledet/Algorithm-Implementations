@@ -4,11 +4,11 @@
 local function lzw_encode(str)
   local w = ''
   local result = {}
-  local dict_size = 255
+  local dict_size = 256
 
   -- Builds the dictionnary
   local dict = {}
-  for i = 0, dict_size do
+  for i = 0, dict_size-1 do
     dict[string.char(i)] = i
   end
 
@@ -23,8 +23,8 @@ local function lzw_encode(str)
     else
       -- Add the match to the dictionary
       table.insert(result, dict[w])
-      i = i + 1
       dict[wc] = i
+      i = i + 1
       w = char
     end
   end
@@ -35,11 +35,11 @@ local function lzw_encode(str)
 end
 
 local function lzw_decode(str)
-  local dict_size = 255
+  local dict_size = 256
 
   -- Builds the dictionary
   local dict = {}
-  for i = 0, dict_size do
+  for i = 0, dict_size-1 do
     dict[i] = string.char(i)
   end
 
@@ -56,8 +56,8 @@ local function lzw_decode(str)
       return nil -- No match found, decoding error
     end
     result = result .. entry
-    dict_size = dict_size + 1
     dict[dict_size] = w .. entry:sub(1,1)
+    dict_size = dict_size + 1
     w = entry
   end
   return result
