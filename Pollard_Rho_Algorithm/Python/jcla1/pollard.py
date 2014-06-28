@@ -1,3 +1,9 @@
+def defaultPollard(n):
+	return pollard(n, defaultFunc)
+
+def defaultFunc(x, n):
+	return (x*x - 1) % n
+
 def pollard(n, f):
 	x, y, d = 2, 2, 1
 	while d == 1:
