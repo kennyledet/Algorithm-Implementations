@@ -12,7 +12,7 @@ func bottle(){
 
 
 BEGIN {
-    // run the program
+     #run the program
 	bottle();
 }
 END {

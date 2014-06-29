@@ -1,5 +1,5 @@
-//Towers of Hanoi problem algorithm implementation
-//See: http://en.wikipedia.org/wiki/Tower_of_Hanoi
+#Towers of Hanoi problem algorithm implementation
+#See: http://en.wikipedia.org/wiki/Tower_of_Hanoi
 
 func move(n,src,dest,temp){
  	if(n>=1){
