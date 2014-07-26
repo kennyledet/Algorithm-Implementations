@@ -1,4 +1,4 @@
-/* SCALA Implementation of Factorial of Small and Big Numbers.
+/* SCALA Implementation of Merge Sort.
 
   Though the corner cases are covered. But still if you find any additions to it,
   please do add a test for it.
