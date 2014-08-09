@@ -4,7 +4,7 @@ public class LinearSearch {
 
     protected static int linearSearch(int arrayToBeSearched[], int numberToBeSearched) {
 
-        int valueFound = 0;
+        int valueFound = -1;
         for(int loopVariable=0;loopVariable<arrayToBeSearched.length;loopVariable++) {
 
             if(numberToBeSearched == arrayToBeSearched[loopVariable]) {
@@ -33,7 +33,7 @@ public class LinearSearch {
         int elementToBeSearched = scannerObject.nextInt();
 
         int valueFound = linearSearch(arrayOfElements,elementToBeSearched);
-        if(valueFound == 0)
+        if(valueFound == -1)
             System.out.println("Notfound");
         else
             System.out.println("Found !!");
