@@ -33,7 +33,7 @@ public class LinearSearch {
         int elementToBeSearched = scannerObject.nextInt();
 
         int valueFound = linearSearch(arrayOfElements,elementToBeSearched);
-        if(valueFound == 0)
+        if(valueFound == -1)
             System.out.println("Notfound");
         else
             System.out.println("Found !!");
