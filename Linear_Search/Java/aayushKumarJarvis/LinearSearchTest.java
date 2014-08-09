@@ -18,7 +18,7 @@ public class LinearSearchTest {
 	int testSearch3 = objectForLinearSearch.linearSearch(testArray,testElement3);
 
         assertEquals(testSearch1,3);
-        assertEquals(testSearch2,0);
+        assertEquals(testSearch2,-1);
 	assertEquals(testSearch3,-1);
     }
 }
