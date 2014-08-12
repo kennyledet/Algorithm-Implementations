@@ -1,4 +1,3 @@
-
 // Author: Aaron Friedlander 2014
 
 // Problem: You have 100 doors in a row that are all initially closed. You make
