@@ -1,7 +1,7 @@
 // Author: Aaron Friedlander 2014
 
 // A function that memoizes a function
-// Adapted from https://github.com/aaronabf/memoization/blob/master/memoizer.js
+// Adapted from my code here https://github.com/aaronabf/memoization/blob/master/memoizer.js
 
 // Stores cached results
 var dict = {};
