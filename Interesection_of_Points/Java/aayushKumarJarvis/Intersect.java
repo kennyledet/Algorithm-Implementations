@@ -1,5 +1,6 @@
 
-public class ConvexHull {
+
+public class Intersect {
 
     // Defining a structure Point in form of an inner class rather than creating fresh class.
     static class Point {
