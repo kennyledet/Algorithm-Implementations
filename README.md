@@ -2,7 +2,7 @@
 
 (Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
-Website coming soon!
+Website coming soon!.
 
 **Update 12/30/13:** I have given the 3 top committers (jcla1, PatrickYevsukov, dalleng) collaborator access. This was very well earned, as they have managed to contribute much more to this repo than I have had the time to.
 
