@@ -22,14 +22,10 @@ public class vertex {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return value+"";
 		
 	}
 	public boolean equals(vertex obj) {
-			
-		
-		// TODO Auto-generated method stub
 		return (getValue() == obj.getValue()) ? true :false;
 	}
 

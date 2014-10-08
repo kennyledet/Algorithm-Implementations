@@ -6,7 +6,6 @@ import java.util.function.Function;
 
 public class Graph {
 	private LinkedList<vertex>[] linkedlistGroup;
-//	private LinkedList<vertex> head;
 	private int capacity ;
 	private Function<Integer, Boolean> isinvalid= (item) -> (item > capacity || item < 0)  ? true : false;
 			LinkedList<vertex> temp;
@@ -65,7 +64,7 @@ public Iterable<vertex> getconnectedvertices(int v){
 	}
 	
 	public LinkedList<vertex> allVertices(){
-//		LinkedBlockingQueue<vertex> x = new LinkedBlockingQueue<vertex>();
+
 		LinkedList<vertex> v = new LinkedList<vertex>(); 
 		Arrays.stream(linkedlistGroup).forEach(item ->{
 		if(!item.isEmpty())v.add(item.getFirst());
