@@ -1,0 +1,1 @@
+ensure_loaded([nqueens]).
