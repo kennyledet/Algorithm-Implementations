@@ -10,7 +10,7 @@
 --  F(n) = F(n-1) + F(n-2), given any n > 2
 
 -- Custom memoization function
-local function memoize(f,hash)
+local function memoize(f)
   local _cache = {}
   return function (v)
     local _result = _cache[v]

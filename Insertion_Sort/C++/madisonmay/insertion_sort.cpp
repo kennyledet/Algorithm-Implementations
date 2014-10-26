@@ -57,7 +57,8 @@ vector<T> insertion_sort(vector<T>& l) {
 
 int main() {
     // Testing
-    vector<int> l = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    const int a[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    vector<int> l (a, a + sizeof(a) / sizeof(a[0]));
     cout << "Unsorted list: ";
     print(l);
     l = insertion_sort(l);
