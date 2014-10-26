@@ -77,10 +77,10 @@ public class StopWords {
 
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.print("Please type the stop words file name: ");
+        System.out.print("Please type stop words file name: ");
         List<String> stopWords = readStopWords(keyboard.next());
 
-        System.out.print("Please type the text file name: ");
+        System.out.print("Please type text file name: ");
         removeStopWords(keyboard.next(), stopWords);
 
     }
