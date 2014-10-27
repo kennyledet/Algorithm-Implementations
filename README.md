@@ -2,6 +2,9 @@
 
 (Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
+<<<<<<< HEAD
+Website coming soon!.
+=======
 **Update 06/09/14**
 I have released a native Android app for viewing the algorithms! It's a wrapper around the web app with some native functionality. Check it out on Google Play here
 [Algorithm Implementations Android App](https://play.google.com/store/apps/details?id=com.kennyledet.algorithms.app.grmeb)
@@ -13,6 +16,7 @@ You can see a preview here!
 [Algorithms Implementations Website](http://dry-sea-7022.herokuapp.com/algorithms)
 
 Please offer up your suggestions in the Issues section of the Github repository
+>>>>>>> upstream/master
 
 **Update 12/30/13:** I have given the 3 top committers (jcla1, PatrickYevsukov, dalleng) collaborator access. This was very well earned, as they have managed to contribute much more to this repo than I have had the time to.
 
