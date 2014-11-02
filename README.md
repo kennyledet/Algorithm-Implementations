@@ -2,7 +2,6 @@
 
 (Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
-<<<<<<< HEAD
 Website coming soon!.
 =======
 **Update 06/09/14**
@@ -16,7 +15,6 @@ You can see a preview here!
 [Algorithms Implementations Website](http://dry-sea-7022.herokuapp.com/algorithms)
 
 Please offer up your suggestions in the Issues section of the Github repository
->>>>>>> upstream/master
 
 **Update 12/30/13:** I have given the 3 top committers (jcla1, PatrickYevsukov, dalleng) collaborator access. This was very well earned, as they have managed to contribute much more to this repo than I have had the time to.
 
