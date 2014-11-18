@@ -1,0 +1,38 @@
+#include <iostream>
+#include<list>
+#include<ctime>
+using namespace std;
+const int N(6);
+
+long encrypt(int numbers[]){
+	int N = 6;	    
+	long sum=0; 
+	long lsum = 1;
+
+	for (int i = 0; i < N; i++){
+		numbers[i] = numbers[i] + 1;
+	    for (int j = 0; j < N; j++){
+			printf("+{%ld*%ld}",lsum,numbers[j]);
+	        lsum *= numbers[j];
+	    }
+	    cout <<" = "<<lsum<< endl; 
+	    if (lsum>sum)
+	    	sum = lsum;
+	    lsum = 1;
+	    numbers[i] = numbers[i] - 1;
+	}
+	return sum;
+}
+
+int main(){
+	int a[N] = {1000,999,998,997,996,995};
+	//int a[N] = {1,3,2,1,1,3};
+
+	/*for (int i = 0; i < N; i++){
+		a[i] = rand() % 998 +2;
+	   	cout << a[i] << "-";
+	}*/
+	printf("\nAnswer: %ld",encrypt(a));
+    //system("pause");
+    return 0;
+}
