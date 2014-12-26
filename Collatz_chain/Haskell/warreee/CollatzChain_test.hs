@@ -3,6 +3,5 @@ import CollatzChain ( chain )
 
 main = do
     putStrLn "Collatz Chain with number 30: "
-    putStrLn (show  list)
     putStrLn $ show $ chain 30
     
