@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace خوارزميات
+namespace CaesarCipher
 {
-    public class CaesarCipher
+    public class Program
     {
 
         // cipher(String,int) returns original message shifted by 3 letters
