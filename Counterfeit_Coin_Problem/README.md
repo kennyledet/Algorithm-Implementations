@@ -12,7 +12,6 @@ For the first weigh, it’s tempting to think you’d do the first 6 vs the last
 
 WEIGH #1: [1, 2, 3, 4] vs [5, 6, 7, 8]
 
-Cases:
 
 1.) If they balance out, we know that the counterfeit coin must be one of the coins in [9, 10, 11, 12]! This is the easier case as now we can weigh [1, 2, 3] vs [9, 10, 11].
 
