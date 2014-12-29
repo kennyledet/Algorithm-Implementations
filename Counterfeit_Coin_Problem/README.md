@@ -7,7 +7,7 @@ There is a pile of twelve coins, all of equal size. Eleven are of equal weight. 
 
 
 Written Solution (By Nico Hinderling):
-
+--------------------------------------
 For the first weigh, it’s tempting to think you’d do the first 6 vs the last 6, yet the best way to approach it is to do [1, 2, 3, 4] vs [5, 6, 7, 8].
 
 WEIGH #1: [1, 2, 3, 4] vs [5, 6, 7, 8]
