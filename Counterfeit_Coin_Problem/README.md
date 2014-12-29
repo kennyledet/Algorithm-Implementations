@@ -105,7 +105,7 @@ CASE 3.3 WEIGH #3: [5] vs [6]
 
 
 Possible Case Mappings for Each Coin:
-—————————————————————————————————————
+-------------------------------------
 Coin 1: Heavy = 2.3.2 || Light = 3.2.1
 Coin 2: Heavy = 2.3.3 || Light = 3.3.1
 Coin 3: Heavy = 2.2.2 || Light = 3.1.2
