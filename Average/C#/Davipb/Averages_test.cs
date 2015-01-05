@@ -14,7 +14,7 @@ namespace Average
 
 		static void Test()
 		{
-			Console.WriteLine("Enter a sequence, seprated by ';'");
+			Console.WriteLine("Enter a sequence, separated by ';'");
 
 			double[] numbers = Console.ReadLine().Replace(" ", string.Empty).Split(';').Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => double.Parse(x)).ToArray();
 

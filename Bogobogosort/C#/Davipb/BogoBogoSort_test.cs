@@ -13,7 +13,7 @@ namespace BogoBogoSort
 
 		static void Test()
 		{
-			Console.WriteLine("Enter the list you to sort, separated by ';':");
+			Console.WriteLine("Enter the list you want to sort, separated by ';':");
 
 			double[] numbers = Console.ReadLine().Replace(" ", string.Empty).Split(';').Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => double.Parse(x)).ToArray();
 			numbers = BogoBogoSort.Sort(numbers);			
