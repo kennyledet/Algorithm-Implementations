@@ -2,8 +2,16 @@
 
 (Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
-Website coming soon!.
+
+
+Updates
 =======
+**Update 1/4/15**
+Our site is now getting hundreds of unique visitors and thousands of pageviews per day :)
+
+[Algorithm.zone](http://algorithm.zone/)
+
+
 **Update 06/09/14**
 I have released a native Android app for viewing the algorithms! It's a wrapper around the web app with some native functionality. Check it out on Google Play here
 [Algorithm Implementations Android App](https://play.google.com/store/apps/details?id=com.kennyledet.algorithms.app.grmeb)
