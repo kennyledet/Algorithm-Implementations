@@ -21,7 +21,7 @@ class Bottles
 		{
 		 trace(bottles + " bottles of beer on the wall, " + bottles + " bottles of beer");
 		 bottles -= 1;
-		 trace("Take one down and pass it around, " + bottles + " of beer on the wall");
+		 trace("Take one down and pass it around, " + bottles + " bottles of beer on the wall");
 		}
 		trace("No more bottles of beer on the wall, no more bottles of beer.");
 		trace("Go to the store and buy some more, 99 bottles of beer on the wall.");
