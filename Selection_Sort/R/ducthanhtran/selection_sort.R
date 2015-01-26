@@ -2,6 +2,7 @@
 # Author: Duc Thanh Tran (ducthanhtran, Github)
 # Date: 01/26/2015
 
+# selection sort algorithm
 selectionSort <- function(arr) {
   for (i in 1:(length(arr)-1)) {
     indexMin <- i;
