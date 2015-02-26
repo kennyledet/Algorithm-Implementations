@@ -50,3 +50,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+# IDE and text editors
+.idea/*
+*.swp
