@@ -21,6 +21,8 @@ func newField() Sudoku {
 	return result
 }
 
+// Generates an array of the numbers from 0 to 9
+// Helper method for createOptions
 func makeNumbers() []int {
 	numbers := make([]int, 9)
 	for i := 0; i < len(numbers); i++ {
@@ -29,6 +31,7 @@ func makeNumbers() []int {
 	return numbers
 }
 
+// Checks whether a sudoku is fully solved
 func isDone(sd Sudoku) bool {
 	for y := 0; y < len(sd); y++ {
 		for x := 0; x < len(sd[y]); x++ {
@@ -40,6 +43,7 @@ func isDone(sd Sudoku) bool {
 	return true
 }
 
+// Takes a field in a sudoku and creates a list of all legit numbers for this field
 func createOptions(sd Sudoku, x, y int) []int {
 	result := make([]int, 10, 10)
 	numbers := makeNumbers()
@@ -79,6 +83,7 @@ func createOptions(sd Sudoku, x, y int) []int {
 	return result[0:counter]
 }
 
+// Searches the field with the lowest number of possible values
 func fieldWithLowest(sd Sudoku) (x, y int) {
 	lowest := 100
 	lX, lY := 0, 0
