@@ -1,0 +1,7 @@
+Open swiprolog in this directory.
+Then run the following commands: 
+
+[nqueens].
+queens(8,L).
+
+Now you will get the solution for the eight-queen problem.

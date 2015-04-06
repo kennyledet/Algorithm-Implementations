@@ -1,0 +1,3 @@
+The Fisher–Yates shuffle (named after Ronald Fisher and Frank Yates), also known as the Knuth shuffle (after Donald Knuth), is an algorithm for generating a random permutation of a finite set—in plain terms, for randomly shuffling the set.
+The modern version of the Fisher–Yates shuffle, designed for computer use, was introduced by Richard Durstenfeld in 1964 and popularized by Donald E. Knuth in The Art of Computer Programming as "Algorithm P".
+For more information: http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
