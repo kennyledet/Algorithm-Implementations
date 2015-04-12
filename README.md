@@ -1,5 +1,7 @@
 #Algorithm Implementations
 
+[![Join the chat at https://gitter.im/kennyledet/Algorithm-Implementations](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/kennyledet/Algorithm-Implementations?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 (Note: there is a backstory on my motivation for starting this at the bottom of this README)
 
 
