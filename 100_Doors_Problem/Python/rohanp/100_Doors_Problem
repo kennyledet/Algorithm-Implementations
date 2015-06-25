@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+""" 100 Doors Problem """
+__author__ = "Rohan Pandit"
+
+def main():
+	#Number of flips for each door == number of factors that door number has.
+	doors = ["Closed" if len(factors(i))%2 == 0 else "Open" for i in range(1, 101)]
+	print(doors)
+
+def factors(n):
+    return set(x for tup in ([i, n//i] for i in range(1, int(n**0.5)+1) if n % i == 0) for x in tup)
+
+if __name__ == "__main__": main()
+
+
