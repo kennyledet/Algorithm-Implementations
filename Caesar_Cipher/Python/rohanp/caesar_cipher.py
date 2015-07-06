@@ -12,8 +12,8 @@ def caesar(plaintext, shift):
     return plaintext.translate( lower ).translate( upper )
 
 def main():
-    print( caesar("blah", 5) )
-    print( caesar("BlAh", 5) )
+    print( caesar("blah", 26) )
+    print( caesar("BlAh", 26) )
 
 if __name__ == "__main__": main()
 
