@@ -8,6 +8,10 @@
 
 Updates
 =======
+**Update 7/19/15**
+Please include tests with your implementation submissions! Please see https://github.com/kennyledet/Algorithm-Implementations/issues/459#issuecomment-118841244 on instructions. Thanks for understanding!! <3
+
+
 **Update 1/4/15**
 Our site is now getting hundreds of unique visitors and thousands of pageviews per day :)
 
