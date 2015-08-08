@@ -13,11 +13,3 @@ def binary_search_recur(lst, el, max_idx):
         return binary_search_recur(lst, el, max_idx//2)
     else:
         return max_idx
-
-def test():
-    lst = list(range(100))
-    assert( binary_search(lst, 24) == 24 )
-    assert( binary_search(lst, 50) == 50 )
-    assert( binary_search(lst, 0) == 0 )
-
-if __name__ == "__main__": test()
