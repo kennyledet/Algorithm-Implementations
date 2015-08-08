@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """ Binary Search """
 __author__ = "Rohan Pandit"
-import sys
 
 def binary_search(lst, el):
 	#returns index of element, or -1 if not in lst
