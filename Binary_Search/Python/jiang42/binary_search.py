@@ -8,4 +8,11 @@ def binary_search(arr, target):
       high = mid - 1
     else:
       low = mid + 1
-  return high
+
+  try:
+    if arr[high] == target:
+      return high
+    else:
+      return -1
+  except IndexError as e:
+      return -1
