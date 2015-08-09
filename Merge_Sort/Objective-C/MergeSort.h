@@ -10,8 +10,8 @@
 
 @interface MergeSort : NSObject
 
-+ (NSMutableArray *)mergeSort:(NSMutableArray *)numbers
-                        start:(NSInteger)start
-                          end:(NSInteger)end;
++ (NSMutableArray *)execute:(NSMutableArray *)numbers
+                      start:(NSInteger)start
+                        end:(NSInteger)end;
 
 @end

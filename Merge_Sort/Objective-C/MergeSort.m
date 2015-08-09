@@ -10,13 +10,13 @@
 
 @implementation MergeSort
 
-+ (NSMutableArray *)mergeSort:(NSMutableArray *)numbers
-                        start:(NSInteger)start
-                          end:(NSInteger)end {
++ (NSMutableArray *)execute:(NSMutableArray *)numbers
+                      start:(NSInteger)start
+                        end:(NSInteger)end {
     if (start < end) {
         long middle = (start + end) / 2;
-        numbers = [self mergeSort:numbers start:start end:middle];
-        numbers = [self mergeSort:numbers start:middle + 1 end:end];
+        numbers = [self execute:numbers start:start end:middle];
+        numbers = [self execute:numbers start:middle + 1 end:end];
         numbers = merge(numbers, (int)start, (int)middle, (int)end);
     }
     return numbers;
