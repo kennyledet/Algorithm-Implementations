@@ -11,6 +11,11 @@ class BinarySearchTest(unittest.TestCase):
         arr = [1]
         self.assertEquals(binary_search(arr, 1), 0)
 
+    def test_length_of_two(self):
+        arr = [0, 1]
+        self.assertEquals(binary_search(arr, 1), 1)
+        self.assertEquals(binary_search(arr, 0), 0)
+
     def test_basic(self):
         arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         for i, n in enumerate(arr):

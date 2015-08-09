@@ -19,8 +19,3 @@ def binary_search_recur(lst, el, min_idx, max_idx):
 		return binary_search_recur(lst, el, middle_idx, max_idx)
 	else:
 		return binary_search_recur(lst, el, min_idx, middle_idx)
-
-
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-for i, n in enumerate(arr):
-    assert(binary_search(arr, n) == i)
