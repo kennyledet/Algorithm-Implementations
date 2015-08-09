@@ -3,13 +3,24 @@
 __author__ = "Rohan Pandit"
 
 def binary_search(lst, el):
-    #returns index of element, or -1 if not in lst
-    return binary_search_recur(lst, el, len(lst)//2)
+	#returns index of element, or -1 if not in lst
+	return binary_search_recur(lst, el, 0, len(lst))
 
-def binary_search_recur(lst, el, max_idx):
-    if lst[ max_idx ] < el:
-        return binary_search_recur(lst, el, max_idx + max_idx//2 )
-    elif el < lst[ max_idx ]:
-        return binary_search_recur(lst, el, max_idx//2)
-    else:
-        return max_idx
+def binary_search_recur(lst, el, min_idx, max_idx):
+	middle_idx = (max_idx - min_idx) // 2 + min_idx
+
+	if min_idx == max_idx:
+		return -1
+	elif el == lst[ middle_idx ]:
+		return middle_idx
+	elif max_idx - min_idx == 1:
+		return -1
+	elif lst[ middle_idx ] < el:
+		return binary_search_recur(lst, el, middle_idx, max_idx)
+	else:
+		return binary_search_recur(lst, el, min_idx, middle_idx)
+
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+for i, n in enumerate(arr):
+    assert(binary_search(arr, n) == i)
