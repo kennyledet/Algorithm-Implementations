@@ -9,7 +9,7 @@
 Updates
 =======
 **Update 7/19/15**
-Please include tests with your implementation submissions! Please see https://github.com/kennyledet/Algorithm-Implementations/issues/459#issuecomment-118841244 on instructions. Thanks for understanding!! <3
+Please include tests with your implementation submissions! Please see [Issue #459](https://github.com/kennyledet/Algorithm-Implementations/issues/459#issuecomment-118841244) on instructions. Thanks for understanding!! <3
 
 
 **Update 1/4/15**
@@ -56,7 +56,7 @@ Conventions
 + When implementing a new algorithm, create a "tags" file in the algorithm's root directory and add some appropriate tags
 + Please package your code in a directory bearing your GitHub username. `git blame` is cool, and has many more appropriate applications, but in this context I'd rather pull a flat list of files and be able to check out everyone's contributions that way than have to look through the revisions.
 
-+ Each algorithm should have its corresponding unit test cases (as directory structure suggested above) which covers the corner cases, happy/unhappy paths.
++ Each algorithm should have its corresponding unit test cases (as directory structure suggested above) which covers the corner cases, happy/unhappy paths. Please see [Issue #459](https://github.com/kennyledet/Algorithm-Implementations/issues/459) for further discussion on this topic.
 
 	The advantage of doing so is to assert that everything is covered, and that the algorithm is not broken between code changes.
 
