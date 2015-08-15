@@ -68,12 +68,4 @@ public class KmpSearch {
 		}
 		return ((j == lenp) ? (i - lenp) : -1);
 	}
-
-	/** Main Function **/
-	public static void main(String[] args) {
-		
-		KmpSearch km = new KmpSearch("algorithm", "algo");
-		
-	}
-
 }
