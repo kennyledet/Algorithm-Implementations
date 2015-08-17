@@ -9,7 +9,7 @@ public class HarshadNumbers_test {
 		HarshadNumbers.isHarshad(111);
 		HarshadNumbers.isHarshad(201);
 		HarshadNumbers.isHarshad(921341);
-		
+		HarshadNumbers.isHarshad(-11);
 		/** Output
 			12 is Harshad Number
 			11 is not a Harshad Number
@@ -20,3 +20,4 @@ public class HarshadNumbers_test {
 	}
 	
 }
+

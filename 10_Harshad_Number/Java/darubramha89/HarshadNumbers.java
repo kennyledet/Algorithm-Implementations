@@ -4,7 +4,12 @@ public class HarshadNumbers {
 
 	public static boolean isHarshad(int input)
 	{
-		if(input%decimalSum(input) == 0)
+		if(input <= 0)
+        {
+            System.out.println(input+" is invalid, enter a non-negative/non-zero number");
+            return false;
+        }
+        if(input%decimalSum(input) == 0)
 		{
 			System.out.println(input+" is Harshad Number");
 			return true;
