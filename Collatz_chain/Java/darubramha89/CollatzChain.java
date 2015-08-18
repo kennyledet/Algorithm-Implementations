@@ -4,8 +4,11 @@ public class CollatzChain {
 
 	public void collatz(int n) {
         System.out.print(n+" ");
-        if (n == 1) 
-        {
+        if(n < 0){
+        	System.out.println("Please enter positive integers");
+        	return;
+        }
+        if (n == 1){
         	System.out.println();
         	return;
         }

@@ -29,6 +29,7 @@ public class CollatzChain_test {
 		cc.collatz(6);
 		cc.collatz(27);
 		cc.collatz(35);
+		cc.collatz(-1);
 		
 	}
 	
