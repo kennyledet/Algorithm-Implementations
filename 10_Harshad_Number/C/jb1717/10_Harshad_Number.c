@@ -1,8 +1,8 @@
 /*
-** Harshad number implementation
+** A harshad number is an integer that is divisible by the sum of its digits
+** Here we only use the base 10
+** For more information : https://en.wikipedia.org/wiki/Harshad_number
 */
-
-#include <stdio.h>
 
 static int sumDigit(int n)
 {
@@ -26,28 +26,4 @@ int isHarshad(int n)
   if (!sum)
     return (0);
   return (n % sum == 0);
-}
-
-/*
-** Little test
-*/
-int main(void)
-{
-  int pretty = 0;
-
-  printf("Display all Harshad numbers between 1 and 200\n\n");
-  for (int i = 0; i < 201; ++i)
-    {
-      if (isHarshad(i))
-	{
-	  printf("%d", i);
-	  pretty++;
-	  if (pretty % 5 == 0)
-	    printf("\n");
-	  else
-	    printf("\t");
-	}
-    }
-  printf("\n\n=== END ===\n");
-  return (0);
 }
