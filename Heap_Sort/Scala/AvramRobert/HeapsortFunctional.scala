@@ -1,7 +1,7 @@
 /*
  * A functional implementation of the heapsort algorithm
  * /
-object HeapsortF {
+object HeapsortFunctional {
   /*
    * Witness type that allows for generic comparisons between same types.
    */

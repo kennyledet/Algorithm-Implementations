@@ -1,5 +1,5 @@
 
-class HeapsortI_test extends WordSpec with Matchers {
+class HeapsortImperative_test extends WordSpec with Matchers {
 
   val array = Array(12, 42, 54, 234, 64, 340, 21, 23, 56, 40)
 
