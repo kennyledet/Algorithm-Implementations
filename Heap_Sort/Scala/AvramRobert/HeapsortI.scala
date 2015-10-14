@@ -1,5 +1,7 @@
-
-object Heapsort {
+/*
+ * An imperative implementation of the heapsort algorithm
+ */
+object HeapsortI {
 
   /*
    * Witness type that allows for generic comparisons between same types.

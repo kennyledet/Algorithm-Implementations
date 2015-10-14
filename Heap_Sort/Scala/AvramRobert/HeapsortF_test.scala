@@ -1,5 +1,5 @@
 
-class Heapsort_test extends WordSpec with Matchers {
+class HeapsortF_test extends WordSpec with Matchers {
 
   val vec = Vector(12, 42, 54, 234, 64, 340, 21, 23, 56, 40)
 
