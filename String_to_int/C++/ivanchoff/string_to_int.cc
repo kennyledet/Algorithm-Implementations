@@ -1,8 +1,11 @@
 #include <sstream>
-#include <sstream>
-//using namespace std;
-template <class T>
-int string_to_int(const T &x){
+#include <string>
+
+/*
+ * Return int from c++ string
+ */
+
+int string_to_int(std::string x){
     std::stringstream s;
     s << x;
     int r;
