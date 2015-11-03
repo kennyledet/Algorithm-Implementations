@@ -53,11 +53,14 @@ void nQueen(int k, int n) {
 				printf("%d ", x[j]);
 			printf("\n");
 		}
+		else {
+			printf("negetive numbers not allowed\n");
+		}
 	}
 }
 
 int main() {
-	int n;
+	/*int n;
 	printf("Enter the number of queens : ");
 	scanf("%d", &n);
 	
@@ -66,7 +69,12 @@ int main() {
 		return 0;
 	}
 
-	nQueen(1, n);
+	nQueen(1, n);*/
+	
+	nQueen(1, 3);
+	nQueen(1, -10);
+	nQueen(1, 4);
+	flag = 0;	
 	
 	if(flag == 0)
 		printf("Queens cannot be placed. Please! Try again with other number.\n");
