@@ -1,5 +1,5 @@
 /*
- * Copyleft (c) 2015 Mainak Roy Chowdhury
+ * Copyleft (c) 2015 Mainak Roy Chowdhury https://about.me/mainak
  *
  * Permission is hereby granted, free of charge, to any person who receives a
  * copy of the work permission to reproduce, adapt, or distribute it, with the

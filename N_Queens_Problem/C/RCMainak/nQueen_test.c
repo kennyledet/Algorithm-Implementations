@@ -1,5 +1,5 @@
 /*
- * Copyleft (c) 2015 Mainak Roy Chowdhury
+ * Copyleft (c) 2015 Mainak Roy Chowdhury https://about.me/mainak
  *
  * Permission is hereby granted, free of charge, to any person who receives a
  * copy of the work permission to reproduce, adapt, or distribute it, with the
@@ -16,15 +16,27 @@
  */
  
 /*
- * Implementation of NQueen Problem in C language. 
+ * Test file of the NQueen Problem in C language.
+ *
+ * NOTE :- If output of this program should be 0. If toy see anything other than 0 then this program may not
+ *		   work as it should.
+ * 
  */
 
 #include<stdio.h>
 #include<math.h>
+#include <string.h>
 #include <limits.h>
 
 int x[10];
 int flag = 0;
+char expected_output[149] = {"negetive numbers not allowed\nThe solutions are :\n2 4 1 3 \nThe solutions are :\n3 1 4 2 \nQueens cannot be placed. Please! Try again with other number.\n"};
+char output[149] = {"\0"};
+
+int test_assert(){
+   printf("%d\n", strcmp(output, expected_output));
+}
+
 
 int place(int k, int i) {
 	int j;
@@ -48,13 +60,21 @@ void nQueen(int k, int n) {
 	else {
 		if(n>0) {
 			flag = 1;
-			printf("The solutions are :\n");
-			for(j=1; j<=n; j++)
-				printf("%d ", x[j]);
-			printf("\n");
+			
+			char msg[] = {"The solutions are :\n"};
+			strcat(output, msg);
+			
+			for(j=1; j<=n; j++) {
+				char val[1];
+				sprintf(val, "%d ", x[j]);
+				strcat(output, val);
+			}
+			char newl[] = {"\n"};
+			strcat(output, newl);
 		}
 		else {
-			printf("negetive numbers not allowed\n");
+			char neg_num[] = {"negetive numbers not allowed\n"};
+			strcat(output, neg_num);
 		}
 	}
 }
@@ -76,8 +96,11 @@ int main() {
 	nQueen(1, 4);
 	flag = 0;	
 	
-	if(flag == 0)
-		printf("Queens cannot be placed. Please! Try again with other number.\n");
+	if(flag == 0) {
+			char not_placed[] = {"Queens cannot be placed. Please! Try again with other number.\n"};
+			strcat(output, not_placed);
+	}
+	test_assert();
 	
 	return 0;
 }
