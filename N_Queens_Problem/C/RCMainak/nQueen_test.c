@@ -17,16 +17,13 @@
  
 /*
  * Test file of the NQueen Problem in C language.
- *
- * NOTE :- If output of this program should be 0. If toy see anything other than 0 then this program may not
- *		   work as it should.
- * 
  */
 
 #include<stdio.h>
 #include<math.h>
-#include <string.h>
-#include <limits.h>
+#include<string.h>
+#include<limits.h>
+#include <assert.h>
 
 int x[10];
 int flag = 0;
@@ -34,7 +31,7 @@ char expected_output[149] = {"negetive numbers not allowed\nThe solutions are :\
 char output[149] = {"\0"};
 
 int test_assert(){
-   printf("%d\n", strcmp(output, expected_output));
+   assert(strcmp(output, expected_output) == 0);
 }
 
 

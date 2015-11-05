@@ -21,7 +21,6 @@
 
 #include<stdio.h>
 #include<math.h>
-#include <limits.h>
 
 int x[10];
 int flag = 0;
@@ -46,13 +45,11 @@ void nQueen(int k, int n) {
 		}
 	}
 	else {
-		if(n>0) {
-			flag = 1;
-			printf("The solutions are :\n");
-			for(j=1; j<=n; j++)
-				printf("%d ", x[j]);
-			printf("\n");
-		}
+		flag = 1;
+		printf("The solutions are :\n");
+		for(j=1; j<=n; j++)
+			printf("%d ", x[j]);
+		printf("\n");
 	}
 }
 
@@ -60,11 +57,6 @@ int main() {
 	int n;
 	printf("Enter the number of queens : ");
 	scanf("%d", &n);
-	
-	if (n == INT_MIN || n == INT_MAX) {
-		printf("Please make sure to enter an integer value as number of queens!!!\n");
-		return 0;
-	}
 
 	nQueen(1, n);
 	
