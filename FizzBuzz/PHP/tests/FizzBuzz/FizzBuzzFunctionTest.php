@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__) . '/src/fizz-buzz-function.php';
+require_once dirname(__DIR__) . '/../src/fizz-buzz-function.php';
 
 class FizzBuzzFunctionTest extends \PHPUnit_Framework_TestCase
 {
