@@ -1,0 +1,12 @@
+# /usr/bin/ruby
+
+for i in 1..201 do
+	sum = i.to_s.each_char.map {|c| c.to_i }.reduce(:+)
+    
+    if i % sum == 0 then
+    	puts "#{i} is harshad"
+    else 
+    	puts "#{i} isn`t harshad"
+    end
+end
+
