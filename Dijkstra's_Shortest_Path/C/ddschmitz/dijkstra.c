@@ -17,9 +17,7 @@ int dijkstra(int graph[VERTICES][VERTICES], int source, int destination)
 {
     int i = 0;
     int v = 0;
-    
     int distance[VERTICES]; // distance[i] holds the distance from source to a vertex.
- 
     int shortest[VERTICES]; // shortest[i] will be 1 (true) if the distance to that vertex
                             // is found to be the shortest during an iteration. 
  
@@ -52,7 +50,6 @@ int dijkstra(int graph[VERTICES][VERTICES], int source, int destination)
             }
         }
     }
- 
     return distance[destination];
 }
 
@@ -70,7 +67,6 @@ int minDistance(int distance[], int shortest[])
             minV = distance[i];
             min_index = i;
         }
- 
     return min_index;
 }
 
@@ -103,6 +99,5 @@ int main()
     
     printf("The ditance from vertex %d to vertex %d is: %d\n\n", 1, 6, dijkstra(graph, 1, 6));
     assert(dijkstra(graph, 1, 6) == 12);
-    
     return 0;
 }
