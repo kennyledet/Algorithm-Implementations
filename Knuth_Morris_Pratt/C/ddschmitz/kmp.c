@@ -14,15 +14,17 @@ int* kmp_table(char* pattern)
 {
     int pos = 2; // The current position we are computing in T.
     int cnd = 0; // The zero-based index in W of the next character of the current candidate substring.
-	int* T = malloc(sizeof(int) * strlen(pattern)); // The table to be filled
-	if (!T)
-		return NULL;
+    int* T = malloc(sizeof(int) * strlen(pattern)); // The table to be filled
+    if (!T)
+    {
+        return NULL;
+    }
 
     // The first few values are fixed but different from what the algorithm might suggest.
-	T[0] = -1;
+    T[0] = -1;
     T[1] = 0;
     
-	while (pos < strlen(pattern))
+    while (pos < strlen(pattern))
     {
         // First case: the substring continues.
         if (pattern[pos-1] == pattern[cnd])
@@ -44,7 +46,7 @@ int* kmp_table(char* pattern)
         }
     }
        
-	return T;
+    return T;
 }
 
 // Input: text - the text to be searched.
@@ -86,9 +88,8 @@ int kmp_search(char* text, char* pattern, int* T)
 
 int main(void)
 {
-	char text[] = "ABCdefdeGdefdefHIJ";
-	char pattern[] = "defdef";
-    
+    char text[] = "ABCdefdeGdefdefHIJ";
+    char pattern[] = "defdef";
     int* T = kmp_table(pattern);
     
     if (kmp_search(text, pattern, T) == strlen(text))
@@ -102,5 +103,5 @@ int main(void)
     assert(kmp_search(text, pattern, T) == 9);
     
     free(T);
-	return 0;
+    return 0;
 }
