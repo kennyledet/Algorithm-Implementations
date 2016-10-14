@@ -2,7 +2,7 @@
 
 namespace HundredDoors
 {
-	public static class HundredDoors
+	public static class HundredDoors //LOATHSOME!
 	{
 		/// <summary>
 		/// Solves the 100 Doors problem
