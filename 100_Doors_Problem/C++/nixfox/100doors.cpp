@@ -1,7 +1,7 @@
 #include <iostream>
 #include <bitset>
 
-#define DOORSNUM 101
+#define DOORSNUM 100
 
 void walk_and_print(std::bitset<DOORSNUM> &doors, unsigned int cycle, bool print){
 	for(unsigned int i = 0; i < cycle;i++){
