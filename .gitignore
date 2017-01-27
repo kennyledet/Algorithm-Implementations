@@ -54,3 +54,4 @@ $RECYCLE.BIN/
 # IDE and text editors
 .idea/*
 *.swp
+*.iml
