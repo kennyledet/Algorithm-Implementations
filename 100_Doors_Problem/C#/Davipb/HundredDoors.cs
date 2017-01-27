@@ -2,7 +2,7 @@
 
 namespace HundredDoors
 {
-	public static class HundredDoors
+	public static class HundredDoors //LOATHSOME!
 	{
 		/// <summary>
 		/// Solves the 100 Doors problem
@@ -18,7 +18,7 @@ namespace HundredDoors
 				for (int i = pass; i < doors.Length; i += pass)
 					doors[i] = !doors[i];
 
-			return doors;
+			return doors; //final door count
 		}
 	}
 }
