@@ -1,6 +1,8 @@
 #include <iostream>
 #include "binarysearchtree.h"
 
+
+// test binary search tree
 int main() {
     BinarySearchTree<int> tree;
 
