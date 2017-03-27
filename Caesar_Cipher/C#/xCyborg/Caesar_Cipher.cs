@@ -21,7 +21,7 @@ namespace CaesarCipher
 
             for (int i = 0; i < message.Length; i++)
             {
-                letters[i] += (char) 3; // C# needs explicit conversion to char
+                letters[i] += (char) shift; // C# needs explicit conversion to char
             }
             return letters;
         }
