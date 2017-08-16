@@ -2,15 +2,12 @@
 Harshad Number implementation
 See: http://en.wikipedia.org/wiki/Harshad_number
 """
-def sum_digits(n):
+def is_harshad(n):
     result=0
     while n:
         result+=n%10
         n//=10
-    return result
-
-#returns True if n is harshad number or False otherwise
-def is_harshad(n): return (n%sum_digits(n)==0)
+    return n%result == 0  # Return if the remainder of n/result is 0 else return False
 
     
 def main():
