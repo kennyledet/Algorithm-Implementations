@@ -32,7 +32,7 @@ namespace Horspool
 
 			int index = 0;
 
-			while (index <= haystack.Length - needle.Length)
+			while (index < haystack.Length - needle.Length)
 			{
 				bool match = true;
 
@@ -42,6 +42,10 @@ namespace Horspool
 					{
 						match = false;
 						index += BadMatchTable[haystack[index + needle.Length - 1]];
+						if (index >= haystack.Length)
+                        {
+                            break;
+                        }
 					}
 				}
 
