@@ -21,14 +21,14 @@ return function (x1, y1, x2, y2)
   points[#points + 1] = {x = x1, y = y1}
 
   if dy < 0 then
-    ystep = ystep - 1
+    ystep = -1
     dy = -dy
   else
     ystep = 1
   end
 
   if dx < 0 then
-    xstep = xstep - 1
+    xstep = -1
     dx = -dx
   else
     xstep = 1
