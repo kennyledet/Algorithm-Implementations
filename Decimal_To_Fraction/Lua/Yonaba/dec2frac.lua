@@ -7,7 +7,7 @@ local function int(arg) return math.floor(arg) end
 
 -- Returns a fraction that approximates a given decimal
 -- decimal : a decimal to be converted to a fraction
--- acc     : approximation accuracy, defaults to 1e-8
+-- acc     : approximation accuracy, defaults to 1e-4
 -- returns : two integer values, the numerator and the denominator of the fraction
 return function(decimal, acc)
   acc = acc or 1E-4
