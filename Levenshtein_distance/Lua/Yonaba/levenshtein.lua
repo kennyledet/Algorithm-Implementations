@@ -4,11 +4,6 @@
 -- Iterative matrix-based method
 -- See: http://en.wikipedia.org/wiki/Levenshtein_distance#Iterative_with_full_matrix
 
--- Return the minimum of three elements
-local function min(a, b, c)
-	return math.min(math.min(a, b), c)
-end
-
 -- Creates a 2D matrix
 local function matrix(row,col)
   local m = {}
@@ -30,7 +25,7 @@ local function lev_iter_based(strA,strB)
       if (strA:sub(i-1,i-1) == strB:sub(j-1,j-1)) then cost = 0
       else cost = 1
       end
-    M[i][j] = min(M[i-1][j]+1,M[i][j-1]+1,M[i-1][j-1]+cost)
+    M[i][j] = math.min(M[i-1][j]+1,M[i][j-1]+1,M[i-1][j-1]+cost)
     end
   end
   return M[row][col]
@@ -45,7 +40,7 @@ local function lev_recursive_based(strA, strB, s, t)
   if s == 0 then return t end
   if t == 0 then return s end
   local cost = strA:sub(s,s) == strB:sub(t,t) and 0 or 1
-  return min(
+  return math.min(
     lev_recursive_based(strA, strB, s - 1, t) + 1,
     lev_recursive_based(strA, strB, s, t - 1) + 1,
     lev_recursive_based(strA, strB, s - 1, t - 1) + cost
