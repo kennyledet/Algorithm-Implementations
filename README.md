@@ -87,8 +87,8 @@ We should also keep a curated list of resources dealing with algorithms.
 + [ACM Collected Algorithms(CALGO)](http://calgo.acm.org)
 
 #### Online Classes
-+ [Algorithms Part I - Coursera](https://www.coursera.org/course/algs4partI)
-+ [Algorithms Part II - Coursera](https://www.coursera.org/course/algs4partII)
++ [Algorithms Part I - Coursera](https://www.coursera.org/learn/algorithms-part1)
++ [Algorithms Part II - Coursera](https://www.coursera.org/learn/algorithms-part2)
 + [Algorithms: Design and Analysis, Part 1 - Coursera](https://www.coursera.org/course/algo)
 + [Algorithms: Design and Analysis, Part 2 - Coursera](https://www.coursera.org/course/algo2)
 
